@@ -12,15 +12,14 @@ export default function DOcument() {
           crossOrigin="anonymous"
         />
         <link
-          href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;700&family=Roboto:wght@400;500;700&display=swap"
           rel="stylesheet"
         />
-        <style id="stiches"  dangerouslySetInnerHTML={{__html: getCssText}}/>
+        <style id="stiches" dangerouslySetInnerHTML={{ __html: getCssText }} />
       </Head>
       <body>
         <Main />
-            <NextScript />
-
+        <NextScript />
       </body>
     </Html>
   );
