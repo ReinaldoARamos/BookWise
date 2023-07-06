@@ -8,11 +8,17 @@ import {
 import GoogleLogo from "../../../../public/image/logos_google-icon.png";
 import GitHubLogo from "../../../../public/image/akar-icons_github-fill.png";
 import VisitorLogo from "../../../../public/image/RocketLaunch.png";
+import { useRouter } from "next/router";
 
 export function AuthButtons() {
+  const router = useRouter();
+  
+function HandleNextPage() {
+    router.push('/home')
+  }
   return (
-    <ButtonContainer>
-      <GoogleButton>
+    <ButtonContainer onClick={HandleNextPage}>
+      <GoogleButton  >
         <section>
           <Image src={GoogleLogo} alt="" />
           Entrar com Google

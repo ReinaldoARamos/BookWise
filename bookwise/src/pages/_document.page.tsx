@@ -11,6 +11,7 @@ export default function DOcument() {
           href="https://fonts.gstatic.com"
           crossOrigin="anonymous"
         />
+         <link rel="icon" type="image/x-icon" href="/image/Name=BookOpen.ico"></link>
         <link
           href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;700&family=Roboto:wght@400;500;700&display=swap"
           rel="stylesheet"
