@@ -40,8 +40,8 @@ export const GeneralButtonStyle = styled("button", {
     paddingLeft: "$6",
   },
 });
-export const GoogleButton = styled(GeneralButtonStyle, {});
+export const GoogleButton = styled(GeneralButtonStyle);
 
-export const GitHubButton = styled(GeneralButtonStyle, {});
+export const GitHubButton = styled(GeneralButtonStyle);
 
-export const VisitorButton = styled(GeneralButtonStyle, {});
+export const VisitorButton = styled(GeneralButtonStyle);
