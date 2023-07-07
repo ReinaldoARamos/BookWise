@@ -11,8 +11,6 @@ export function LatestRatedBooks() {
       <RatingCard />
       <RatingCard />
       <RatingCard />
-      <RatingCard />
-      <RatingCard />
       
     </LatestBooksContainer>
     
