@@ -10,6 +10,8 @@ export const SideBarContainer = styled("div", {
 export const SideBarSection = styled("div", {
   width: "14.5rem",
   height: "100%",
+  position: "fixed", 
+  paddingBottom: '$4' ,
   background: "url(/image/sidebar-bg.png) no-repeat center",
   backgroundSize: "cover",
   borderRadius: 10,
