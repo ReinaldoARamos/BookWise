@@ -6,11 +6,11 @@ export const PopularContainer = styled("div", {
 
     
     width: 324,
-    backgroundColor: "green",
+   
   header: {
     width: '20rem',
    
-    backgroundColor: 'red',
+    
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
