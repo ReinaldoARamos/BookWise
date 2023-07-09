@@ -84,11 +84,12 @@ export const LoginButton = styled(GeneralButtonHomeStyle, {
   fontWeight: 'bold',
   ":hover": {
     cursor: "pointer",
+    
     color: "$gray100",
     
     svg: {
     
-      
+      color: "$green100",
     },
   },
   div: {
