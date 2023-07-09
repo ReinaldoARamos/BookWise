@@ -1,6 +1,7 @@
 import { styled } from "../../../../stiches.config";
 
 export const AvaliationBox = styled("div", {
+  
   width: "38rem",
   height: "17.5rem",
   backgroundColor: "$gray700",

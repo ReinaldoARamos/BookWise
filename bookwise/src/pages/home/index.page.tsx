@@ -12,10 +12,8 @@ export default function Home() {
       <HomeContainer>
         <NextSeo title="Home | BookWise" description="Página de ínício" />
         <SideBar />
-       
-
         <LatestRatedBooks />
-        <div>oi</div>
+        <PopularBooks />
       </HomeContainer>
     </>
   );

@@ -1,7 +1,13 @@
+import { PopularContainer } from "./style";
+import { CaretRight} from 'phosphor-react'
 export function PopularBooks() {
     return (
-        <h1>
-            Mais populares
-        </h1>
+     <PopularContainer>
+        <header>
+        <section>Livros mais populares</section>
+        <div>Ver todos <CaretRight /></div>            
+        </header>
+
+     </PopularContainer>
     )
 }

@@ -1,17 +1,16 @@
 import { styled } from "@ignite-ui/react";
 
 export const SideBarContainer = styled("div", {
-  display: "grid",
-  gridTemplateColumns: "1.1fr 1fr",
   padding: "$4",
   minHeight: "100vh",
+
 });
 
 export const SideBarSection = styled("div", {
   width: "14.5rem",
   height: "100%",
-  position: "fixed", 
-  paddingBottom: '$4' ,
+  position: "fixed",
+  paddingBottom: "$4",
   background: "url(/image/sidebar-bg.png) no-repeat center",
   backgroundSize: "cover",
   borderRadius: 10,
@@ -80,15 +79,14 @@ export const ExploreButton = styled(GeneralButtonHomeStyle, {
 });
 
 export const LoginButton = styled(GeneralButtonHomeStyle, {
-  width: '100%',
-  fontWeight: 'bold',
+  width: "100%",
+  fontWeight: "bold",
   ":hover": {
     cursor: "pointer",
-    
+
     color: "$gray100",
-    
+
     svg: {
-    
       color: "$green100",
     },
   },
@@ -97,12 +95,10 @@ export const LoginButton = styled(GeneralButtonHomeStyle, {
     alignItems: "center",
     justifyContent: "center",
     color: "$gray400",
-    
+
     svg: {
-      marginLeft: '$3',
-        color: "$green100",
+      marginLeft: "$3",
+      color: "$green100",
     },
-   
   },
-  
 });
