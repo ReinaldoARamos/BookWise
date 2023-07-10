@@ -9,19 +9,29 @@ import {
   LoginButton,
 } from "./style";
 import { ChartLineUp, Binoculars, SignIn } from "phosphor-react";
+import { useRouter } from "next/router";
 export function SideBar() {
+  const router = useRouter()
+
+  function SendToStart() {
+    router.push('/home')
+  }
+
+  function SendToExplorer() {
+    router.push('/explorer')
+  }
   return (
     <SideBarContainer>
       <SideBarSection>
         <Image src={BookWiseLogo} alt="" width={128} height={32} />
         <SideBarItems>
-          <HomeButton>
+          <HomeButton onClick={SendToStart}>
             <section>
               <ChartLineUp size={24} />
               Início {"  "}
             </section>
           </HomeButton>
-          <ExploreButton>
+          <ExploreButton onClick={SendToExplorer}>
             <section>
               <Binoculars size={26} />
               Explorar

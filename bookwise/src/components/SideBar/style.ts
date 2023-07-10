@@ -3,7 +3,6 @@ import { styled } from "@ignite-ui/react";
 export const SideBarContainer = styled("div", {
   padding: "$4",
   minHeight: "100vh",
-
 });
 
 export const SideBarSection = styled("div", {
@@ -61,13 +60,18 @@ export const GeneralButtonHomeStyle = styled("button", {
     gap: "$4",
     alignItems: "center",
     color: "$gray400",
+   
     svg: {
       color: "$gray400",
     },
+   
+    
   },
 });
 
-export const HomeButton = styled(GeneralButtonHomeStyle, {});
+export const HomeButton = styled(GeneralButtonHomeStyle, {
+  
+});
 
 export const ExploreButton = styled(GeneralButtonHomeStyle, {
   width: 110,
@@ -76,6 +80,8 @@ export const ExploreButton = styled(GeneralButtonHomeStyle, {
   svg: {
     marginLeft: 10,
   },
+
+  
 });
 
 export const LoginButton = styled(GeneralButtonHomeStyle, {
