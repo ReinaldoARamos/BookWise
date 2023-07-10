@@ -2,6 +2,7 @@
 import type { AppProps } from "next/app";
 import { SessionProvider } from "next-auth/react";
 import { globalStyles } from "./styles/global";
+import { SideBar } from "@/components/SideBar";
 
 globalStyles();
 
@@ -10,8 +11,10 @@ export default function App({
   pageProps: { session, ...pageProps },
 }: AppProps) {
   return (
-    <SessionProvider session={session}> 
-      <Component {...pageProps} />
+    <SessionProvider session={session}>
+        
+        <Component {...pageProps} />
+      
     </SessionProvider>
   );
 }

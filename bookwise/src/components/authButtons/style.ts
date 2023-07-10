@@ -1,4 +1,5 @@
-import { styled } from "../../../../stiches.config";
+import { styled } from "../../../stiches.config";
+
 
 export const ButtonContainer = styled("div", {
   display: "flex",

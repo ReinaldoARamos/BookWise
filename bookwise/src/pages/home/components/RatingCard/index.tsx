@@ -13,7 +13,7 @@ import BookExample1 from "../../../../../public/Books/fragmentos-do-horror.png";
 
 export function RatingCard() {
   const AvatarExample =
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwwHDtLutJuxtY8O04noomdI703r42sKhwxecLHu5H-A&s";
+    "https://i0.wp.com/superdragonball.com.br/wp-content/uploads/2020/12/Por-que-Goku-nao-chamou-Paikuhan-para-o-Torneio-de-Poder.jpg?fit=1280%2C720&ssl=1";
 
   return (
     <AvaliationBox>
@@ -21,7 +21,7 @@ export function RatingCard() {
         <Profile>
           <Avatar src={AvatarExample} />
           <section>
-            Kiriko Kamori
+            Paikuhan solador
             <div>Hoje</div>
           </section>
         </Profile>

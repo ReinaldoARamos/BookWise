@@ -1,4 +1,4 @@
-import { styled } from "../../../../stiches.config";
+import { styled } from "../../../stiches.config";
 
 export const HeadingContainer = styled("header", {
   paddingTop: "$10",

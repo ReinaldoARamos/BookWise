@@ -1,5 +1,5 @@
 import Image from "next/image";
-import BookWiseLogo from "../../../../public/logo.svg";
+import BookWiseLogo from '../../../public/logo.svg'
 import {
   SideBarContainer,
   SideBarSection,
