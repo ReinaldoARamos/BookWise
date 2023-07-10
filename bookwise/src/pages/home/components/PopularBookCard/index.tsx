@@ -1,19 +1,12 @@
-import { CaretRight, Star } from "phosphor-react";
-import { PopularContainer, PopularBookContent, PopularBookContainer } from "./style";
+import { Star } from "phosphor-react";
+import BookExample from "../../../../../public/Books/o-hobbit.png";
 import Image from "next/image";
-import BookExample from "../../../../public/Books/o-hobbit.png";
 
-export function PopularBook() {
-  
+
+import { PopularBookContainer, PopularBookContent } from "./style";
+export function PopularBooksCard() {
     return (
-        <PopularContainer>
-      <header>
-        <section>Livros mais populares</section>
-        <div>
-          Ver todos <CaretRight />
-        </div>
-      </header>
-      <PopularBookContainer>
+        <PopularBookContainer>
         <Image src={BookExample} alt="" width={64} height={94}/>
         <PopularBookContent>
           <section>
@@ -30,6 +23,5 @@ export function PopularBook() {
           </p>
         </PopularBookContent>
       </PopularBookContainer>
-    </PopularContainer>
     )
 }

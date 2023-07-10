@@ -1,4 +1,4 @@
-import { PageHeader } from "../Header";
+import { PageHeader } from "../../../components/Header";
 import { RatingCard } from "../RatingCard";
 import { LatestBooksContainer } from "./style";
 

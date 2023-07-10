@@ -9,9 +9,8 @@ import {
   Review,
 } from "./style";
 import Image from "next/image";
-import BookExample1 from "../../../../public/Books/fragmentos-do-horror.png";
-import BookExample2 from "../../../../public/Books/14-habitos-de-desenvolvedores-altamente-produtivos.png";
-import BookExample3 from "../../../../public/Books/historias-extraordinarias.png";
+import BookExample1 from "../../../../../public/Books/fragmentos-do-horror.png";
+
 export function RatingCard() {
   const AvatarExample =
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwwHDtLutJuxtY8O04noomdI703r42sKhwxecLHu5H-A&s";
