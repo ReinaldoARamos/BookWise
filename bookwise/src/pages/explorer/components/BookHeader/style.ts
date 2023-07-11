@@ -8,13 +8,7 @@ export const HeaderContainer = styled("header", {
     justifyContent: "space-between",
     width: "62.25rem",
     height: "2.125rem",
-    ":hover": {
-      cursor: "pointer",
 
-      svg: {
-        color: "$gray400",
-      },
-    },
     div: {
       fontFamily: "$default",
       fontSize: "$2xl",
@@ -29,7 +23,9 @@ export const HeaderContainer = styled("header", {
       display: "flex",
       justifyContent: "space-between",
       alignItems: "center",
-
+      ":hover": {
+        cursor: "pointer",
+      },
       svg: {
         width: "3rem",
         color: "$gray500",
