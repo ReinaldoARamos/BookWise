@@ -9,7 +9,7 @@ export const TagContainer = styled('div', {
     justifyContent: 'space-around',
     marginTop: '2.5rem',
     gap: '0.75rem',
-
+    marginBottom: '2.5rem',
     ':hover' : {
         transition: '0.2s',
         cursor: 'pointer',
