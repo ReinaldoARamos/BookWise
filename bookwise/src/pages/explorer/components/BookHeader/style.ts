@@ -12,6 +12,15 @@ export const HeaderContainer = styled("header", {
     div: {
       fontFamily: "$default",
       fontSize: "$2xl",
+
+      display: "flex",
+
+      alignItems: "center",
+      gap: "0.75rem",
+
+      svg: {
+        color: "$green100",
+      },
     },
 
     section: {

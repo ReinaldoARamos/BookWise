@@ -1,10 +1,13 @@
 import { HeaderContainer } from "./style";
-import {MagnifyingGlass} from 'phosphor-react'
+import {Binoculars, MagnifyingGlass} from 'phosphor-react'
 export function ExplorerHeader() {
   return (
     <HeaderContainer>
       <header>
-        <div>Explorar</div>
+        <div>
+          <Binoculars />
+          
+          Explorar</div>
         <section>
         <input placeholder="Procure um livro"  /> 
         <MagnifyingGlass />
