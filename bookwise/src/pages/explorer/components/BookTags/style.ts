@@ -30,7 +30,8 @@ export const GeneralTabButton = styled('button', {
     variants: {
         active: {
           ButtonActive: {
-            backgroundColor: '$purple100',
+            border: '1px solid $purple200',
+            backgroundColor: '$purple200',
             color: '$gray100'
           }
             
