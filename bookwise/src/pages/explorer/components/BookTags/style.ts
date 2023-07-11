@@ -16,6 +16,7 @@ export const TagContainer = styled('div', {
         color: '$gray100',
         border: '1px solid $gray100', 
     },
+ 
 
     
 })
@@ -26,7 +27,15 @@ export const GeneralTabButton = styled('button', {
     border: '1px solid $purple100',
     color:  '$purple100',
     borderRadius: '1rem',
-
+    variants: {
+        active: {
+          ButtonActive: {
+            backgroundColor: '$purple100',
+            color: '$gray100'
+          }
+            
+        }
+    },
     ':focus': {
         outline: 'none',
     },

@@ -3,7 +3,7 @@ import { AllButtons, ComputationButtons, EducationalButtons, FantasyButtons, HQB
 export function BookTags() {
     return (
         <TagContainer>
-            <AllButtons>Todos</AllButtons>
+            <AllButtons active={"ButtonActive"}>Todos</AllButtons>
             <ComputationButtons>Computação</ComputationButtons>
             <EducationalButtons>Educação</EducationalButtons>
             <FantasyButtons>Fantasia</FantasyButtons>
