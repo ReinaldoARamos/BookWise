@@ -7,18 +7,19 @@ import {
   ExploreButton,
   HomeButton,
   LoginButton,
+  ProfileButton,
 } from "./style";
-import { ChartLineUp, Binoculars, SignIn } from "phosphor-react";
+import { ChartLineUp, Binoculars, SignIn, User } from "phosphor-react";
 import { useRouter } from "next/router";
 export function SideBar() {
   const router = useRouter()
 
   function SendToStart() {
-    router.push('/home')
+    router.push('/user/home')
   }
 
   function SendToExplorer() {
-    router.push('/explorer')
+    router.push('/user/explorer')
   }
   return (
     <SideBarContainer>
@@ -37,12 +38,19 @@ export function SideBar() {
               Explorar
             </section>
           </ExploreButton>
+          <ProfileButton>
+          <section>
+          <User size={26} />
+            Perfil
+          </section>
+        </ProfileButton>
         </SideBarItems>
         <LoginButton>
           <div>
             Fazer Login <SignIn size={24} />
           </div>
         </LoginButton>
+       
       </SideBarSection>
     </SideBarContainer>
   );

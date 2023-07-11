@@ -1,14 +1,15 @@
-import { styled } from "../../../../../stiches.config";
+import { styled } from "../../../../../../stiches.config";
 
 
-export const PopularBookContainer = styled("div", {
-    width: '20.25rem',
-    height: '8.125rem',
+export const BookListCardContainer = styled("div", {
+    width: '20rem',
+    height: '11.5rem',
+
     backgroundColor: '$gray700',
     borderRadius: 8,
     padding: '1rem',
     display: 'flex',
-    marginBottom: 12,
+
     section: {
      
       fontFamily: '$default',
@@ -27,13 +28,12 @@ export const PopularBookContainer = styled("div", {
   
   })
   
-  export const PopularBookContent = styled('div', {
+  export const BookListCardContent = styled('div', {
     display:'flex',
     flexDirection: 'column',
-  
     justifyContent: 'space-between',
     width: '100%',
-    marginLeft: '1rem',
+    marginLeft: '1.5rem',
   
     p: {
       svg: {

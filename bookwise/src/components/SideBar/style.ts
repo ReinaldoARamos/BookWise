@@ -29,9 +29,9 @@ export const SideBarItems = styled("div", {
   alignItems: "center",
   justifyContent: "center",
   flexDirection: "column",
-
+  marginTop: '1.5rem',
   paddingBottom: 400,
-  gap: "$4",
+  gap: "$3",
 
   ":hover": {
     cursor: "pointer",
@@ -108,3 +108,10 @@ export const LoginButton = styled(GeneralButtonHomeStyle, {
     },
   },
 });
+
+
+
+export const ProfileButton = styled(GeneralButtonHomeStyle, {
+  
+});
+

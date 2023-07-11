@@ -14,7 +14,7 @@ export function AuthButtons() {
   const router = useRouter();
   
 function HandleNextPage() {
-    router.push('/home')
+    router.push('/user/home')
   }
   return (
     <ButtonContainer onClick={HandleNextPage}>

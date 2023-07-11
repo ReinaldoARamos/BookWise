@@ -1,5 +1,4 @@
-import { styled } from "../../../../../stiches.config";
-
+import { styled } from "../../../../../../stiches.config";
 
 export const PopularContainer = styled("div", {
     paddingTop: "6.85rem",

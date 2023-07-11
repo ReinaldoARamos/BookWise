@@ -3,12 +3,17 @@ import { ExplorerContainer } from "./style";
 import { PageHeader } from "@/components/Header";
 import { Placeholder } from "phosphor-react";
 import { BookCard } from "./components/BookCard";
+import { NextSeo } from "next-seo";
 
 export default function Explorer() {
   return (
+    <>
+
+        <NextSeo title="Explorar | BookWise" description="Página de Exploração" />
     <ExplorerContainer>
       <SideBar />
       <BookCard />
     </ExplorerContainer>
+    </>
   );
 }

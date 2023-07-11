@@ -1,6 +1,4 @@
-import { styled } from "../../../../../stiches.config"
-
-
+import { styled } from "../../../../../../stiches.config";
 export const TagContainer = styled('div', {
     width: '53.5rem',
     height: '2.125rem',

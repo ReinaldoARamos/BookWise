@@ -9,7 +9,7 @@ import {
   Review,
 } from "./style";
 import Image from "next/image";
-import BookExample1 from "../../../../../public/Books/fragmentos-do-horror.png";
+import BookExample1 from "../../../../../../public/Books/fragmentos-do-horror.png";
 
 export function RatingCard() {
   const AvatarExample =
