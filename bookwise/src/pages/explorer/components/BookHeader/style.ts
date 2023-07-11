@@ -8,7 +8,13 @@ export const HeaderContainer = styled("header", {
     justifyContent: "space-between",
     width: "62.25rem",
     height: "2.125rem",
+    ":hover": {
+      cursor: "pointer",
 
+      svg: {
+        color: "$gray400",
+      },
+    },
     div: {
       fontFamily: "$default",
       fontSize: "$2xl",
@@ -17,29 +23,28 @@ export const HeaderContainer = styled("header", {
     section: {
       width: 433,
       height: 48,
+      borderRadius: 8,
       backgroundColor: "transparent",
       border: "1px solid $gray500",
       display: "flex",
       justifyContent: "space-between",
       alignItems: "center",
+
       svg: {
         width: "3rem",
         color: "$gray500",
+        transition: "0.4s",
       },
+
       input: {
         width: "100%",
         height: "100%",
         backgroundColor: "transparent",
         border: "none",
         marginLeft: "0.5rem",
-        color: "$gray400",
+        color: "$gray100",
         fontWeight: "bold",
         fontFamily: "$default",
-      },
-
-      ":hover": {
-        cursor: "pointer",
-
       },
 
       ":focus": {
