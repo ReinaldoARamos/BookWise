@@ -1,19 +1,22 @@
-import { HeaderContainer } from "./style";
-import {Binoculars, MagnifyingGlass} from 'phosphor-react'
-export function ExplorerHeader() {
+import { Heading } from "@ignite-ui/react";
+import { HeadingContainer } from "./style";
+import { MagnifyingGlass, User } from "phosphor-react";
+
+
+
+export function ProfileHeader() {
   return (
-    <HeaderContainer>
-      <header>
-        <div>
-          <Binoculars />
-          
-          Explorar</div>
-        <section>
+    <HeadingContainer>
+      <Heading>
+        <User />
+        Início
+      </Heading>
+
+      <section>
         <input placeholder="Procure um livro"  /> 
         <MagnifyingGlass />
         </section>
       
-      </header>
-    </HeaderContainer>
+    </HeadingContainer>
   );
 }

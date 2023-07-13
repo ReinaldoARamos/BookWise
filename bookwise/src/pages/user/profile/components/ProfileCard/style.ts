@@ -4,4 +4,5 @@ export const ProfileCardContainer = styled('div', {
     display: 'flex',
     flexDirection: 'column',
     
+    
 })
