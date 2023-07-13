@@ -7,9 +7,7 @@ export default function Profile() {
     return (
       <ProfileContainer>
         <SideBar />
-        <ProfileHeader />
-        <ProfileCard />
-      <div>oi</div>
+       <ProfileCard />
       </ProfileContainer>
     )
 }
