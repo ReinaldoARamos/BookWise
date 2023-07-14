@@ -5,11 +5,18 @@ export const UserReviewContainer = styled("div", {
   flexDirection: "column",
   padding: "1.5rem",
   width: "39rem",
-  height: "22.5rem",
+  height: '100%',
+  Maxheight: "22.5rem",
   backgroundColor: "$gray700",
   borderRadius: 8,
   marginTop: "1rem",
   marginBottom: '1.5rem',
+
+  '.ReviewArea': {
+    marginTop: '1.5rem',
+    
+    
+  }
   
 });
 

@@ -10,6 +10,8 @@ import Image from "next/image";
 
 export function UserRatedBooks() {
   return (
+    <>
+     <section>Há 2 dias</section>
     <UserReviewContainer>
       <UserBookListCardContainer>
         <Image src={BookExample} alt="" width={108} height={152} />
@@ -29,7 +31,7 @@ export function UserRatedBooks() {
         </UserBookListCardContent>
       </UserBookListCardContainer>
 
-      <div>
+      <div className="ReviewArea">
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis,
         dolore doloremque nostrum illum, quasi numquam exercitationem quis optio
         recusandae, odit ducimus minima suscipit porro magnam? Accusamus,
@@ -39,5 +41,6 @@ export function UserRatedBooks() {
         suscipit porro magnam? Accusamus, tenetur voluptatem? Quos, nam!
       </div>
     </UserReviewContainer>
+    </>
   );
 }
