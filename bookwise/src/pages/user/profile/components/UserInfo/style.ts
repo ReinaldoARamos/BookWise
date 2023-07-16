@@ -15,6 +15,7 @@ export const ProfileDisplay = styled("div", {
   alignItems: "center",
   justifyContent: "center",
   flexDirection: "column",
+
   gap: 24,
   section: {
     fontFamily: "$default",
@@ -32,6 +33,7 @@ export const ProfileDisplay = styled("div", {
     flexDirection: "column",
     textAlign: "center",
     gap: 6,
+    marginBottom: '2rem',
 
     p: {
       color: "$gray400",
@@ -41,3 +43,49 @@ export const ProfileDisplay = styled("div", {
     },
   },
 });
+
+export const Divisor = styled("div", {
+    width: '1rem',
+    height:'1rem',
+    marginBottom: '2rem'
+    
+}) 
+
+export const UserInfos = styled("div", {
+    padding: '1.25rem 3.5rem 3.5 1.25rem', 
+    display: 'flex',
+
+    
+    flexDirection: 'column',
+  
+    alignItems: 'center',
+    gap: '2.5rem',
+    
+    backgroundColor: 'red',
+    div: {
+        display: "flex",
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor:  'purple',
+       
+       position: "relative",
+        section: {
+            color: '$gray100',
+            fontFamily: "$default",
+            fontSize: '$md'
+        },
+
+        div: {
+            fontSize: '$sm',
+            color: '$gray300'
+        }
+        
+    },
+
+    svg: {
+        marginRight : '1.25rem',
+        color: '$green100'
+    }
+} )
+
+
