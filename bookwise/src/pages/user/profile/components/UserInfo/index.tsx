@@ -1,10 +1,15 @@
 import Image from "next/image";
 import { Divisor, ProfileDisplay, UserInfoContainer, UserInfos } from "./style";
 import { UserList, BookOpen, Books, BookmarkSimple } from "phosphor-react";
+
+import { useState } from "react";
+
 const rectangle = '../../../../../../public/Rectangle.png'
-const AvatarExample =
-  "https://i0.wp.com/superdragonball.com.br/wp-content/uploads/2020/12/Por-que-Goku-nao-chamou-Paikuhan-para-o-Torneio-de-Poder.jpg?fit=1280%2C720&ssl=1";
+const AvatarExample = "https://i0.wp.com/superdragonball.com.br/wp-content/uploads/2020/12/Por-que-Goku-nao-chamou-Paikuhan-para-o-Torneio-de-Poder.jpg?fit=1280%2C720&ssl=1";
+
+
 export function UserInfo() {
+
   return (
     <UserInfoContainer>
       <div className="LeftBorder">

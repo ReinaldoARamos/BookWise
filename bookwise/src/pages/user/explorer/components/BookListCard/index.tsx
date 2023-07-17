@@ -3,10 +3,13 @@ import BookExample from "../../../../../../public/Books/o-hobbit.png";
 import Image from "next/image";
 import { BookListCardContainer, BookListCardContent } from "./style";
 
+
 export function BookListCard() {
+
     return (
         <BookListCardContainer>
-        <Image src={BookExample} alt="" width={108} height={152}/>
+        <Image src={BookExample} alt="" width={108} height={152} />
+       
         <BookListCardContent>
           <section>
             O Hobbit
