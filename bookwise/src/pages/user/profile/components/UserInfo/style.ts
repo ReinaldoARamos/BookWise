@@ -6,8 +6,12 @@ export const UserInfoContainer = styled("div", {
   height: "100%",
   flexDirection: "column",
   marginLeft: "4rem",
-
+ borderHeight: 10,
   paddingTop: "6.8rem",
+
+  '.LeftBorder': {
+    borderLeft: '1px solid $gray700',
+  }
 });
 
 export const ProfileDisplay = styled("div", {
@@ -33,7 +37,7 @@ export const ProfileDisplay = styled("div", {
     flexDirection: "column",
     textAlign: "center",
     gap: 6,
-    marginBottom: '2rem',
+    marginBottom: "2rem",
 
     p: {
       color: "$gray400",
@@ -45,47 +49,37 @@ export const ProfileDisplay = styled("div", {
 });
 
 export const Divisor = styled("div", {
-    width: '1rem',
-    height:'1rem',
-    marginBottom: '2rem'
-    
-}) 
+ 
+  height: "1rem",
+  marginBottom: "2rem",
+ display: "flex",
+ alignItems: "center",
+ justifyContent: "center",
+ background: "url(/image/Rectangle.png) no-repeat center",
+  
+});
 
 export const UserInfos = styled("div", {
-    padding: '1.25rem 3.5rem 3.5 1.25rem', 
-    display: 'flex',
+  padding: "1.25rem 3.5rem 3.5 1.25rem",
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  gap: "2.5rem",
 
-    
-    flexDirection: 'column',
-  
-    alignItems: 'center',
-    gap: '2.5rem',
-    
-    backgroundColor: 'red',
-    div: {
-        display: "flex",
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor:  'purple',
-       
-       position: "relative",
-        section: {
-            color: '$gray100',
-            fontFamily: "$default",
-            fontSize: '$md'
-        },
+  div: {
+    width: "196px",
+    display: "flex",
+    alignItems: "center",
 
-        div: {
-            fontSize: '$sm',
-            color: '$gray300'
-        }
-        
+    section: {
+      color: "$gray100",
+      fontFamily: "$default",
+      fontSize: "$md",
     },
 
     svg: {
-        marginRight : '1.25rem',
-        color: '$green100'
-    }
-} )
-
-
+      marginRight: "1.25rem",
+      color: "$green100",
+    },
+  },
+});
