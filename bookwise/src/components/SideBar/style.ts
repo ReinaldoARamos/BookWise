@@ -9,7 +9,7 @@ export const SideBarSection = styled("div", {
   width: "14.5rem",
   height: "100%",
   position: "fixed",
-  paddingBottom: "$4",
+  paddingBottom: "$6",
   background: "url(/image/sidebar-bg.png) no-repeat center",
   backgroundSize: "cover",
   borderRadius: 10,
@@ -17,7 +17,7 @@ export const SideBarSection = styled("div", {
   flexDirection: "column",
   justifyContent: "space-between",
   alignItems: "center",
-  img: {
+  ".Logo": {
     width: "100%",
 
     marginTop: "$12",
@@ -29,7 +29,7 @@ export const SideBarItems = styled("div", {
   alignItems: "center",
   justifyContent: "center",
   flexDirection: "column",
-  marginTop: '1.5rem',
+  marginTop: "1.5rem",
   paddingBottom: 400,
   gap: "$3",
 
@@ -60,18 +60,14 @@ export const GeneralButtonHomeStyle = styled("button", {
     gap: "$4",
     alignItems: "center",
     color: "$gray400",
-   
+
     svg: {
       color: "$gray400",
     },
-   
-    
   },
 });
 
-export const HomeButton = styled(GeneralButtonHomeStyle, {
-  
-});
+export const HomeButton = styled(GeneralButtonHomeStyle, {});
 
 export const ExploreButton = styled(GeneralButtonHomeStyle, {
   width: 110,
@@ -80,8 +76,6 @@ export const ExploreButton = styled(GeneralButtonHomeStyle, {
   svg: {
     marginLeft: 10,
   },
-
-  
 });
 
 export const LoginButton = styled(GeneralButtonHomeStyle, {
@@ -101,17 +95,60 @@ export const LoginButton = styled(GeneralButtonHomeStyle, {
     alignItems: "center",
     justifyContent: "center",
     color: "$gray400",
-
+    width: "100%",
     svg: {
-      marginLeft: "$3",
+      marginLeft: "$4",
       color: "$green100",
     },
   },
 });
 
+export const SingUpButton = styled(GeneralButtonHomeStyle, {
+  width: "100%",
 
+  fontWeight: "bold",
 
-export const ProfileButton = styled(GeneralButtonHomeStyle, {
-  
+  ".Avatar": {
+    width: 32,
+    height: 32,
+    borderRadius: "$full",
+    border: "2px solid $green100",
+    marginRight: 12,
+  },
+
+  div: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    color: "$gray400",
+    width: 292,
+   paddingRight: 150,
+    
+    svg: {
+      marginLeft: "$4",
+      color: "red",
+    },
+  },
+
+  ":hover": {
+    cursor: "pointer",
+
+    color: "$gray100",
+
+    svg: {
+      color: "DarkRed",
+    },
+  },
 });
 
+export const ProfileButton = styled(GeneralButtonHomeStyle, {});
+
+/*
+  '.Avatar': {
+    width: 32,
+    height: 32,
+    borderRadius: "$full",
+    border: '2px solid $green100',
+    marginRight: 12,
+  
+  },* */

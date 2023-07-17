@@ -4,7 +4,10 @@ const nextConfig = {
         'page.tsx',
         'api.ts',
         'api.tsx'
-    ]
+    ],
+    images: {
+        domains: ['*']
+    },
 }
 
 module.exports = nextConfig

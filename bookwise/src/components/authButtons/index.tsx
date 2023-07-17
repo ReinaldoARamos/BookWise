@@ -27,13 +27,13 @@ function HandleNextPage() {
       <GitHubButton>
         <section>
           <Image src={GitHubLogo} alt="" />
-          Entrar com Google
+          Entrar com GitHub
         </section>
       </GitHubButton>
       <VisitorButton>
         <section>
           <Image src={VisitorLogo} alt="" />
-          Entrar com Google
+          Entrar como visitante 
         </section>
       </VisitorButton>
     </ButtonContainer>

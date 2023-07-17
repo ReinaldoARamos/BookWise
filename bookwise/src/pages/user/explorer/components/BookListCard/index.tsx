@@ -2,14 +2,17 @@ import { Star } from "phosphor-react";
 import BookExample from "../../../../../../public/Books/o-hobbit.png";
 import Image from "next/image";
 import { BookListCardContainer, BookListCardContent } from "./style";
-
+import { useState } from "react";
 
 export function BookListCard() {
 
-    return (
-        <BookListCardContainer>
+  return (
+    <>
+    
+      <BookListCardContainer>
+
         <Image src={BookExample} alt="" width={108} height={152} />
-       
+        
         <BookListCardContent>
           <section>
             O Hobbit
@@ -25,6 +28,9 @@ export function BookListCard() {
             <Star size={20} />
           </p>
         </BookListCardContent>
+      
       </BookListCardContainer>
-    )
+    
+    </>
+  );
 }

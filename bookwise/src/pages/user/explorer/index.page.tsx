@@ -4,8 +4,12 @@ import { PageHeader } from "@/components/Header";
 import { Placeholder } from "phosphor-react";
 import { BookCard } from "./components/BookCard";
 import { NextSeo } from "next-seo";
+import Drawer from "react-modern-drawer";
+
 
 export default function Explorer() {
+
+  
   return (
     <>
 

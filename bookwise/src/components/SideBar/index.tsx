@@ -1,5 +1,5 @@
 import Image from "next/image";
-import BookWiseLogo from '../../../public/logo.svg'
+import BookWiseLogo from "../../../public/logo.svg";
 import {
   SideBarContainer,
   SideBarSection,
@@ -8,27 +8,37 @@ import {
   HomeButton,
   LoginButton,
   ProfileButton,
+  SingUpButton,
+
 } from "./style";
 import { ChartLineUp, Binoculars, SignIn, User } from "phosphor-react";
 import { useRouter } from "next/router";
+import AvatarExample from '../../../public/Shikabane.png'
+
+interface SideBarProps {
+  isSingIn: boolean
+}
 export function SideBar() {
-  const router = useRouter()
+  const IsSingIn = true
+  const router = useRouter();
 
   function SendToStart() {
-    router.push('/user/home')
+    router.push("/user/home");
   }
 
   function SendToExplorer() {
-    router.push('/user/explorer')
+    router.push("/user/explorer");
   }
-  
+
   function SendToProfile() {
-    router.push('/user/profile')
+    router.push("/user/profile");
   }
   return (
     <SideBarContainer>
+
       <SideBarSection>
-        <Image src={BookWiseLogo} alt="" width={128} height={32} />
+
+        <Image src={BookWiseLogo} alt="" width={128} height={32} className="Logo" />
         <SideBarItems>
           <HomeButton onClick={SendToStart}>
             <section>
@@ -43,20 +53,30 @@ export function SideBar() {
             </section>
           </ExploreButton>
           <ProfileButton onClick={SendToProfile}>
-          <section>
-          <User size={26} />
-            Perfil
-          </section>
-        </ProfileButton>
+            <section>
+              <User size={26} />
+              Perfil
+            </section>
+
+          </ProfileButton>
+
         </SideBarItems>
-        <LoginButton>
+        {IsSingIn ? <SingUpButton>
+          
+          <div> 
+          <Image src={AvatarExample} alt="" width={32} height={32} className="Avatar" />
+              Reinaldo  <SignIn size={24} />
+          </div>
+        </SingUpButton> :
+         <LoginButton>
           <div>
             Fazer Login <SignIn size={24} />
           </div>
-        </LoginButton>
-        
-       
+        </LoginButton>}
+
       </SideBarSection>
     </SideBarContainer>
+
+
   );
 }
