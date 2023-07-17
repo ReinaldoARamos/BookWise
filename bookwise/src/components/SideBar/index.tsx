@@ -21,6 +21,7 @@ interface SideBarProps {
 export function SideBar() {
   const IsSingIn = true
   const router = useRouter();
+  
 
   function SendToStart() {
     router.push("/user/home");
