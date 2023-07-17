@@ -54,11 +54,7 @@ export function SideBar() {
             Fazer Login <SignIn size={24} />
           </div>
         </LoginButton>
-        <LoginButton>
-          <div>
-            Fazer Login <SignIn size={24} />
-          </div>
-        </LoginButton>
+        
        
       </SideBarSection>
     </SideBarContainer>

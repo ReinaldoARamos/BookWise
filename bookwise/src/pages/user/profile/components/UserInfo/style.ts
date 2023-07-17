@@ -75,6 +75,12 @@ export const UserInfos = styled("div", {
       color: "$gray100",
       fontFamily: "$default",
       fontSize: "$md",
+
+      p: {
+        color: "$gray300",
+        fontSize: "$sm",
+
+      }
     },
 
     svg: {

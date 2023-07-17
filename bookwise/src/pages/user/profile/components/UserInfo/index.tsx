@@ -24,21 +24,21 @@ export function UserInfo() {
           <BookOpen size={28} />
           <section>
             3781
-            <section>Páginas Lidas</section>
+            <p>Páginas Lidas</p>
           </section>
         </div>
         <div>
           <Books size={28} />
           <section>
             10
-            <section>Livros avaliados</section>
+            <p>Livros avaliados</p>
           </section>
         </div>
         <div>
           <UserList size={28} />
           <section>
             3
-            <section>Autores Lidos</section>
+            <p>Autores Lidos</p>
           </section>
         </div>
 
@@ -46,7 +46,7 @@ export function UserInfo() {
           <BookmarkSimple size={28} />
           <section>
             Computação
-            <section>Categorias mais lidas</section>
+            <p>Categorias mais lidas</p>
           </section>
         </div>
       </UserInfos>
