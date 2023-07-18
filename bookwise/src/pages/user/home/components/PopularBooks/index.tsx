@@ -14,10 +14,7 @@ export function PopularBook() {
         </div>
       </header>
       <PopularBooksCard />
-      <PopularBooksCard />
-      <PopularBooksCard />
-      <PopularBooksCard />
-      
+    
       
     </PopularContainer>
     )

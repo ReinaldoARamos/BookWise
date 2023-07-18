@@ -5,7 +5,7 @@ import {
   UserReviewContainer,
 } from "./style";
 
-import BookExample from "../../../../../../public/Books/codigo-limpo.png";
+import BookExample from "../../../../../../public/images/books/codigo-limpo.png";
 import Image from "next/image";
 
 export function UserRatedBooks() {
