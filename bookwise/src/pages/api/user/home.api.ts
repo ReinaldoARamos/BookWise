@@ -14,9 +14,13 @@ export default async function handle (
 
     const RecentRating = (await prisma.rating.findMany({
         orderBy: {
-           created_at: 'asc'
+           created_at: 'desc'
         }, 
-        take: 5
+        include:{ 
+                book: true,
+                user: true
+        },
+        take: 10
     }))
 
    res.json(RecentRating)

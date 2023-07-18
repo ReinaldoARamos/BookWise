@@ -9,61 +9,81 @@ import {
   Review,
 } from "./style";
 import Image from "next/image";
-import BookExample1 from "../../../../../../public/Books/fragmentos-do-horror.png";
 import { api } from "@/lib/axios";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+
+interface RatingProps{ 
+  id: string,
+  rate: number,
+  description: string,
+  created_at: string,
+  book_id: string,
+  user_id: string,
+  book: {
+    name: string,
+    author: string,
+    summary: string,
+    cover_url: string
+  }
+
+}
 
 export function RatingCard() {
   const AvatarExample =
     "https://i0.wp.com/superdragonball.com.br/wp-content/uploads/2020/12/Por-que-Goku-nao-chamou-Paikuhan-para-o-Torneio-de-Poder.jpg?fit=1280%2C720&ssl=1";
+    const [data, setData] = useState<RatingProps[]>([]);
 
-  const fetchData = async () => {
-    try {
-      const response = await api.get("user/home");
-      const data = response.data;
-
-      console.log(data);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-  
+  async function fetchData() {
+    const response = await api.get('user/home')
+    setData(response.data);
+  }
   useEffect(() => {
     fetchData();
   }, []);
 
+
+   
   return (
-    <AvaliationBox>
-      <ProfileBox>
-        <Profile>
-          <Avatar src={AvatarExample} />
-          <section>
-            Paikuhan solador
-            <div>Hoje</div>
-          </section>
-        </Profile>
+  
+    <div>
+  
+    {data.map((item) => (
+    <AvaliationBox key={item.id}>
+    <ProfileBox>
+      <Profile>
+        <Avatar src={AvatarExample} />
+        <section>
+          Paikuhan solador
+          <div>Hoje</div>
+        </section>
+      </Profile>
 
-        <div>
-          <Star weight="fill" color="#8381D9" />
-          <Star weight="fill" color="#8381D9" />
-          <Star weight="fill" color="#8381D9" />
-          <Star weight="fill" color="#8381D9" />
-          <Star />
-        </div>
-      </ProfileBox>
+      <div>
+        <Star weight="fill" color="#8381D9" />
+        <Star weight="fill" color="#8381D9" />
+        <Star weight="fill" color="#8381D9" />
+        <Star weight="fill" color="#8381D9" />
+        <Star />
+      </div>
+    </ProfileBox>
 
-      <ReviewBox>
-        <Image src={BookExample1} width={108} height={152} alt="" />
-        <ReviewCard>
-          <section>Fragmentos de Horror</section>
-          <div>Junji Ito</div>
-          <Review>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. At
-            dignissimos sint quis? Maxime tempore commodi nihil quis eos rerum!
-            Rem enim voluptate ipsa officiis itaque recusandae quas maxime...
-          </Review>
-        </ReviewCard>
-      </ReviewBox>
-    </AvaliationBox>
+    <ReviewBox>
+      <img src={item.book.cover_url} width={108} height={152} alt="" />
+      <ReviewCard>
+        <section>{item.book.name}</section>
+        <div>{item.book.author}</div>
+        <Review>
+          {item.description}
+        </Review>
+      </ReviewCard>
+    </ReviewBox>
+  </AvaliationBox>
+    ))}
+  </div>
+ 
   );
 }
+
+/*
+ 
+* */

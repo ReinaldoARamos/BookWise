@@ -10,7 +10,7 @@ export const SideBarSection = styled("div", {
   height: "100%",
   position: "fixed",
   paddingBottom: "$6",
-  background: "url(/image/sidebar-bg.png) no-repeat center",
+  background: "url(/images/sidebar-bg.png) no-repeat center",
   backgroundSize: "cover",
   borderRadius: 10,
   display: "flex",
