@@ -68,7 +68,7 @@ export function RatingCard() {
     </ProfileBox>
 
     <ReviewBox>
-      <img src={item.book.cover_url} width={108} height={152} alt="" />
+      <Image src={item.book.cover_url} width={108} height={152} alt="" />
       <ReviewCard>
         <section>{item.book.name}</section>
         <div>{item.book.author}</div>

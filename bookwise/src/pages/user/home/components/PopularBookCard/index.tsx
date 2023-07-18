@@ -1,5 +1,5 @@
 import { Star } from "phosphor-react";
-import BookExample from "../../../../../../public/images/books/o-hobbit.jpg";
+import BookExample from "../../../../../../public/images/books/o-hobbit.png";
 import Image from "next/image";
 
 
