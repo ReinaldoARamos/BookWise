@@ -10,10 +10,27 @@ import {
 } from "./style";
 import Image from "next/image";
 import BookExample1 from "../../../../../../public/Books/fragmentos-do-horror.png";
+import { api } from "@/lib/axios";
+import { useEffect } from "react";
 
 export function RatingCard() {
   const AvatarExample =
     "https://i0.wp.com/superdragonball.com.br/wp-content/uploads/2020/12/Por-que-Goku-nao-chamou-Paikuhan-para-o-Torneio-de-Poder.jpg?fit=1280%2C720&ssl=1";
+
+  const fetchData = async () => {
+    try {
+      const response = await api.get("user/home");
+      const data = response.data;
+
+      console.log(data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   return (
     <AvaliationBox>

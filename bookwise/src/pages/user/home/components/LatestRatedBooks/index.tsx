@@ -9,8 +9,7 @@ export function LatestRatedBooks() {
       <section>Avaliações mais recentes</section>
 
       <RatingCard />
-      <RatingCard />
-      <RatingCard />
+   
       
     </LatestBooksContainer>
     
