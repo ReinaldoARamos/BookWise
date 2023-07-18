@@ -105,7 +105,9 @@ export const LoginButton = styled(GeneralButtonHomeStyle, {
 
 export const SingUpButton = styled(GeneralButtonHomeStyle, {
   width: "100%",
-
+   alignItems: "center",
+   justifyContent: 'center',
+   paddingLeft: '3rem',
   fontWeight: "bold",
 
   ".Avatar": {
