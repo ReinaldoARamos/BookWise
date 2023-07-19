@@ -24,9 +24,17 @@ interface RatingProps{
     author: string,
     summary: string,
     cover_url: string
+  },
+
+  user: {
+    id: string,
+    name: string,
+    avatar_url: string,
+    created_at: string
   }
 
 }
+
 
 export function RatingCard() {
   const AvatarExample =
@@ -51,10 +59,10 @@ export function RatingCard() {
     <AvaliationBox key={item.id}>
     <ProfileBox>
       <Profile>
-        <Avatar src={AvatarExample} />
+        <Avatar src={item.user.avatar_url} />
         <section>
-          Paikuhan solador
-          <div>Hoje</div>
+           {item.user.name}
+          <div>{item.created_at}</div>
         </section>
       </Profile>
 
