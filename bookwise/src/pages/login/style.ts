@@ -10,7 +10,7 @@ export const LogoContainer = styled("main", {
 export const LogoSection = styled("section", {
   width: "100%",
   height: "100%",
-  background: "url(/image/logo-section-bg.png) no-repeat center",
+  background: "url(/images/logo-section-bg.png) no-repeat center",
   backgroundSize: "cover",
   display: "flex",
   alignItems: "center",

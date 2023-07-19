@@ -5,9 +5,9 @@ import {
   GoogleButton,
   VisitorButton,
 } from "./style";
-import GoogleLogo from "../../../public/image/logos_google-icon.png";
-import GitHubLogo from "../../../public/image/akar-icons_github-fill.png";
-import VisitorLogo from "../../../public/image/RocketLaunch.png";
+import GoogleLogo from "../../../public/images/logos_google-icon.png";
+import GitHubLogo from "../../../public/images/akar-icons_github-fill.png";
+import VisitorLogo from "../../../public/images/RocketLaunch.png";
 import { useRouter } from "next/router";
 
 export function AuthButtons() {

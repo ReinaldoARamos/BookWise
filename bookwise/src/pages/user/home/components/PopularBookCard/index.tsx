@@ -35,7 +35,7 @@ export function PopularBooksCard() {
       <Image src={BookExample} alt="" width={64} height={94} />
       <PopularBookContent>
         <section>
-          {popularBooks.}
+          Teste
           <div>J. R. R. Tolkien</div>
         </section>
 

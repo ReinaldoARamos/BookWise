@@ -20,15 +20,5 @@ export default async function handle(
     take: 5,
   });
 
-  const PopularBooks = await prisma.rating.findMany({
-    orderBy: {
-      rate: "desc",
-    },
-    include: {
-      book: true,
-      user: true,
-    },
-    take: 5,
-  });
-  res.json({ RecentRating, PopularBooks });
+  res.json(RecentRating);
 }
