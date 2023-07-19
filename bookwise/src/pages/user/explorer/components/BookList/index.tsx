@@ -7,21 +7,7 @@ export function BookList() {
     return (
      <BookListContainer>
         <BookListCard />
-        <BookListCard />
-        <BookListCard />
-        <BookListCard />
-        <BookListCard />
-        <BookListCard />
-        <BookListCard />
-        <BookListCard />
-        <BookListCard />
-        <BookListCard />
-        <BookListCard />
-        <BookListCard />
-        <BookListCard />
-        <BookListCard />
-        <BookListCard />
-        
+       
      </BookListContainer>
         
     )
