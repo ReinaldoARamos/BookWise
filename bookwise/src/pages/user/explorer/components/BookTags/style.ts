@@ -1,8 +1,9 @@
 import { styled } from "../../../../../../stiches.config";
 export const TagContainer = styled('div', {
-    width: '53.5rem',
+    width: '115%',
     height: '2.125rem',
     display: 'flex',
+
     alignContent: 'center',
     justifyContent: 'space-around',
     marginTop: '2.5rem',
@@ -14,6 +15,7 @@ export const TagContainer = styled('div', {
         color: '$gray100',
         border: '1px solid $gray100', 
     },
+
  
 
     
@@ -45,18 +47,3 @@ export const AllButtons = styled(GeneralTabButton, {
     
     
 })
-
-export const ComputationButtons = styled(GeneralTabButton, {})
-
-export const EducationalButtons = styled(GeneralTabButton, {})
-
-export const FantasyButtons = styled(GeneralTabButton, {})
-
-export const HorrorButtons = styled(GeneralTabButton, {})
-
-export const HQButtons = styled(GeneralTabButton, {})
-
-export const SciFiButtons = styled(GeneralTabButton, {})
-
-export const SuspenseButtons = styled(GeneralTabButton, {})
-
