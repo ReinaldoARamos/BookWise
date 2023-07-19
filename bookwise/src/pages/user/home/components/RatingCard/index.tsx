@@ -59,7 +59,8 @@ export function RatingCard() {
     <AvaliationBox key={item.id}>
     <ProfileBox>
       <Profile>
-        <Avatar src={item.user.avatar_url} />
+        <div>  <img src={item.user.avatar_url} width={40} height={40}/></div>
+      
         <section>
            {item.user.name}
           <div>{item.created_at}</div>

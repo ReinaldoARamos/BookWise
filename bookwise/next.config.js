@@ -6,7 +6,7 @@ const nextConfig = {
         'api.tsx'
     ],
     images: {
-        domains: ['*']
+        domains: ['images.unsplash.com/']
     },
 }
 

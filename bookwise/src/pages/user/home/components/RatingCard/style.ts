@@ -46,7 +46,21 @@ export const Profile = styled("div", {
       color: "$gray400",
       paddingTop: 15,
     },
+
+   
   },
+  div: {
+    ':hover' : {
+      cursor: 'pointer'
+  },
+    img: {
+      borderRadius: '$full',
+      border: '2px solid $green100',
+     
+      
+    }
+  }
+
 });
 
 export const ReviewBox = styled("div", {
