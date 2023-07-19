@@ -13,40 +13,45 @@ interface PopularBooksProps {
   created_at: string;
   book_id: string;
   user_id: string;
-  book: {
-    name: string;
-    author: string;
-    summary: string;
-    cover_url: string;
-  };
+ name: string;
+ author: string;
+ cover_url: string;
 }
 export function PopularBooksCard() {
   const [popularBooks, setPopularBooks] = useState<PopularBooksProps[]>([]);
 
   async function fetchData() {
-    const response = await api.get("user/home");
+    const response = await api.get("books/popular");
+    console.log(response.data);
     setPopularBooks(response.data);
   }
   useEffect(() => {
     fetchData();
   }, []);
-  return (
-    <PopularBookContainer>
-      <Image src={BookExample} alt="" width={64} height={94} />
-      <PopularBookContent>
-        <section>
-          Teste
-          <div>J. R. R. Tolkien</div>
-        </section>
 
-        <p>
-          <Star size={14} weight="fill" />
-          <Star size={14} weight="fill" />
-          <Star size={14} weight="fill" />
-          <Star size={14} weight="fill" />
-          <Star size={14} />
-        </p>
-      </PopularBookContent>
-    </PopularBookContainer>
+  return (
+    <div>
+  {popularBooks.map((item) => (
+     <PopularBookContainer>
+     <Image src={item.cover_url} alt="" width={64} height={94} />
+  <PopularBookContent>
+    <section>
+      {item.name}
+      <div>{item.author}</div>
+    </section>
+
+    <p>
+      <Star size={14} weight="fill" />
+      <Star size={14} weight="fill" />
+      <Star size={14} weight="fill" />
+      <Star size={14} weight="fill" />
+      <Star size={14} />
+    </p>
+  </PopularBookContent>
+</PopularBookContainer>
+    ))}
+    
+  </div>
+ 
   );
 }

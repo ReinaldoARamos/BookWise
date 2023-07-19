@@ -19,7 +19,7 @@ export default async function handle(
         _count: 'desc'
       }
     },
-    take: 5 //pego dentro do prisma livros e suas avaliações e agrupo em ordem decrescente
+    take: 4 //pego dentro do prisma livros e suas avaliações e agrupo em ordem decrescente
   });
 
   const booksAvgRating = await prisma.rating.groupBy({
@@ -50,5 +50,5 @@ export default async function handle(
   a.avgRating && b.avgRating ? b.avgRating - a.avgRating : 0 //ele faz um sort das notas
   )
 
-  return res.json({books: BooksWighAvgRating})
+  return res.json(BooksWighAvgRating)
 }
