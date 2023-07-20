@@ -19,7 +19,7 @@ export default function Profile() {
           <SideBar />
           <ProfileCard />
           <UserInfo />
-        </>
+        </> 
       ) : (
         "notGood"
       )}
