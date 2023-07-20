@@ -10,11 +10,13 @@ export default async function handle(
     return res.status(405).end();
   }
 
-  const UserId = "4383f783-6ce1-4f92-b1dd-7a7a693c4aef"
+  const id = String(req.query.id)
+  
+
 
   const user = await prisma.user.findUnique({
     where: {
-        id: UserId
+        id,
     },
     include: {
       ratings: {
@@ -22,6 +24,7 @@ export default async function handle(
       }
     }
   })
+  console.log("teste de api" + user);
 
   return res.json(user);
 }
