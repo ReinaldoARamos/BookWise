@@ -11,6 +11,7 @@ import {
 import Image from "next/image";
 import { api } from "@/lib/axios";
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 interface RatingProps{ 
   id: string,
@@ -50,7 +51,7 @@ export function RatingCard() {
   }, []);
 
 
-   
+
   return (
   
     <div>
@@ -59,7 +60,10 @@ export function RatingCard() {
     <AvaliationBox key={item.id}>
     <ProfileBox>
       <Profile>
-        <div>  <img src={item.user.avatar_url} width={40} height={40}/></div>
+
+        <Link  href={`/user/profile/${item.user.id}`}>
+            <img src={item.user.avatar_url} width={40} height={40}/>
+            </Link>
       
         <section>
            {item.user.name}

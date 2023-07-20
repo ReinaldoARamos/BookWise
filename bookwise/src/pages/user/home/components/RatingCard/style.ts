@@ -49,17 +49,14 @@ export const Profile = styled("div", {
 
    
   },
-  div: {
-    ':hover' : {
-      cursor: 'pointer'
-  },
+ 
     img: {
       borderRadius: '$full',
       border: '2px solid $green100',
      
       
     }
-  }
+  
 
 });
 
