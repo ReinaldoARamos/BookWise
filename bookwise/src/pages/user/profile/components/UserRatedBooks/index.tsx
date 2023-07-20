@@ -11,31 +11,14 @@ import { api } from "@/lib/axios";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 
-export function UserRatedBooks() {
+import {ProfileProps} from '../../[id].page'
+
+interface UserRatedBooksProps extends ProfileProps {
+
+}
+export function UserRatedBooks({book} : UserRatedBooksProps) {
     
- const {query} = useRouter()
- const [data, setData] = useState([]);
-
- const fetchData = async () => {
-  try {
-    // Build the API endpoint URL with the query parameter from the URL
-
-
-    // Make the API request using Axios
-    const response = await api.get(`/profile/${query.id}`);
-
-    // Set the fetched data in the state
-    console.log(response.data)
-    setData(response.data);
-  } catch (error) {
-    console.error('Error fetching data:', error);
-  }
-};
-
-  useEffect(() => {
-   
-    fetchData();
-  }, []);
+  
   return (
     <>
      <section>Há 2 dias</section>
@@ -44,7 +27,7 @@ export function UserRatedBooks() {
         <Image src={BookExample} alt="" width={108} height={152} />
         <UserBookListCardContent>
           <p>
-            Código Limpo
+            {book.name}
             <div>Aditya Bhargava</div>
           </p>
 

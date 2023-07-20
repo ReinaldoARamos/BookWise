@@ -5,9 +5,8 @@ export function UserReviewCard() {
     return (
         <UserReviewCardContainer>
 
-              <UserRatedBooks />
-              <UserRatedBooks />
-              <UserRatedBooks />
+              <UserRatedBooks  />
+           
         </UserReviewCardContainer>
       
     )
