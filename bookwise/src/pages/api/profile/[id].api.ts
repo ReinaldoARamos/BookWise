@@ -20,8 +20,11 @@ export default async function handle(
     },
     include: {
       ratings: {
-        
+        include: {
+          book: {}
+        }
       }
+    
     }
   })
   console.log("teste de api" + user);

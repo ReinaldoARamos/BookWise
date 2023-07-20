@@ -51,6 +51,7 @@ export default function Profile() {
       {isClient ? (
         <>
           <SideBar />
+          <div></div>
           <ProfileCard />
           <UserInfo />
         </> 

@@ -7,8 +7,35 @@ import {
 
 import BookExample from "../../../../../../public/images/books/codigo-limpo.png";
 import Image from "next/image";
+import { api } from "@/lib/axios";
+import { useRouter } from "next/router";
+import { useState, useEffect } from "react";
 
 export function UserRatedBooks() {
+    
+ const {query} = useRouter()
+ const [data, setData] = useState([]);
+
+ const fetchData = async () => {
+  try {
+    // Build the API endpoint URL with the query parameter from the URL
+
+
+    // Make the API request using Axios
+    const response = await api.get(`/profile/${query.id}`);
+
+    // Set the fetched data in the state
+    console.log(response.data)
+    setData(response.data);
+  } catch (error) {
+    console.error('Error fetching data:', error);
+  }
+};
+
+  useEffect(() => {
+   
+    fetchData();
+  }, []);
   return (
     <>
      <section>Há 2 dias</section>
