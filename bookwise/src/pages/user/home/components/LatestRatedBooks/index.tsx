@@ -7,10 +7,7 @@ export function LatestRatedBooks() {
     <LatestBooksContainer>
       <PageHeader isHome={true} />
       <section>Avaliações mais recentes</section>
-
       <RatingCard />
-   
-      
     </LatestBooksContainer>
     
   );

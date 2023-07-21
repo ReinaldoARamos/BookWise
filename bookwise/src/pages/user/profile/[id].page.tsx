@@ -14,21 +14,22 @@ import { books } from "../../../../prisma/constants/books";
 
 export interface ProfileProps {
   id: string;
-  name: string;
-  avatar_url: string;
+  name: string | undefined ;
+  avatar_url: string | undefined ;
   created_at: string;
-  ratings: string[];
 
-
+  ratings: [
+   books: {
     book: {
-    id: string;
-    name: string;
-    author: string;
-    cover_url: string;
-    total_pages: number;
-    created_at: string;
-  }[]
-
+      id: string;
+      name: string;
+      author: string;
+      cover_url: string;
+      total_pages: number;
+      created_at: string;
+    }
+   }
+  ];
 }
 export default function Profile() {
   const [isClient, setIsClient] = useState(false);
@@ -68,11 +69,9 @@ export default function Profile() {
       {isClient ? (
         <>
           <SideBar />
-        
-          <ProfileCard />
-         <div>{data?.name}</div>
-         
-          <UserInfo />
+
+          <ProfileCard /> 
+        <UserInfo key={data?.id} name={data?.name} avatar_url={data?.avatar_url} created_at={data?.created_at} />
         </>
       ) : (
         "notGood"
@@ -86,8 +85,13 @@ export default function Profile() {
   <div>{item.cover_url}</div>
   ))}
 
-
   
   */
 
+
+  /*
   
+          {data?.ratings.map((item) => (
+        <div>{item.book.name}</div>
+       ))}
+  * */
