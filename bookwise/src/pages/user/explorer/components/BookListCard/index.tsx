@@ -5,7 +5,6 @@ import { BookListCardContainer, BookListCardContent } from "./style";
 import { useEffect, useState } from "react";
 import { api } from "@/lib/axios";
 
-
 interface ExplorerProps{ 
   id: string
 

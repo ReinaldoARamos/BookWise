@@ -2,8 +2,7 @@ import Image from "next/image";
 import { Divisor, ProfileDisplay, UserInfoContainer, UserInfos } from "./style";
 import { UserList, BookOpen, Books, BookmarkSimple } from "phosphor-react";
 
-import { useState } from "react";
-import { ProfileProps } from "../../[id].page";
+import {DateFormatterYear} from '../../../../../utils/dayformatter'
 
 const rectangle = '../../../../../../public//Rectangle.png'
 const AvatarExample = "https://i0.wp.com/superdragonball.com.br/wp-content/uploads/2020/12/Por-que-Goku-nao-chamou-Paikuhan-para-o-Torneio-de-Poder.jpg?fit=1280%2C720&ssl=1";
@@ -17,7 +16,7 @@ interface UserInfo {
 }
 
 export function UserInfo({name, avatar_url , created_at} : UserInfo) {
-
+    const YearFormatter = DateFormatterYear
   return (
     <UserInfoContainer>
       <div className="LeftBorder">
@@ -25,8 +24,8 @@ export function UserInfo({name, avatar_url , created_at} : UserInfo) {
         <img src={avatar_url} width={72} height={72} alt="" />
 
         <div>
-          <section>{name}r</section>
-          <p>{`membro desde ` + created_at}</p>
+          <section>{name}</section>
+          <p>{`membro desde ` + YearFormatter(created_at)}</p>
         </div>
       </ProfileDisplay>
       <Divisor>

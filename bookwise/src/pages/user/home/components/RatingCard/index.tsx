@@ -35,13 +35,14 @@ interface RatingProps{
   }
 
 }
+import {relativeDateFormatter} from '../../../../../utils/dayformatter'
 
 
 export function RatingCard() {
   const AvatarExample =
     "https://i0.wp.com/superdragonball.com.br/wp-content/uploads/2020/12/Por-que-Goku-nao-chamou-Paikuhan-para-o-Torneio-de-Poder.jpg?fit=1280%2C720&ssl=1";
     const [data, setData] = useState<RatingProps[]>([]);
-
+    const format = relativeDateFormatter
   async function fetchData() {
     const response = await api.get('user/home')
     setData(response.data);
@@ -67,7 +68,7 @@ export function RatingCard() {
       
         <section>
            {item.user.name}
-          <div>{item.created_at}</div>
+          <div>{format(item.created_at)}</div>
         </section>
       </Profile>
 

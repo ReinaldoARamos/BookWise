@@ -10,7 +10,7 @@ import Image from "next/image";
 import { api } from "@/lib/axios";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
-
+import {relativeDateFormatter} from '../../../../../utils/dayformatter'
 import { ProfileProps } from "../../[id].page";
 
 export interface UserReviewCardPRops {
@@ -34,10 +34,11 @@ export interface UserReviewCardPRops {
   ];
 }
 
+
 export function UserRatedBooks() {
   const { query } = useRouter();
   const [data, setData] = useState<UserReviewCardPRops>();
-
+  const format = relativeDateFormatter
   const fetchData = async () => {
     try {
       // Build the API endpoint URL with the query parameter from the URL
@@ -61,7 +62,7 @@ export function UserRatedBooks() {
     <>
       {data?.ratings.map((item) => (
         <>
-          <section>{item.book.created_at}</section>
+          <section>{format(item.book.created_at)}</section>
           <UserReviewContainer>
             <UserBookListCardContainer>
               <Image src={item.book.cover_url} alt="" width={108} height={152} />

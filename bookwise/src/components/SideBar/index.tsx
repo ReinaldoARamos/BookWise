@@ -32,8 +32,10 @@ export function SideBar() {
   }
 
   function SendToProfile() {
-    router.push("/user/profile");
+    router.push(`/user/profile/fc8f6df5-57c7-480f-93af-b96c061f4f4a`);
   }
+
+  
   return (
     <SideBarContainer>
 
@@ -53,7 +55,7 @@ export function SideBar() {
               Explorar
             </section>
           </ExploreButton>
-          <ProfileButton onClick={SendToProfile}>
+          <ProfileButton onClick={SendToProfile} >
             <section>
               <User size={26} />
               Perfil
