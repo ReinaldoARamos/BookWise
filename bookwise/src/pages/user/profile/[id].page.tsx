@@ -10,6 +10,7 @@ import { api } from "@/lib/axios";
 import { GetServerSideProps } from "next";
 import { ParsedUrlQuery } from "querystring";
 import Router, { useRouter } from "next/router";
+import { books } from "../../../../prisma/constants/books";
 
 export interface ProfileProps {
   id: string;
@@ -18,14 +19,16 @@ export interface ProfileProps {
   created_at: string;
   ratings: string[];
 
-  book: {
+
+    book: {
     id: string;
     name: string;
     author: string;
     cover_url: string;
     total_pages: number;
     created_at: string;
-  };
+  }[]
+
 }
 export default function Profile() {
   const [isClient, setIsClient] = useState(false);
@@ -33,7 +36,7 @@ export default function Profile() {
   //------------------------------------------------
 
   const { query } = useRouter();
-  const [data, setData] = useState<ProfileProps[]>([]);
+  const [data, setData] = useState<ProfileProps>();
 
   const fetchData = async () => {
     try {
@@ -65,8 +68,10 @@ export default function Profile() {
       {isClient ? (
         <>
           <SideBar />
-
+        
           <ProfileCard />
+         <div>{data?.name}</div>
+         
           <UserInfo />
         </>
       ) : (
@@ -75,3 +80,14 @@ export default function Profile() {
     </ProfileContainer>
   );
 }
+//  <div>{data?.book.map()}</div>
+/*
+{data?.book.map((item) => (
+  <div>{item.cover_url}</div>
+  ))}
+
+
+  
+  */
+
+  

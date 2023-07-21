@@ -13,10 +13,8 @@ import { useState, useEffect } from "react";
 
 import {ProfileProps} from '../../[id].page'
 
-interface UserRatedBooksProps extends ProfileProps {
 
-}
-export function UserRatedBooks({book} : UserRatedBooksProps) {
+export function UserRatedBooks() {
     
   
   return (
@@ -26,10 +24,10 @@ export function UserRatedBooks({book} : UserRatedBooksProps) {
       <UserBookListCardContainer>
         <Image src={BookExample} alt="" width={108} height={152} />
         <UserBookListCardContent>
-          <p>
-            {book.name}
-            <div>Aditya Bhargava</div>
-          </p>
+          <div>
+        asd
+            <p>Aditya Bhargava</p>
+          </div>
 
           <p>
             <Star size={18} weight="fill" />
