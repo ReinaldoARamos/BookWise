@@ -3,14 +3,10 @@
 import { SideBar } from "@/components/SideBar";
 import { ProfileContainer } from "./style";
 import { ProfileCard } from "./components/ProfileCard";
-import { ProfileHeader } from "./components/ProfileHeader";
 import { UserInfo } from "./components/UserInfo";
 import { useState, useEffect } from "react";
 import { api } from "@/lib/axios";
-import { GetServerSideProps } from "next";
-import { ParsedUrlQuery } from "querystring";
-import Router, { useRouter } from "next/router";
-import { books } from "../../../../prisma/constants/books";
+import { useRouter } from "next/router";
 
 export interface ProfileProps {
   id: string;
@@ -22,7 +18,7 @@ export interface ProfileProps {
    books: {
     book: {
       id: string;
-      name: string;
+      name: string ;
       author: string;
       cover_url: string;
       total_pages: number;
@@ -70,28 +66,13 @@ export default function Profile() {
         <>
           <SideBar />
 
-          <ProfileCard /> 
+          <ProfileCard  /> 
         <UserInfo key={data?.id} name={data?.name} avatar_url={data?.avatar_url} created_at={data?.created_at} />
         </>
+        
       ) : (
         "notGood"
       )}
     </ProfileContainer>
   );
 }
-//  <div>{data?.book.map()}</div>
-/*
-{data?.book.map((item) => (
-  <div>{item.cover_url}</div>
-  ))}
-
-  
-  */
-
-
-  /*
-  
-          {data?.ratings.map((item) => (
-        <div>{item.book.name}</div>
-       ))}
-  * */
