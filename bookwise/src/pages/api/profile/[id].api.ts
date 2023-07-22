@@ -1,5 +1,4 @@
 import { prisma } from "@/lib/prisma";
-import { PopularBook } from "@/pages/user/home/components/PopularBooks";
 import { NextApiRequest, NextApiResponse } from "next";
 
 export default async function handle(
@@ -27,7 +26,7 @@ export default async function handle(
     
     }
   })
-  console.log("teste de api" + user);
+  console.log(user);
 
   return res.json(user);
 }

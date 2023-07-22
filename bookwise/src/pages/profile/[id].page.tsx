@@ -7,6 +7,7 @@ import { UserInfo } from "./components/UserInfo";
 import { useState, useEffect } from "react";
 import { api } from "@/lib/axios";
 import { useRouter } from "next/router";
+import { NextSeo } from "next-seo";
 
 export interface ProfileProps {
   id: string;
@@ -61,18 +62,18 @@ export default function Profile() {
     return <p>Loading...</p>;
   }
   return (
-    <ProfileContainer>
+    <><NextSeo title={`Bookwise | ${data?.name}`} description="availabiluty set" /><ProfileContainer>
       {isClient ? (
         <>
           <SideBar />
 
-          <ProfileCard  /> 
-        <UserInfo key={data?.id} name={data?.name} avatar_url={data?.avatar_url} created_at={data?.created_at} />
+          <ProfileCard />
+          <UserInfo key={data?.id} name={data?.name} avatar_url={data?.avatar_url} created_at={data?.created_at} />
         </>
-        
+
       ) : (
         "notGood"
       )}
-    </ProfileContainer>
+    </ProfileContainer></>
   );
 }
