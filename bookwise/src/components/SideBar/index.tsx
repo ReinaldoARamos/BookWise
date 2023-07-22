@@ -24,15 +24,15 @@ export function SideBar() {
   
 
   function SendToStart() {
-    router.push("/user/home");
+    router.push("/home");
   }
 
   function SendToExplorer() {
-    router.push("/user/explorer");
+    router.push("/explorer");
   }
 
   function SendToProfile() {
-    router.push(`/user/profile/fc8f6df5-57c7-480f-93af-b96c061f4f4a`);
+    router.push(`/profile/1aa75906-6076-40f7-ab44-e243074830c9`);
   }
 
   
