@@ -16,16 +16,17 @@ export interface ProfileProps {
   created_at: string;
 
   ratings: [
-   books: {
-    book: {
-      id: string;
-      name: string ;
-      author: string;
-      cover_url: string;
-      total_pages: number;
-      created_at: string;
+    books: {
+      book: {
+        id: string;
+        name: string;
+        author: string;
+        cover_url: string;
+        total_pages: number;
+        created_at: string;
+        summary: string
+      };
     }
-   }
   ];
 }
 export default function Profile() {
@@ -56,8 +57,17 @@ export default function Profile() {
     fetchData();
   }, []);
 
+  const totalSum = data?.ratings.reduce((accumulator, currentValue) => accumulator + currentValue.book.total_pages, 0);
+
+console.log(totalSum); // Output: 35
+
+const Authors = data?.ratings.length 
+
+
+
   //------------------------------------------------
   const { isFallback } = useRouter();
+  const teste = data?.ratings
   if (isFallback) {
     return <p>Loading...</p>;
   }
@@ -68,7 +78,7 @@ export default function Profile() {
           <SideBar />
 
           <ProfileCard />
-          <UserInfo key={data?.id} name={data?.name} avatar_url={data?.avatar_url} created_at={data?.created_at} />
+          <UserInfo key={data?.id} name={data?.name} avatar_url={data?.avatar_url} created_at={data?.created_at} total_pages={totalSum} authorsRead={Authors}  />
         </>
 
       ) : (

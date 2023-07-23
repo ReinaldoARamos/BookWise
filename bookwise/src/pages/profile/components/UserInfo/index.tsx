@@ -13,10 +13,15 @@ interface UserInfo {
   name: string | undefined;
   avatar_url: string | undefined; 
   created_at: string | undefined;
+  total_pages: number | undefined;
+  booksRead: number | undefined;
+  authorsRead: number | undefined;
+  monstReadedCategory?: string  | undefined
+
 
 }
 
-export function UserInfo({name, avatar_url , created_at} : UserInfo) {
+export function UserInfo({name, avatar_url , created_at, total_pages, authorsRead} : UserInfo) {
     const YearFormatter = DateFormatterYear
   return (
     <UserInfoContainer>
@@ -36,7 +41,7 @@ export function UserInfo({name, avatar_url , created_at} : UserInfo) {
         <div>
           <BookOpen size={28} />
           <section>
-            3781
+            {total_pages}
             <p>Páginas Lidas</p>
           </section>
         </div>
@@ -50,7 +55,7 @@ export function UserInfo({name, avatar_url , created_at} : UserInfo) {
         <div>
           <UserList size={28} />
           <section>
-            3
+            {authorsRead}
             <p>Autores Lidos</p>
           </section>
         </div>
