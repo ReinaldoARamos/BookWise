@@ -9,23 +9,28 @@ export default async function handle(
     return res.status(405).end();
   }
 
-  const id = String(req.query.id)
-  
-
+  const id = String(req.query.id);
 
   const user = await prisma.user.findUnique({
     where: {
-        id,
+      id,
     },
     include: {
       ratings: {
         include: {
-          book: {}
-        }
-      }
-    
-    }
-  })
+          book: {
+            include: {
+              categories: {
+                include: {
+                  category: {},
+                },
+              },
+            },
+          },
+        },
+      },
+    },
+  });
   console.log(user);
 
   return res.json(user);
