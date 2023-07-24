@@ -29,6 +29,7 @@ export const ProfileDisplay = styled("div", {
   img: {
     borderRadius: 999,
     border: " 2px solid rgba(127, 209, 204, 1)",
+  
   },
 
   div: {
@@ -48,7 +49,7 @@ export const ProfileDisplay = styled("div", {
 });
 
 export const Divisor = styled("div", {
- 
+  width:32,
   height: "1rem",
   marginBottom: "2rem",
  display: "flex",

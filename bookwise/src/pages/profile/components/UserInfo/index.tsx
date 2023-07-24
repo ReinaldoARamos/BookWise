@@ -1,11 +1,7 @@
-import Image from "next/image";
+
 import { Divisor, ProfileDisplay, UserInfoContainer, UserInfos } from "./style";
 import { UserList, BookOpen, Books, BookmarkSimple } from "phosphor-react";
 import { DateFormatterYear } from "@/utils/dayformatter";
-
-const rectangle = "../../../../../../public//Rectangle.png";
-const AvatarExample =
-  "https://i0.wp.com/superdragonball.com.br/wp-content/uploads/2020/12/Por-que-Goku-nao-chamou-Paikuhan-para-o-Torneio-de-Poder.jpg?fit=1280%2C720&ssl=1";
 
 interface UserInfo {
   name: string | undefined;
@@ -35,10 +31,11 @@ export function UserInfo({
 
           <div>
             <section>{name}</section>
+            <img width={32}  />  
             <p>{`membro desde ` + YearFormatter(created_at)}</p>
           </div>
         </ProfileDisplay>
-        <Divisor></Divisor>
+      
         <UserInfos>
           <div>
             <BookOpen size={28} />
@@ -58,7 +55,7 @@ export function UserInfo({
             <UserList size={28} />
             <section>
               {authorsRead}
-              <p>Autores Lidos</p>
+              <p>Autor Favorito</p>
             </section>
           </div>
 

@@ -26,9 +26,13 @@ export interface ProfileProps {
         total_pages: number;
         created_at: string;
         summary: string;
-        categories: {
-
-        }
+        categories: [
+          categorie: {
+            category: {
+              name: string;
+            }
+          }
+        ]
       };
     }
   ];
@@ -49,10 +53,10 @@ export default function Profile() {
       const response = await api.get(`/profile/${query.id}`);
 
       // Set the fetched data in the state
-      console.log(response.data);
+
       setData(response.data);
     } catch (error) {
-      console.error("Error fetching data:", error);
+
     }
   };
 
@@ -66,14 +70,14 @@ export default function Profile() {
     0
   );
 
-  console.log(PagesRead); 
+
 
   const BooksRated = data?.ratings.length;
   
-  const mostFrequentAuthorArray = data?.ratings
+  const mostFrequentAuthorsandCateroryArray = data?.ratings
 
   const countOccurrences: { [key: string]: number } = {};
-  mostFrequentAuthorArray?.forEach((obj) => {
+  mostFrequentAuthorsandCateroryArray?.forEach((obj) => {
     const { book } = obj;
     if (countOccurrences[book.author]) {
       countOccurrences[book.author]++;
@@ -90,16 +94,29 @@ export default function Profile() {
       maxCount = countOccurrences[book];
     }
   }
-  
-  console.log("Most frequent data:", mostFrequentAuthors);
-  console.log("Occurrences:", maxCount);
 
-  //------------------------------------------------
-  const { isFallback } = useRouter();
-  const teste = data?.ratings;
-  if (isFallback) {
-    return <p>Loading...</p>;
+  const countCategory: { [key: string]: number } = {};
+  mostFrequentAuthorsandCateroryArray?.forEach((obj) => {
+    const { book  } = obj;
+    book.categories.forEach((data) => {
+      if (countCategory[data.category.name]) {
+        countCategory[data.category.name]++;
+      } else {
+        countCategory[data.category.name] = 1;
+      }
+    });
+  });
+  
+
+  let mostFrequentData: string = "";
+  let maxCountCategory = 0;
+  for (const name in countCategory) {
+    if (countCategory[name] > maxCountCategory) {
+      mostFrequentData = name;
+      maxCountCategory = countCategory[name];
+    }
   }
+  
   return (
     <>
       <NextSeo
@@ -120,7 +137,7 @@ export default function Profile() {
               total_pages={PagesRead}
               authorsRead={mostFrequentAuthors}
               booksRead={BooksRated}
-              monstReadedCategory={"Teste"}
+              monstReadedCategory={mostFrequentData}
             />
           </>
         ) : (
