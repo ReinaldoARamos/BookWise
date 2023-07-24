@@ -34,7 +34,7 @@ export function BookListCard() {
     
      {explorerBooks.map((item) => (
        <BookListCardContainer>
-
+        
        <Image src={item.cover_url} alt="" width={108} height={152} />
        
        <BookListCardContent>

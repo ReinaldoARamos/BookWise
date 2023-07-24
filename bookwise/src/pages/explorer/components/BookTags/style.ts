@@ -21,7 +21,7 @@ export const TagContainer = styled('div', {
     
 })
 
-export const GeneralTabButton = styled('button', {
+export const GeneralTabButton  =  styled('button', {
     width: '100%',
     backgroundColor: 'transparent',
     border: '1px solid $purple100',

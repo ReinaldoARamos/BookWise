@@ -12,7 +12,7 @@ export default function Home() {
     <>
       <HomeContainer>
         <NextSeo title="Home | BookWise" description="Página de ínício" />
-        <SideBar />
+        <SideBar isSingIn={false}/>
         <LatestRatedBooks />
         <PopularBook />
         

@@ -16,10 +16,11 @@ import { useRouter } from "next/router";
 import AvatarExample from '../../../public/Shikabane.png'
 
 interface SideBarProps {
-  isSingIn: boolean
+  isSingIn?: boolean
 }
-export function SideBar() {
-  const IsSingIn = true
+export function SideBar({isSingIn} : SideBarProps) {
+
+  const IsSingIn = isSingIn
   const router = useRouter();
   
 
@@ -70,7 +71,7 @@ export function SideBar() {
           <Image src={AvatarExample} alt="" width={32} height={32} className="Avatar" />
               Reinaldo  <SignIn size={24} />
           </div>
-        </SingUpButton> :
+        </SingUpButton> : 
          <LoginButton>
           <div>
             Fazer Login <SignIn size={24} />

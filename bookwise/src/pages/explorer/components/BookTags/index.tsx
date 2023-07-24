@@ -7,6 +7,9 @@ interface BookTags {
     id: string,
     name: string
 }
+interface BookTagsProps {
+  name: string
+}
 export function BookTags() {
 
     
@@ -20,13 +23,18 @@ export function BookTags() {
   useEffect(() => {
     fetchData();
   }, []);
+
+ function Teste(name : string) {
+   console.log(name)
+ }
+ 
     return (
         <TagContainer>
              <AllButtons active={"ButtonActive"}>Todos</AllButtons>
             {bookTags.map((tag) => (
                 <>
                   
-                  <GeneralTabButton>{tag.name}</GeneralTabButton>
+                  <GeneralTabButton onClick={() => Teste(tag.name)}>{tag.name}</GeneralTabButton>
               
                 </>
               
