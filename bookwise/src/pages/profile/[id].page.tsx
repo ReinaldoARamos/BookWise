@@ -30,9 +30,9 @@ export interface ProfileProps {
           categorie: {
             category: {
               name: string;
-            }
+            };
           }
-        ]
+        ];
       };
     }
   ];
@@ -47,17 +47,10 @@ export default function Profile() {
 
   const fetchData = async () => {
     try {
-      // Build the API endpoint URL with the query parameter from the URL
-
-      // Make the API request using Axios
       const response = await api.get(`/profile/${query.id}`);
 
-      // Set the fetched data in the state
-
       setData(response.data);
-    } catch (error) {
-
-    }
+    } catch (error) {}
   };
 
   useEffect(() => {
@@ -70,11 +63,9 @@ export default function Profile() {
     0
   );
 
-
-
   const BooksRated = data?.ratings.length;
-  
-  const mostFrequentAuthorsandCateroryArray = data?.ratings
+
+  const mostFrequentAuthorsandCateroryArray = data?.ratings;
 
   const countOccurrences: { [key: string]: number } = {};
   mostFrequentAuthorsandCateroryArray?.forEach((obj) => {
@@ -85,7 +76,7 @@ export default function Profile() {
       countOccurrences[book.author] = 1;
     }
   });
-  
+
   let mostFrequentAuthors: string = "";
   let maxCount = 0;
   for (const book in countOccurrences) {
@@ -97,7 +88,7 @@ export default function Profile() {
 
   const countCategory: { [key: string]: number } = {};
   mostFrequentAuthorsandCateroryArray?.forEach((obj) => {
-    const { book  } = obj;
+    const { book } = obj;
     book.categories.forEach((data) => {
       if (countCategory[data.category.name]) {
         countCategory[data.category.name]++;
@@ -106,7 +97,6 @@ export default function Profile() {
       }
     });
   });
-  
 
   let mostFrequentData: string = "";
   let maxCountCategory = 0;
@@ -116,7 +106,7 @@ export default function Profile() {
       maxCountCategory = countCategory[name];
     }
   }
-  
+
   return (
     <>
       <NextSeo
