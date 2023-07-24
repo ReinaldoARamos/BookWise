@@ -1,9 +1,9 @@
 import { styled } from "../../../../../stiches.config";
 
 export const PopularContainer = styled("div", {
-    paddingTop: "6.85rem",
+  paddingTop: "5.125rem",
     width: '20.25rem',
-   
+
   header: {
     width: '20.25rem',
     display: 'flex',
@@ -16,7 +16,8 @@ export const PopularContainer = styled("div", {
     marginBottom: "2rem",
     div: {
       fontWeight: "$bold",
-      color: '$purple100'
+      color: '$purple100',
+      
     }
   },
   

@@ -7,7 +7,7 @@ export const UserInfoContainer = styled("div", {
   marginLeft: "4rem",
  borderHeight: 10,
   paddingTop: "6.8rem",
-
+  
   '.LeftBorder': {
     borderLeft: '1px solid $gray700',
   }

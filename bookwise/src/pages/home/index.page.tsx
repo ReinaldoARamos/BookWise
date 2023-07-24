@@ -1,6 +1,5 @@
 import { NextSeo } from "next-seo";
 
-
 import { HomeContainer } from "./style";
 import { LatestRatedBooks } from "./components/LatestRatedBooks";
 
@@ -12,10 +11,9 @@ export default function Home() {
     <>
       <HomeContainer>
         <NextSeo title="Home | BookWise" description="Página de ínício" />
-        <SideBar isSingIn={false}/>
+
         <LatestRatedBooks />
         <PopularBook />
-        
       </HomeContainer>
     </>
   );

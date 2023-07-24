@@ -116,8 +116,7 @@ export default function Profile() {
       <ProfileContainer>
         {isClient ? (
           <>
-            <SideBar isSingIn={false}/>
-
+         
             <ProfileCard />
             <UserInfo
               key={data?.id}

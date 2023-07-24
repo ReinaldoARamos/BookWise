@@ -8,7 +8,7 @@ export const PopularBookContainer = styled("div", {
     display: 'flex',
     marginBottom: 12,
     section: {
-     
+    
       fontFamily: '$default',
       color: '$gray100',
       fontWeight: "$bold",

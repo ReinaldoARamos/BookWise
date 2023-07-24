@@ -3,9 +3,10 @@ import { styled } from "../../../../../stiches.config";
 
 export const LatestBooksContainer = styled("div", {
   width: 608,
-  marginLeft: "-12.5rem",
+  marginLeft: '64px',
   header: {
     marginBottom: "2.5rem",
+
   },
 
   section: {

@@ -15,7 +15,7 @@ export default function Explorer() {
 
         <NextSeo title="Explorar | BookWise" description="Página de Exploração" />
     <ExplorerContainer>
-      <SideBar isSingIn={false}/>
+      
       <BookCard />
     </ExplorerContainer>
     </>
