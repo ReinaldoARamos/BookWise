@@ -19,7 +19,7 @@ export function BookCard() {
           </section>
         </header>
       </HeaderContainer>
-      <BookTags />
+      <BookTags  />
       <BookListContainer>
         <BookListCard />
       </BookListContainer>

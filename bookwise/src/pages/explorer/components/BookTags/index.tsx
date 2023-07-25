@@ -14,7 +14,6 @@ export function BookTags() {
 
   async function fetchData() {
     const response = await api.get("books/category");
-    console.log(response.data);
     setBookTags(response.data);
   }
   useEffect(() => {
@@ -22,7 +21,8 @@ export function BookTags() {
   }, []);
 
   function Teste(name: string) {
-    console.log(name);
+     const FilterName = name
+     console.log(FilterName);
   }
 
   return (

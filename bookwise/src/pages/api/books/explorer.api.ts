@@ -9,7 +9,17 @@ export default async function handle(
     return res.status(405).end();
   }
 
-  const ExplorerBooks = await prisma.book.findMany();
+  const ExplorerBooks = await prisma.book.findMany({
+    include: {
+      categories: {
+          include: {
+            category: {
+              
+            }
+          }
+      }
+    }
+  });
 
   return res.json(ExplorerBooks);
 }
