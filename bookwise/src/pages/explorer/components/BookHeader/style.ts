@@ -1,7 +1,7 @@
 import { styled } from "../../../../../stiches.config"
 export const HeaderContainer = styled("header", {
   header: {
-    marginTop: "$10",
+    marginTop: "0.75rem",
     paddingLeft: 12,
     display: "flex",
     justifyContent: "space-between",
