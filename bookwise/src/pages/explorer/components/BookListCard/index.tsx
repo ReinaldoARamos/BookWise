@@ -22,7 +22,9 @@ interface ExplorerProps {
     }
   ];
 }
-
+interface Teste {
+  name: string;
+}
 export function BookListCard() {
   const [explorerBooks, setExplorerBooks] = useState<ExplorerProps[]>([]);
   //const [filteredList, setFilteredList] = useState<ExplorerProps[]>([]);
@@ -46,6 +48,7 @@ export function BookListCard() {
   console.log(filteredList);
   return (
     <>
+   
       {filteredList.map((item) => (
         <>
           <div>{item.name}</div>

@@ -6,9 +6,7 @@ interface BookTags {
   id: string;
   name: string;
 }
-interface BookTagsProps {
-  name: string;
-}
+
 export function BookTags() {
   const [bookTags, setBookTags] = useState<BookTags[]>([]);
 
@@ -22,7 +20,7 @@ export function BookTags() {
 
   function Teste(name: string) {
      const FilterName = name
-     console.log(FilterName);
+     console.log(FilterName)
   }
 
   return (
