@@ -1,16 +1,15 @@
 import { styled } from "../../../../../stiches.config"
 export const UserInfoContainer = styled("div", {
   display: "flex",
+  
   width: "100%",
   height: "100%",
   flexDirection: "column",
-  marginLeft: "4rem",
+  marginLeft: "9rem",
  borderHeight: 10,
-  paddingTop: "6.8rem",
-  
-  '.LeftBorder': {
-    borderLeft: '1px solid $gray700',
-  }
+  paddingTop: "4.5rem",
+  position: 'fixed',
+ 
 });
 
 export const ProfileDisplay = styled("div", {
@@ -18,7 +17,7 @@ export const ProfileDisplay = styled("div", {
   alignItems: "center",
   justifyContent: "center",
   flexDirection: "column",
-
+ 
   gap: 24,
   section: {
     fontFamily: "$default",

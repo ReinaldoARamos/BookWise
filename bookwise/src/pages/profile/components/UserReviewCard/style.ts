@@ -5,7 +5,7 @@ export const UserReviewCardContainer = styled('div', {
     flexDirection: 'column',
     marginTop: '2rem',
     fontFamily: '$default',
-  
+
     section: {
         color: '$gray300',
         fontSize: '$sm',

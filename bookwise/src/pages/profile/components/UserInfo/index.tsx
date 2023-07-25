@@ -24,16 +24,19 @@ export function UserInfo({
 }: UserInfo) {
   const YearFormatter = DateFormatterYear;
   return (
+    <>
     <UserInfoContainer>
-      <div className="LeftBorder">
+    <div className="LeftBorder" />
         <ProfileDisplay>
+       
           <img src={avatar_url} width={72} height={72} alt="" />
 
           <div>
             <section>{name}</section>
             <img width={32}  />  
             <p>{`membro desde ` + YearFormatter(created_at)}</p>
-          </div>
+          
+        </div>
         </ProfileDisplay>
       
         <UserInfos>
@@ -65,9 +68,13 @@ export function UserInfo({
               {monstReadedCategory}
               <p>Categorias mais lidas</p>
             </section>
+            
           </div>
+          
         </UserInfos>
-      </div>
+  
+      
     </UserInfoContainer>
+    </>
   );
 }

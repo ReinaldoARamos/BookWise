@@ -9,7 +9,7 @@ export function ProfileHeader() {
     <HeadingContainer>
       <Heading>
         <User />
-        Início
+        Perfil
       </Heading>
 
       <section>
