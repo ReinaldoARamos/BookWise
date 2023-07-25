@@ -13,6 +13,7 @@ import { useState, useEffect } from "react";
 
 import { ProfileProps } from "../../[id].page";
 import { relativeDateFormatter } from "@/utils/dayformatter";
+import { ProfileHeader } from "../ProfileHeader";
 
 export interface UserReviewCardPRops {
   id: string;
@@ -63,8 +64,10 @@ export function UserRatedBooks() {
 
   return (
     <>
+
       {data?.ratings.map((item) => (
         <>
+  
           <section>{format(item.book.created_at)}</section>
           <UserReviewContainer>
             <UserBookListCardContainer>

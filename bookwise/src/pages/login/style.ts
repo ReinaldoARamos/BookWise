@@ -32,8 +32,6 @@ export const WellcomeContainer = styled("section", {
   },
   p: {
     color: "$gray200",
-    marginBottom: '$8'
+    marginBottom: "$8",
   },
-
-  
 });

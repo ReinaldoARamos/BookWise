@@ -2,25 +2,21 @@ import { styled } from "../../../../../stiches.config";
 
 export const PopularContainer = styled("div", {
   paddingTop: "5.125rem",
-    width: '20.25rem',
+  width: "20.25rem",
 
   header: {
-    width: '20.25rem',
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
+    width: "20.25rem",
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
     fontFamily: "$default",
     color: "$gray100",
     fontWeight: "$regular",
-    fontSize: '$md',
+    fontSize: "$md",
     marginBottom: "2rem",
     div: {
       fontWeight: "$bold",
-      color: '$purple100',
-      
-    }
+      color: "$purple100",
+    },
   },
-  
-
-
 });

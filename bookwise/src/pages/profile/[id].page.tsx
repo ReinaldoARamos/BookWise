@@ -1,14 +1,17 @@
 "use client";
 
-import { SideBar } from "@/components/SideBar";
-import { ProfileContainer } from "./style";
-import { ProfileCard } from "./components/ProfileCard";
+import {
+  ProfileCardContainer,
+  ProfileContainer,
+  UserReviewCardContainer,
+} from "./style";
 import { UserInfo } from "./components/UserInfo";
 import { useState, useEffect } from "react";
 import { api } from "@/lib/axios";
 import { useRouter } from "next/router";
 import { NextSeo } from "next-seo";
-import { books } from "../../../prisma/constants/books";
+import { ProfileHeader } from "./components/ProfileHeader";
+import { UserRatedBooks } from "./components/UserRatedBooks";
 
 export interface ProfileProps {
   id: string;
@@ -116,8 +119,12 @@ export default function Profile() {
       <ProfileContainer>
         {isClient ? (
           <>
-         
-            <ProfileCard />
+            <ProfileCardContainer>
+              <ProfileHeader />
+              <UserReviewCardContainer>
+                <UserRatedBooks />
+              </UserReviewCardContainer>
+            </ProfileCardContainer>
             <UserInfo
               key={data?.id}
               name={data?.name}

@@ -10,7 +10,7 @@ export default async function handle(
     return res.status(405).end();
   }
 
-  const category = await prisma.category.findMany()
+  const category = await prisma.category.findMany();
 
   return res.json(category);
 }

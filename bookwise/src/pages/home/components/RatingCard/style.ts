@@ -1,6 +1,5 @@
-import { styled } from "../../../../../stiches.config"
+import { styled } from "../../../../../stiches.config";
 export const AvaliationBox = styled("div", {
-  
   width: "38rem",
   height: "17.5rem",
   backgroundColor: "$gray700",
@@ -26,8 +25,6 @@ export const ProfileBox = styled("div", {
       marginBottom: "1.7rem",
     },
   },
-
-
 });
 
 export const Profile = styled("div", {
@@ -46,18 +43,12 @@ export const Profile = styled("div", {
       color: "$gray400",
       paddingTop: 15,
     },
-
-   
   },
- 
-    img: {
-      borderRadius: '$full',
-      border: '2px solid $green100',
-     
-      
-    }
-  
 
+  img: {
+    borderRadius: "$full",
+    border: "2px solid $green100",
+  },
 });
 
 export const ReviewBox = styled("div", {
@@ -70,7 +61,7 @@ export const ReviewBox = styled("div", {
 
 export const ReviewCard = styled("div", {
   paddingLeft: "1.25rem",
- 
+
   width: "100%",
   height: 44,
 
@@ -78,17 +69,15 @@ export const ReviewCard = styled("div", {
     fontWeight: "bold",
     color: "$gray100",
     paddingBottom: 5,
-    
   },
   div: {
     color: "$gray400",
-    fontFamily: '$default'
+    fontFamily: "$default",
   },
 });
 
 export const Review = styled("p", {
   marginTop: "1.25rem",
-  color: '$gray300',
-  fontFamily: '$default'
-
+  color: "$gray300",
+  fontFamily: "$default",
 });
