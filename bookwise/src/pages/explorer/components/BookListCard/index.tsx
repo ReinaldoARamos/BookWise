@@ -27,6 +27,7 @@ export function BookListCard() {
   }, []);
 
   return (
+    
     <>
       {explorerBooks.map((item) => (
         <BookListCardContainer>

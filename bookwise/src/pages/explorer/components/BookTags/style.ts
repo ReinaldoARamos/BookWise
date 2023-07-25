@@ -6,7 +6,6 @@ export const TagContainer = styled("p", {
   flexWrap: "wrap",
   flexDirection: "row",
   alignContent: "center",
-
   marginTop: "4.5rem",
   gap: "0.75rem",
   marginBottom: "2.5rem",
@@ -21,8 +20,9 @@ export const TagContainer = styled("p", {
 export const GeneralTabButton = styled("button", {
     
   backgroundColor: "transparent",
-  width: '5rem',
-  height: '2.125rem',
+  width: '100%',
+  maxWidth:'7rem',
+  height: '2rem',
   border: "1px solid $purple100",
   color: "$purple100",
   borderRadius: "1rem",
