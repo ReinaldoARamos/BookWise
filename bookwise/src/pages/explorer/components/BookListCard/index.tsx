@@ -5,61 +5,52 @@ import { BookListCardContainer, BookListCardContent } from "./style";
 import { useEffect, useState } from "react";
 import { api } from "@/lib/axios";
 
-interface ExplorerProps{ 
-  id: string
+interface ExplorerProps {
+  id: string;
 
-    name: string,
-    author: string,
-    summary: string,
-    cover_url: string
-  
-
+  name: string;
+  author: string;
+  summary: string;
+  cover_url: string;
 }
 
 export function BookListCard() {
-
-  const [explorerBooks, setExplorerBooks] = useState<ExplorerProps[]>([])
+  const [explorerBooks, setExplorerBooks] = useState<ExplorerProps[]>([]);
 
   async function fetchData() {
-    const response = await api.get('books/explorer')
-    console.log(response.data)
+    const response = await api.get("books/explorer");
+    console.log(response.data);
     setExplorerBooks(response.data);
   }
   useEffect(() => {
     fetchData();
   }, []);
-  
+
   return (
     <>
-    
-     {explorerBooks.map((item) => (
-       <BookListCardContainer>
-        
-       <Image src={item.cover_url} alt="" width={108} height={152} />
-       
-       <BookListCardContent>
-         <section>
-          {item.name}
-           <div>{item.author}</div>
-         </section>
+      {explorerBooks.map((item) => (
+        <BookListCardContainer>
+          <Image src={item.cover_url} alt="" width={108} height={152} />
 
-         <p>
-           <Star size={20} weight="fill" />
-           <Star size={20} weight="fill" />
-           <Star size={20} weight="fill" />
-           <Star size={20} weight="fill" />
-           <Star size={20} weight="fill" />
-           <Star size={20} />
-         </p>
-       </BookListCardContent>
-     
-     </BookListCardContainer>
-     ))}
-    
+          <BookListCardContent>
+            <section>
+              {item.name}
+              <div>{item.author}</div>
+            </section>
+
+            <p>
+              <Star size={20} weight="fill" />
+              <Star size={20} weight="fill" />
+              <Star size={20} weight="fill" />
+              <Star size={20} weight="fill" />
+              <Star size={20} />
+            </p>
+          </BookListCardContent>
+        </BookListCardContainer>
+      ))}
     </>
   );
 }
-
 
 /*
  <BookListCardContainer>
