@@ -11,7 +11,9 @@ export default async function handle(
   }
 
   const category = await prisma.category.findMany({
-    
+    orderBy: {
+      name: 'desc'
+    }
   });
 
   return res.json(category);
