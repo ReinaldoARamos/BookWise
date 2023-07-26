@@ -5,6 +5,9 @@ export const SideBarContainer = styled("div", {
   minHeight: "100vh",
 });
 
+export const Teste = styled("div", {
+  display: "none",
+}) 
 export const SideBarSection = styled("div", {
   width: "14.5rem",
   height: "100%",

@@ -3,7 +3,8 @@ import { styled } from "../../../stiches.config";
 export const ExplorerContainer = styled("section", {
   display: "flex",
   flexDirection: "column", 
-
+ width: '100%',
+  height: '100%',
   marginLeft: 64
 });
 
@@ -19,7 +20,7 @@ export const BookCardContainer = styled('div', {
 export const HeaderContainer = styled("header", {
   header: {
     marginTop: "0.75rem",
-    paddingLeft: 12,
+
     display: "flex",
     justifyContent: "space-between",
     width: "62.25rem",
@@ -79,7 +80,8 @@ export const HeaderContainer = styled("header", {
 export const BookListContainer = styled('div', {
   display : 'grid',
   gridTemplateColumns: '1fr 1fr 1fr',
-  gap: '1rem'
+  gap: '1rem',
+ 
 })
 
 

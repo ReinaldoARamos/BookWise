@@ -3,8 +3,12 @@ import { styled } from "../../../stiches.config";
 export const LogoContainer = styled("main", {
   display: "grid",
   gridTemplateColumns: "1.1fr 1fr",
-  padding: "$4",
+
   minHeight: "100vh",
+
+  width: "150%",
+  marginLeft: -350,
+  marginTop: -80,
 });
 
 export const LogoSection = styled("section", {
