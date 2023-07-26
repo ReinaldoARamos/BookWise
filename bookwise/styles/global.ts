@@ -10,5 +10,14 @@ export const globalStyles = globalCss({
   body: {
     backgroundColor: "$gray800",
     color: "$gray100",
+
+    scrollbarWidth: "none",
+    // For Internet Explorer
+    "-ms-overflow-style": "none",
+
+    // Hide the scrollbar in both axis (vertical and horizontal)
+    "&::-webkit-scrollbar": {
+      display: "none",
+    },
   },
 });
