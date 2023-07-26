@@ -1,6 +1,7 @@
 import { styled } from "../../../../../stiches.config";
 export const TagContainer = styled("p", {
   width: "100%",
+
   height: "2.125rem",
   display: "flex",
   flexWrap: "wrap",

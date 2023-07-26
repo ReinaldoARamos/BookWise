@@ -25,7 +25,6 @@ export function BookTags() {
 
   return (
     <TagContainer>
-      <AllButtons active={"ButtonActive"}>Todos</AllButtons>
       {bookTags.map((tag) => (
         <>
           <GeneralTabButton onClick={() => Teste(tag.name)}>

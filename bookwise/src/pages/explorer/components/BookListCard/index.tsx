@@ -37,7 +37,7 @@ export function BookListCard() {
     fetchData();
   }, []);
 
-  const searchString = "Ficção"; // The string you want to filter by
+  var searchString = "Todos"; // The string you want to filter by
 
   const filteredList = explorerBooks.filter((obj) =>
     obj.categories
@@ -46,17 +46,58 @@ export function BookListCard() {
   );
 
   console.log(filteredList);
+
   return (
     <>
-   
-      {filteredList.map((item) => (
-        <>
-          <div>{item.name}</div>
-          <div>{item.author}</div>
-          <img src={item.cover_url}/>
-        
-        </>
-      ))}
+      {searchString == "Todos"
+        ? explorerBooks.map((item) => (
+            <BookListCardContainer key={item.id}>
+              <Image src={item.cover_url} alt="" width={108} height={152} />
+
+              <BookListCardContent>
+                <section>
+                  {item.name}
+                  <div>{item.author}</div>
+                  {item.categories.map((items) => (
+                    <div>{items.category.name.split(",")}</div>
+                  ))}
+                </section>
+
+                <p>
+                  <Star size={20} weight="fill" />
+                  <Star size={20} weight="fill" />
+                  <Star size={20} weight="fill" />
+                  <Star size={20} weight="fill" />
+                  <Star size={20} />
+                </p>
+              </BookListCardContent>
+            </BookListCardContainer>
+          ))
+        : filteredList.map((item) => (
+            <>
+              <BookListCardContainer key={item.id}>
+                <Image src={item.cover_url} alt="" width={108} height={152} />
+
+                <BookListCardContent>
+                  <section>
+                    {item.name}
+                    <div>{item.author}</div>
+                    {item.categories.map((items) => (
+                      <div>{items.category.name.split(",")}</div>
+                    ))}
+                  </section>
+
+                  <p>
+                    <Star size={20} weight="fill" />
+                    <Star size={20} weight="fill" />
+                    <Star size={20} weight="fill" />
+                    <Star size={20} weight="fill" />
+                    <Star size={20} />
+                  </p>
+                </BookListCardContent>
+              </BookListCardContainer>
+            </>
+          ))}
     </>
   );
 }
@@ -88,3 +129,93 @@ export function BookListCard() {
       ))}
     </>
 * */
+
+/*
+
+      {filteredList.map((item) => (
+        <>
+        
+         <BookListCardContainer key={item.id}>
+          <Image src={item.cover_url} alt="" width={108} height={152} />
+
+          <BookListCardContent>
+            <section>
+              {item.name}
+              <div>{item.author}</div>
+             {item.categories.map((items) => (
+              <div>{(items.category.name).split(',')}</div>
+             ))}
+            </section>
+
+            <p>
+              <Star size={20} weight="fill" />
+              <Star size={20} weight="fill" />
+              <Star size={20} weight="fill" />
+              <Star size={20} weight="fill" />
+              <Star size={20} />
+            </p>
+          </BookListCardContent>
+        </BookListCardContainer>
+        </>
+      ))}
+
+
+
+
+
+
+
+       <>
+        {searchString === "Todos" &&  
+         explorerBooks.map((item) => (
+          <BookListCardContainer key={item.id}>
+            <Image src={item.cover_url} alt="" width={108} height={152} />
+  
+            <BookListCardContent>
+              <section>
+                {item.name}
+                <div>{item.author}</div>
+               {item.categories.map((items) => (
+                <div>{(items.category.name).split(',')}</div>
+               ))}
+              </section>
+  
+              <p>
+                <Star size={20} weight="fill" />
+                <Star size={20} weight="fill" />
+                <Star size={20} weight="fill" />
+                <Star size={20} weight="fill" />
+                <Star size={20} />
+              </p>
+            </BookListCardContent>
+          </BookListCardContainer>
+        ))}   
+
+{filteredList.map((item) => (
+        <>
+        
+         <BookListCardContainer key={item.id}>
+          <Image src={item.cover_url} alt="" width={108} height={152} />
+
+          <BookListCardContent>
+            <section>
+              {item.name}
+              <div>{item.author}</div>
+             {item.categories.map((items) => (
+              <div>{(items.category.name).split(',')}</div>
+             ))}
+            </section>
+
+            <p>
+              <Star size={20} weight="fill" />
+              <Star size={20} weight="fill" />
+              <Star size={20} weight="fill" />
+              <Star size={20} weight="fill" />
+              <Star size={20} />
+            </p>
+          </BookListCardContent>
+        </BookListCardContainer>
+        </>
+      ))}
+    </>
+*/
