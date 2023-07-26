@@ -41,6 +41,14 @@ export default function Explorer() {
   const [bookTags, setBookTags] = useState<BookTags[]>([]);
   const [explorerBooks, setExplorerBooks] = useState<ExplorerProps[]>([]);
   const [currentCategory, setCurrentCategory] = useState<string>("Todos");
+ const [bookId, setBookId] = useState<string>("404e47f8-da53-44fd-ab53-37ed171c3a9f")
+
+ function handleBookId(name: string) {
+  const handleBook = name;
+  setBookId(handleBook);
+ 
+}
+
   async function fetchData() {
     const responseTag = await api.get("books/category");
     const response = await api.get("books/explorer");
@@ -51,7 +59,7 @@ export default function Explorer() {
     fetchData();
   }, []);
 
-  function Teste(name: string) {
+  function HandleFilter(name: string) {
     const FilterName = name;
     setCurrentCategory(FilterName);
     console.log(FilterName);
@@ -84,7 +92,7 @@ export default function Explorer() {
         <TagContainer>
           {bookTags.map((tag) => (
             <>
-              <GeneralTabButton onClick={() => Teste(tag.name)}>
+              <GeneralTabButton onClick={() => HandleFilter(tag.name)}>
                 {tag.name}
               </GeneralTabButton>
             </>
@@ -94,8 +102,8 @@ export default function Explorer() {
           <>
             {currentCategory == "Todos"
               ? explorerBooks.map((item) => (
-                <DrawerDialog>
-                  <BookListCardContainer key={item.id}>
+                <DrawerDialog bookId={bookId}>
+                  <BookListCardContainer key={item.id} onClick={() => {handleBookId(item.id)}}>
                     <img src={item.cover_url} alt="" width={108} height={152} />
 
                     <BookListCardContent>
