@@ -6,8 +6,8 @@ export const LogoContainer = styled("main", {
 
   minHeight: "100vh",
 
-  width: "150%",
-  marginLeft: -350,
+  width: "170%",
+
   marginTop: -80,
 });
 
