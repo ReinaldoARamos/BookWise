@@ -123,9 +123,6 @@ export default function Explorer() {
                           <section>
                             {item.name}
                             <div>{item.author}</div>
-                            {item.categories.map((items) => (
-                              <div>{items.category.name.split(",")}</div>
-                            ))}
                           </section>
 
                           <p>
@@ -157,9 +154,6 @@ export default function Explorer() {
                             <section>
                               {item.name}
                               <div>{item.author}</div>
-                              {item.categories.map((items) => (
-                                <div>{items.category.name.split(",")}</div>
-                              ))}
                             </section>
 
                             <p>
