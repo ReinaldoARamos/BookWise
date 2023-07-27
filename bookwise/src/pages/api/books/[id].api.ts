@@ -11,7 +11,7 @@ export default async function handle(
 
   const id = String(req.query.id)
 
-  const BookInfos = await prisma.book.findFirst({
+  const BookInfos = await prisma.book.findUnique({
     where: {
       id: id
     },
