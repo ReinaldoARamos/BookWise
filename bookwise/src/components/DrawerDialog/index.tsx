@@ -1,22 +1,17 @@
 import React, { ReactNode, useEffect, useState } from "react";
 import * as Dialog from "@radix-ui/react-dialog";
-import { styled, keyframes } from "@stitches/react";
-import { violet, blackA, mauve, green } from "@radix-ui/colors";
-import { Cross2Icon } from "@radix-ui/react-icons";
-import { Button, Heading } from "@ignite-ui/react";
 import {
   DialogOverlay,
   DialogContent,
   DialogClose,
-  BookDetailsWrapper,
-  BookContent,
-  BookDetailsContainer,
-  BookImage,
 } from "./style";
-import { X, BookmarkSimple, BookOpen } from "phosphor-react";
-import { categories } from "../../../prisma/constants/categories";
+import { X } from "phosphor-react";
 import { api } from "@/lib/axios";
-import { useRouter } from "next/router";
+import {useQuery} from '@tanstack/react-query'
+
+
+
+
 interface DrawerDialogProps {
   children: ReactNode;
   bookId   : string 
@@ -43,7 +38,7 @@ export function DrawerDialog({ children , bookId}: DrawerDialogProps) {
   useEffect(() => {
     fetchData();
     console.log("id " + bookId)
-  }, [bookId]);
+  }, [ bookId  ]);
 
   return (
     <Dialog.Root>
@@ -55,6 +50,8 @@ export function DrawerDialog({ children , bookId}: DrawerDialogProps) {
             <X size={24} />
           </DialogClose>
           <div>{BookDrawer?.name}</div>
+          <div>{BookDrawer?.author}</div>
+          <img src={BookDrawer?.cover_url}></img>
         </DialogContent>
       </Dialog.Portal>
     </Dialog.Root>

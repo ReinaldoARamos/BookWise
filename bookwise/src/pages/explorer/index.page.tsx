@@ -41,13 +41,12 @@ export default function Explorer() {
   const [bookTags, setBookTags] = useState<BookTags[]>([]);
   const [explorerBooks, setExplorerBooks] = useState<ExplorerProps[]>([]);
   const [currentCategory, setCurrentCategory] = useState<string>("Todos");
- const [bookId, setBookId] = useState("404e47f8-da53-44fd-ab53-37ed171c3a9f")
+  const [bookId, setBookId] = useState("404e47f8-da53-44fd-ab53-37ed171c3a9f");
 
- function handleBookId(name: string) {
-  const handleBook = name;
-  setBookId(handleBook);
- 
-}
+  function handleBookId(name: string) {
+    const handleBook = name;
+    setBookId(handleBook);
+  }
 
   async function fetchData() {
     const responseTag = await api.get("books/category");
@@ -80,9 +79,8 @@ export default function Explorer() {
             <div>
               <Binoculars />
               Explorar
-              
             </div>
- 
+
             <section>
               <input placeholder="Procure um livro" />
               <MagnifyingGlass />
@@ -102,34 +100,49 @@ export default function Explorer() {
           <>
             {currentCategory == "Todos"
               ? explorerBooks.map((item) => (
-                <DrawerDialog bookId={bookId}>
-                  <BookListCardContainer key={item.id} onClick={() => {handleBookId(item.id)}} >
-                    <img src={item.cover_url} alt="" width={108} height={152} />
+                  <DrawerDialog bookId={bookId}>
+                    <BookListCardContainer
+                      key={item.id}
+                      onClick={() => {
+                        handleBookId(item.id);
+                      }}
+                    >
+                      <img
+                        src={item.cover_url}
+                        alt=""
+                        width={108}
+                        height={152}
+                      />
 
-                    <BookListCardContent>
-                      <section>
-                        {item.name}
-                        <div>{item.author}</div>
-                        {item.categories.map((items) => (
-                          <div>{items.category.name.split(",")}</div>
-                        ))}
-                      </section>
+                      <BookListCardContent>
+                        <section>
+                          {item.name}
+                          <div>{item.author}</div>
+                          {item.categories.map((items) => (
+                            <div>{items.category.name.split(",")}</div>
+                          ))}
+                        </section>
 
-                      <p>
-                        <Star size={20} weight="fill" />
-                        <Star size={20} weight="fill" />
-                        <Star size={20} weight="fill" />
-                        <Star size={20} weight="fill" />
-                        <Star size={20} />
-                      </p>
-                    </BookListCardContent>
-                  </BookListCardContainer>
+                        <p>
+                          <Star size={20} weight="fill" />
+                          <Star size={20} weight="fill" />
+                          <Star size={20} weight="fill" />
+                          <Star size={20} weight="fill" />
+                          <Star size={20} />
+                        </p>
+                      </BookListCardContent>
+                    </BookListCardContainer>
                   </DrawerDialog>
                 ))
               : filteredList.map((item) => (
                   <>
-                  
-                      <BookListCardContainer key={item.id}>
+                    <DrawerDialog bookId={bookId}>
+                      <BookListCardContainer
+                        key={item.id}
+                        onClick={() => {
+                          handleBookId(item.id);
+                        }}
+                      >
                         <img
                           src={item.cover_url}
                           alt=""
@@ -155,8 +168,7 @@ export default function Explorer() {
                           </p>
                         </BookListCardContent>
                       </BookListCardContainer>
-                   
-                  
+                    </DrawerDialog>
                   </>
                 ))}
           </>
