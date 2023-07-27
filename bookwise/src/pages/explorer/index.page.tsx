@@ -41,7 +41,9 @@ export default function Explorer() {
   const [bookTags, setBookTags] = useState<BookTags[]>([]);
   const [explorerBooks, setExplorerBooks] = useState<ExplorerProps[]>([]);
   const [currentCategory, setCurrentCategory] = useState<string>("Todos");
-  const [bookId, setBookId] = useState<string | null>("0440ad7d-230e-4573-b455-84ca38b5d339");
+  const [bookId, setBookId] = useState<string | null>(
+    "0440ad7d-230e-4573-b455-84ca38b5d339"
+  );
 
   function handleBookId(name: string) {
     const handleBook = name;
@@ -98,88 +100,84 @@ export default function Explorer() {
           ))}
         </TagContainer>
 
+        <>
+          <DrawerDialog bookId={bookId}>
+            <BookListContainer>
               <>
-              <DrawerDialog bookId={bookId}>
-        <BookListContainer>
-          <>
-            {currentCategory == "Todos"
-              ? explorerBooks.map((item) => (
-                 
-                    <BookListCardContainer key={item.id}>
-                      <img
-                        src={item.cover_url}
-                        alt=""
-                        width={108}
-                        height={152}
+                {currentCategory == "Todos"
+                  ? explorerBooks.map((item) => (
+                      <BookListCardContainer
+                        key={item.id}
                         onClick={() => {
                           handleBookId(item.id);
                         }}
-                      />
+                      >
+                        <img
+                          src={item.cover_url}
+                          alt=""
+                          width={108}
+                          height={152}
+                        />
 
-                      <BookListCardContent>
-                        <section>
-                          {item.name}
-                          <div>{item.author}</div>
-                          {item.categories.map((items) => (
-                            <div>{items.category.name.split(",")}</div>
-                          ))}
-                        </section>
+                        <BookListCardContent>
+                          <section>
+                            {item.name}
+                            <div>{item.author}</div>
+                            {item.categories.map((items) => (
+                              <div>{items.category.name.split(",")}</div>
+                            ))}
+                          </section>
 
-                        <p>
-                          <Star size={20} weight="fill" />
-                          <Star size={20} weight="fill" />
-                          <Star size={20} weight="fill" />
-                          <Star size={20} weight="fill" />
-                          <Star size={20} />
-                        </p>
-                      </BookListCardContent>
-                    </BookListCardContainer>
-       
-      
-      
-                ))
-              : filteredList.map((item) => (
-                  <>
-                    <BookListCardContainer
-                      key={item.id}
-                      onClick={() => {
-                        handleBookId(item.id);
-                      }}
-                    >
-                      <img
-                        src={item.cover_url}
-                        alt=""
-                        width={108}
-                        height={152}
-                      />
+                          <p>
+                            <Star size={20} weight="fill" />
+                            <Star size={20} weight="fill" />
+                            <Star size={20} weight="fill" />
+                            <Star size={20} weight="fill" />
+                            <Star size={20} />
+                          </p>
+                        </BookListCardContent>
+                      </BookListCardContainer>
+                    ))
+                  : filteredList.map((item) => (
+                      <>
+                        <BookListCardContainer
+                          key={item.id}
+                          onClick={() => {
+                            handleBookId(item.id);
+                          }}
+                        >
+                          <img
+                            src={item.cover_url}
+                            alt=""
+                            width={108}
+                            height={152}
+                          />
 
-                      <BookListCardContent>
-                        <section>
-                          {item.name}
-                          <div>{item.author}</div>
-                          {item.categories.map((items) => (
-                            <div>{items.category.name.split(",")}</div>
-                          ))}
-                        </section>
+                          <BookListCardContent>
+                            <section>
+                              {item.name}
+                              <div>{item.author}</div>
+                              {item.categories.map((items) => (
+                                <div>{items.category.name.split(",")}</div>
+                              ))}
+                            </section>
 
-                        <p>
-                          <Star size={20} weight="fill" />
-                          <Star size={20} weight="fill" />
-                          <Star size={20} weight="fill" />
-                          <Star size={20} weight="fill" />
-                          <Star size={20} />
-                        </p>
-                      </BookListCardContent>
-                    </BookListCardContainer>
-                  </>
-                ))}
-          </>
-
-        </BookListContainer>
-        </DrawerDialog>
-       </>
+                            <p>
+                              <Star size={20} weight="fill" />
+                              <Star size={20} weight="fill" />
+                              <Star size={20} weight="fill" />
+                              <Star size={20} weight="fill" />
+                              <Star size={20} />
+                            </p>
+                          </BookListCardContent>
+                        </BookListCardContainer>
+                      </>
+                    ))}
+              </>
+            </BookListContainer>
+          </DrawerDialog>
+        </>
       </ExplorerContainer>
     </>
-
   );
 }
