@@ -23,14 +23,14 @@ interface DrawerDialogProps {
 }
 
 interface Teste {
-  name: string;
+  name: string | undefined;
   cover_url: string;
-  id: string;
+  id: string ;
   author: string;
 }
 export function DrawerDialog({ children , bookId}: DrawerDialogProps) {
   const [BookDrawer, setBookDrawer] = useState<Teste>();
- const router = useRouter()
+
 
     
   async function fetchData() {
@@ -38,6 +38,8 @@ export function DrawerDialog({ children , bookId}: DrawerDialogProps) {
     setBookDrawer(response.data);
   
   }
+
+
   useEffect(() => {
     fetchData();
     console.log("id " + bookId)

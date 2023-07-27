@@ -41,7 +41,7 @@ export default function Explorer() {
   const [bookTags, setBookTags] = useState<BookTags[]>([]);
   const [explorerBooks, setExplorerBooks] = useState<ExplorerProps[]>([]);
   const [currentCategory, setCurrentCategory] = useState<string>("Todos");
- const [bookId, setBookId] = useState<string>("404e47f8-da53-44fd-ab53-37ed171c3a9f")
+ const [bookId, setBookId] = useState("404e47f8-da53-44fd-ab53-37ed171c3a9f")
 
  function handleBookId(name: string) {
   const handleBook = name;
@@ -103,7 +103,7 @@ export default function Explorer() {
             {currentCategory == "Todos"
               ? explorerBooks.map((item) => (
                 <DrawerDialog bookId={bookId}>
-                  <BookListCardContainer key={item.id} onClick={() => {handleBookId(item.id)}}>
+                  <BookListCardContainer key={item.id} onClick={() => {handleBookId(item.id)}} >
                     <img src={item.cover_url} alt="" width={108} height={152} />
 
                     <BookListCardContent>
