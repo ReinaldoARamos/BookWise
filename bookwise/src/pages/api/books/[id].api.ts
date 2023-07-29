@@ -19,10 +19,10 @@ export default async function handle(
       categories: {
           include: {
             category: {
-              
+            
             }
           }
-      }
+      },
     },
 
     

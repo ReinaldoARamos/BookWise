@@ -65,6 +65,33 @@ export const DialogOverlay = styled(Dialog.Overlay, {
   export const BookContent = styled("div", {
     display: "flex",
     flexDirection: "column",
-    justifyContent: "space-between"
+    justifyContent: "space-between",
+
+    p: {
+      display: "flex",
+      flexDirection: "column",
+    }
   })
+  
+  export const BookInfo = styled("div", {
+    display: "flex",
+    justifyContent: "space-between",
+    marginTop: 40,
+    borderTop: '1px solid $gray600',
+    padding: 24 
+    
+  })
+
+  export const CategoryBox = styled("div", {
+    display: "flex",
+    justifyContent: "space-between",
+    
+  })
+
+  export const TotalPagesBox = styled("div", {
+    display: "flex",
+   
+    
+  })
+  
   

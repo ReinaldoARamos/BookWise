@@ -1,11 +1,23 @@
 import React, { ReactNode, useEffect, useState } from "react";
 import * as Dialog from "@radix-ui/react-dialog";
-import { DialogOverlay, DialogContent, DialogClose } from "./style";
-import { Book, X } from "phosphor-react";
+import {
+  DialogOverlay,
+  DialogContent,
+  DialogClose,
+  BookDetailsWrapper,
+  BookDetailsContainer,
+  BookContent,
+  BookImage,
+  BookInfo,
+  CategoryBox,
+  TotalPagesBox,
+} from "./style";
+import { Book, Star, X } from "phosphor-react";
 import { api } from "@/lib/axios";
 import { useQuery } from "@tanstack/react-query";
 import { useRouter } from "next/router";
-
+import { categories } from "../../../prisma/constants/categories";
+import { BookmarkSimple, BookOpen } from "phosphor-react";
 interface DrawerDialogProps {
   children: ReactNode;
   bookId: string | null;
@@ -16,6 +28,21 @@ interface Teste {
   cover_url: string;
   id: string;
   author: string;
+  total_pages: number;
+  categories: [
+    categorie: {
+      category: {
+        name: string;
+        books: [
+          booksList: {
+            book: {
+              name: string;
+            };
+          }
+        ];
+      };
+    }
+  ];
 }
 
 export function DrawerDialog({ children, bookId }: DrawerDialogProps) {
@@ -26,6 +53,11 @@ export function DrawerDialog({ children, bookId }: DrawerDialogProps) {
     const response = await api.get(`books/${bookId}`);
 
     setBookDrawer(response.data);
+    console.log(
+      BookDrawer?.categories.map((item) =>
+        item.category.name.split(",").join(",")
+      )
+    );
   }
 
   function ClearState() {
@@ -37,7 +69,11 @@ export function DrawerDialog({ children, bookId }: DrawerDialogProps) {
   useEffect(() => {
     fetchData();
   }, [bookId, setOpen]);
+  const categories = BookDrawer?.categories
+    ?.map((item) => item?.category?.name)
+    ?.join(", ");
 
+  console.log(categories);
   return (
     <Dialog.Root open={open}>
       <Dialog.Trigger
@@ -63,9 +99,44 @@ export function DrawerDialog({ children, bookId }: DrawerDialogProps) {
               }}
             />
           </DialogClose>
-          <div>{BookDrawer?.name}</div>
-          <div>{BookDrawer?.author}</div>
-          <img src={BookDrawer?.cover_url}></img>
+          <BookDetailsWrapper>
+            <BookDetailsContainer>
+              <BookImage src={BookDrawer?.cover_url} />
+              <BookContent>
+                <div>
+                  {BookDrawer?.name}
+                  <p>{BookDrawer?.author}</p>
+                </div>
+
+                <p>
+                  <div>
+                    <Star size={20} weight="fill" />
+                    <Star size={20} weight="fill" />
+                    <Star size={20} weight="fill" />
+                    <Star size={20} weight="fill" />
+                    <Star size={20} />
+                  </div>
+                  <span>3 avaliações</span>
+                </p>
+              </BookContent>
+            </BookDetailsContainer>
+            <BookInfo>
+              <CategoryBox>
+                <BookmarkSimple />
+                <div>
+                  <span>Categoria</span>
+                  <p>{categories}</p>
+                </div>
+              </CategoryBox>
+              <TotalPagesBox>
+                <BookOpen />
+                <div>
+                  <span>Páginas</span>
+                  <p>{BookDrawer?.total_pages}</p>
+                </div>
+              </TotalPagesBox>
+            </BookInfo>
+          </BookDetailsWrapper>
         </DialogContent>
       </Dialog.Portal>
     </Dialog.Root>
