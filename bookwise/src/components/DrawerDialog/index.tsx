@@ -74,7 +74,7 @@ export function DrawerDialog({ children, bookId }: DrawerDialogProps) {
 
     setTimeout(() => {
       setTeste(true);
-    }, 10);
+    }, 200);
 
     console.log("estado limpo");
   }
@@ -111,55 +111,104 @@ export function DrawerDialog({ children, bookId }: DrawerDialogProps) {
                 ClearState();
               }}
             />
-           
           </DialogClose>
           {teste == false ? (
-              <div>Loading...</div>
-            ) : 
-              
-                <div><BookDetailsWrapper>
-                  <BookDetailsContainer>
-                    <BookImage src={BookDrawer?.cover_url} />
-                    <BookContent>
-                      <h1>
-                        {BookDrawer?.name}
-                        <p>{BookDrawer?.author}</p>
-                      </h1>
+            <>
+              <BookDetailsWrapper>
+                <BookDetailsContainer>
+                  <BookImage
+                    src={
+                      "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/A_black_image.jpg/640px-A_black_image.jpg"
+                    }
+                    width={171}
+                    height={242}
+                  />
+                  <BookContent>
+                    <h1>
+                      Loading...
+                      <p>Loading...</p>
+                    </h1>
 
-                      <p>
-                        <div>
-                          <Star size={20} weight="fill" />
-                          <Star size={20} weight="fill" />
-                          <Star size={20} weight="fill" />
-                          <Star size={20} weight="fill" />
-                          <Star size={20} />
-                        </div>
-                        <span>{RatingNumber} avaliações</span>
-                      </p>
-                    </BookContent>
-                  </BookDetailsContainer>
-                  <BookInfo>
-                    <CategoryBox>
-                      <BookmarkSimple size={24} />
+                    <p>
                       <div>
-                        <span>Categoria</span>
-                        <p>{categories}</p>
+                        <Star size={20} weight="fill" />
+                        <Star size={20} weight="fill" />
+                        <Star size={20} weight="fill" />
+                        <Star size={20} weight="fill" />
+                        <Star size={20} />
                       </div>
-                    </CategoryBox>
-                    <TotalPagesBox>
-                      <BookOpen size={24} />
+                      <span>Loading... avaliações</span>
+                    </p>
+                  </BookContent>
+                </BookDetailsContainer>
+                <BookInfo>
+                  <CategoryBox>
+                    <BookmarkSimple size={24} />
+                    <div>
+                      <span>Categoria</span>
+                      <p>Loading...</p>
+                    </div>
+                  </CategoryBox>
+                  <TotalPagesBox>
+                    <BookOpen size={24} />
+                    <div>
+                      <span>Páginas</span>
+                      <p>Loading...</p>
+                    </div>
+                  </TotalPagesBox>
+                </BookInfo>
+              </BookDetailsWrapper>
+              <RatingHeader>
+                <div>Avaliações</div>
+                <button>Avaliar</button>
+              </RatingHeader>
+            </>
+          ) : (
+            <div>
+              <BookDetailsWrapper>
+                <BookDetailsContainer>
+                  <BookImage src={BookDrawer?.cover_url} />
+                  <BookContent>
+                    <h1>
+                      {BookDrawer?.name}
+                      <p>{BookDrawer?.author}</p>
+                    </h1>
+
+                    <p>
                       <div>
-                        <span>Páginas</span>
-                        <p>{BookDrawer?.total_pages}</p>
+                        <Star size={20} weight="fill" />
+                        <Star size={20} weight="fill" />
+                        <Star size={20} weight="fill" />
+                        <Star size={20} weight="fill" />
+                        <Star size={20} />
                       </div>
-                    </TotalPagesBox>
-                  </BookInfo>
-                </BookDetailsWrapper><RatingHeader>
-                    <div>Avaliações</div>
-                    <button>Avaliar</button>
-                  </RatingHeader></div>
-              
-            }
+                      <span>{RatingNumber} avaliações</span>
+                    </p>
+                  </BookContent>
+                </BookDetailsContainer>
+                <BookInfo>
+                  <CategoryBox>
+                    <BookmarkSimple size={24} />
+                    <div>
+                      <span>Categoria</span>
+                      <p>{categories}</p>
+                    </div>
+                  </CategoryBox>
+                  <TotalPagesBox>
+                    <BookOpen size={24} />
+                    <div>
+                      <span>Páginas</span>
+                      <p>{BookDrawer?.total_pages}</p>
+                    </div>
+                  </TotalPagesBox>
+                </BookInfo>
+              </BookDetailsWrapper>
+              <RatingHeader>
+                <div>Avaliações</div>
+                <button>Avaliar</button>
+              </RatingHeader>
+            </div>
+          )}
         </DialogContent>
       </Dialog.Portal>
     </Dialog.Root>

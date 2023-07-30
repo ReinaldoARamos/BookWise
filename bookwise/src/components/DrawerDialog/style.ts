@@ -59,7 +59,7 @@ export const BookDetailsContainer = styled("div", {
 export const BookImage = styled("img", {
   borderRadius: "$md",
   objectFit: "cover",
-  minWidth: 171,
+  
 });
 
 export const BookContent = styled("div", {
