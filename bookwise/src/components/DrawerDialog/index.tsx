@@ -11,12 +11,10 @@ import {
   BookInfo,
   CategoryBox,
   TotalPagesBox,
+  RatingHeader,
 } from "./style";
-import { Book, Star, X } from "phosphor-react";
+import { Star, X } from "phosphor-react";
 import { api } from "@/lib/axios";
-import { useQuery } from "@tanstack/react-query";
-import { useRouter } from "next/router";
-import { categories } from "../../../prisma/constants/categories";
 import { BookmarkSimple, BookOpen } from "phosphor-react";
 interface DrawerDialogProps {
   children: ReactNode;
@@ -43,15 +41,21 @@ interface Teste {
       };
     }
   ];
+
+  ratings: [
+    rating: {
+      id: string;
+    }
+  ]
 }
 
 export function DrawerDialog({ children, bookId }: DrawerDialogProps) {
   const [BookDrawer, setBookDrawer] = useState<Teste | null>();
   const [open, setOpen] = useState(false);
-
+  const [teste, setTeste] = useState<boolean>();
   async function fetchData() {
     const response = await api.get(`books/${bookId}`);
-
+    
     setBookDrawer(response.data);
     console.log(
       BookDrawer?.categories.map((item) =>
@@ -60,20 +64,31 @@ export function DrawerDialog({ children, bookId }: DrawerDialogProps) {
     );
   }
 
+  async function setBooleanToTrueAfterDelay(): Promise<void> {
+    var TesteBoolean = false
+    console.log("valor antes da async " + TesteBoolean)
+    await new Promise((resolve) => setTimeout(resolve, 500));
+  
+    setTeste(TesteBoolean = true);
+    console.log('Updated boolean value:', TesteBoolean);
+  }
+  
   function ClearState() {
-    setBookDrawer(null);
+  
+    
     setOpen(false);
     console.log("estado limpo");
   }
 
   useEffect(() => {
-    fetchData();
+    fetchData(),
+    setBooleanToTrueAfterDelay()
   }, [bookId, setOpen]);
   const categories = BookDrawer?.categories
     ?.map((item) => item?.category?.name)
     ?.join(", ");
 
-  console.log(categories);
+  const RatingNumber = BookDrawer?.ratings.length
   return (
     <Dialog.Root open={open}>
       <Dialog.Trigger
@@ -103,10 +118,10 @@ export function DrawerDialog({ children, bookId }: DrawerDialogProps) {
             <BookDetailsContainer>
               <BookImage src={BookDrawer?.cover_url} />
               <BookContent>
-                <div>
+                <h1>
                   {BookDrawer?.name}
                   <p>{BookDrawer?.author}</p>
-                </div>
+                </h1>
 
                 <p>
                   <div>
@@ -116,20 +131,20 @@ export function DrawerDialog({ children, bookId }: DrawerDialogProps) {
                     <Star size={20} weight="fill" />
                     <Star size={20} />
                   </div>
-                  <span>3 avaliações</span>
+                  <span>{RatingNumber} avaliações</span>
                 </p>
               </BookContent>
             </BookDetailsContainer>
             <BookInfo>
               <CategoryBox>
-                <BookmarkSimple />
+                <BookmarkSimple  size={24}/>
                 <div>
                   <span>Categoria</span>
                   <p>{categories}</p>
                 </div>
               </CategoryBox>
               <TotalPagesBox>
-                <BookOpen />
+                <BookOpen  size={24}/>
                 <div>
                   <span>Páginas</span>
                   <p>{BookDrawer?.total_pages}</p>
@@ -137,6 +152,11 @@ export function DrawerDialog({ children, bookId }: DrawerDialogProps) {
               </TotalPagesBox>
             </BookInfo>
           </BookDetailsWrapper>
+
+          <RatingHeader>
+            <div>Avaliações</div>
+            <button>Avaliar</button>
+            </RatingHeader>
         </DialogContent>
       </Dialog.Portal>
     </Dialog.Root>

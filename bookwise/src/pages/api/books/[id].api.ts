@@ -9,23 +9,24 @@ export default async function handle(
     return res.status(405).end();
   }
 
-  const id = String(req.query.id)
+  const id = String(req.query.id);
 
   const BookInfos = await prisma.book.findUnique({
     where: {
-      id: id
+      id: id,
     },
     include: {
       categories: {
-          include: {
-            category: {
-            
-            }
-          }
+        include: {
+          category: {},
+        },
+      },
+      ratings: {
+        include: {
+          user: {},
+        },
       },
     },
-
-    
   });
 
   return res.json(BookInfos);
