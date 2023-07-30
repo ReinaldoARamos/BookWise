@@ -46,7 +46,7 @@ interface Teste {
     rating: {
       id: string;
     }
-  ]
+  ];
 }
 
 export function DrawerDialog({ children, bookId }: DrawerDialogProps) {
@@ -55,7 +55,7 @@ export function DrawerDialog({ children, bookId }: DrawerDialogProps) {
   const [teste, setTeste] = useState<boolean>();
   async function fetchData() {
     const response = await api.get(`books/${bookId}`);
-    
+
     setBookDrawer(response.data);
     console.log(
       BookDrawer?.categories.map((item) =>
@@ -64,37 +64,35 @@ export function DrawerDialog({ children, bookId }: DrawerDialogProps) {
     );
   }
 
-  async function setBooleanToTrueAfterDelay(): Promise<void> {
-    var TesteBoolean = false
-    console.log("valor antes da async " + TesteBoolean)
-    await new Promise((resolve) => setTimeout(resolve, 500));
-  
-    setTeste(TesteBoolean = true);
-    console.log('Updated boolean value:', TesteBoolean);
-  }
-  
   function ClearState() {
-  
-    
     setOpen(false);
+    setTeste(false);
+    console.log("estado limpo");
+  }
+  function Open() {
+    setOpen(true);
+
+    setTimeout(() => {
+      setTeste(true);
+    }, 10);
+
     console.log("estado limpo");
   }
 
   useEffect(() => {
-    fetchData(),
-    setBooleanToTrueAfterDelay()
+    fetchData();
   }, [bookId, setOpen]);
   const categories = BookDrawer?.categories
     ?.map((item) => item?.category?.name)
     ?.join(", ");
 
-  const RatingNumber = BookDrawer?.ratings.length
+  const RatingNumber = BookDrawer?.ratings.length;
   return (
     <Dialog.Root open={open}>
       <Dialog.Trigger
         asChild
         onClick={() => {
-          setOpen(true);
+          Open();
         }}
       >
         {children}
@@ -113,8 +111,63 @@ export function DrawerDialog({ children, bookId }: DrawerDialogProps) {
                 ClearState();
               }}
             />
+           
           </DialogClose>
-          <BookDetailsWrapper>
+          {teste == false ? (
+              <div>Loading...</div>
+            ) : 
+              
+                <div><BookDetailsWrapper>
+                  <BookDetailsContainer>
+                    <BookImage src={BookDrawer?.cover_url} />
+                    <BookContent>
+                      <h1>
+                        {BookDrawer?.name}
+                        <p>{BookDrawer?.author}</p>
+                      </h1>
+
+                      <p>
+                        <div>
+                          <Star size={20} weight="fill" />
+                          <Star size={20} weight="fill" />
+                          <Star size={20} weight="fill" />
+                          <Star size={20} weight="fill" />
+                          <Star size={20} />
+                        </div>
+                        <span>{RatingNumber} avaliações</span>
+                      </p>
+                    </BookContent>
+                  </BookDetailsContainer>
+                  <BookInfo>
+                    <CategoryBox>
+                      <BookmarkSimple size={24} />
+                      <div>
+                        <span>Categoria</span>
+                        <p>{categories}</p>
+                      </div>
+                    </CategoryBox>
+                    <TotalPagesBox>
+                      <BookOpen size={24} />
+                      <div>
+                        <span>Páginas</span>
+                        <p>{BookDrawer?.total_pages}</p>
+                      </div>
+                    </TotalPagesBox>
+                  </BookInfo>
+                </BookDetailsWrapper><RatingHeader>
+                    <div>Avaliações</div>
+                    <button>Avaliar</button>
+                  </RatingHeader></div>
+              
+            }
+        </DialogContent>
+      </Dialog.Portal>
+    </Dialog.Root>
+  );
+}
+
+/*
+  <BookDetailsWrapper>
             <BookDetailsContainer>
               <BookImage src={BookDrawer?.cover_url} />
               <BookContent>
@@ -157,8 +210,4 @@ export function DrawerDialog({ children, bookId }: DrawerDialogProps) {
             <div>Avaliações</div>
             <button>Avaliar</button>
             </RatingHeader>
-        </DialogContent>
-      </Dialog.Portal>
-    </Dialog.Root>
-  );
-}
+* */
