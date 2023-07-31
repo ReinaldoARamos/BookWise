@@ -175,10 +175,10 @@ export function DrawerDialog({ children, bookId }: DrawerDialogProps) {
               </BookDetailsWrapper>
               <RatingHeader>
                 <div>Avaliações</div>
-                <AuthDialog >
-                <button>Avaliar</button>
-                </AuthDialog>
-               
+                
+                <AuthDialog>
+                      <div>Avaliar</div>
+                    </AuthDialog>
               </RatingHeader>
             </>
           ) : (
@@ -227,9 +227,9 @@ export function DrawerDialog({ children, bookId }: DrawerDialogProps) {
               </BookDetailsWrapper>
               <RatingHeader>
                 <div>Avaliações</div>
-                <button>Avaliar</button>
+                {isSingIn ? <button onClick={() => {setOpenRating(true)}}>Avaliar</button> : <AuthDialog><button>Avaliar</button></AuthDialog>}
               </RatingHeader>
-              {isSingIn ? (
+              {openRating ? (
                 <ReviewTextArea>
                   <div className="container">
                     <div>
@@ -253,7 +253,7 @@ export function DrawerDialog({ children, bookId }: DrawerDialogProps) {
 
                   <textarea placeholder="Escreva sua avaliação" />
                   <div className="ButtonsContainer">
-                    <button>{<X size={24} />}</button>
+                    <button onClick={() => {setOpenRating(false)}}>{<X size={24} />}</button>
                     <button>{<Check size={24} />}</button>
                   </div>
                 </ReviewTextArea>

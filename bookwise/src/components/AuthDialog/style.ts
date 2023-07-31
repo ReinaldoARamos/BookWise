@@ -93,7 +93,7 @@ export const LoginContainer = styled("div", {
 
   span: {
     display: "flex",
-    marginBottom: 24,
+    marginBottom: 12,
     justifyContent: "center",
     alignItems: "center",
   },
