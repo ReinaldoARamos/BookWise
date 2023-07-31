@@ -41,11 +41,11 @@ export const DialogClose = styled(Dialog.Close, {
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
-transform: '0.2s',
-  '&:hover' : {
+  transform: "0.2s",
+  "&:hover": {
     color: "$gray300",
-    cursor: 'pointer'
-  }
+    cursor: "pointer",
+  },
 });
 
 export const BookDetailsWrapper = styled("div", {
@@ -203,21 +203,97 @@ export const UserRatingHeader = styled("div", {
   },
 
   p: {
-   
     div: {
       color: "$gray400",
       marginTop: 4,
     },
     span: {
       fontWeight: "bold",
-      
     },
   },
 });
 
+export const Review = styled("div", {
+  marginTop: 24,
+  color: "$gray300",
+  fontSize: 16,
+  fontFamily: "$default",
+});
 
-export const Review = styled('div', {
-   marginTop: 24,
-   color: '$gray300',
-   fontSize: 16,
-})
+export const ReviewTextArea = styled("div", {
+  marginTop: 24,
+  padding: 24,
+  background: "$gray700",
+  width: 564,
+  height: 328,
+  borderRadius: 8,
+  fontFamily: "$default",
+
+  ".container": {
+    display: "flex",
+    justifyContent: "space-between",
+    marginBottom: 24,
+    p: {
+      svg: {
+        color: "$purple100",
+      },
+    },
+  },
+
+  div: {
+    display: "flex",
+    alignItems: "center",
+    img: {
+      borderRadius: "$full",
+      marginRight: 8,
+    },
+
+    div: {
+      fontSize: 16,
+      color: "$gray100",
+    },
+  },
+
+  textarea: {
+    resize: "none",
+    padding: 24,
+    width: "100%",
+    color: "$gray100",
+    fontFamily: "$default",
+    height: 164,
+    border: "1px solid $gray500",
+    backgroundColor: " $gray800",
+    borderRadius: 8,
+    "&:focus": {
+      outline: "none",
+    },
+    "&:hover": {
+      cursor: "pointer",
+    },
+  },
+
+  ".ButtonsContainer": {
+    marginTop: 12,
+    justifyContent: "flex-end",
+    gap: 8,
+    borderRadius: 8,
+    button: {
+      width: 40,
+      height: 40,
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      backgroundColor: "$gray600",
+      border: "none",
+      transition: '0.2s',
+      svg: {
+        color: "$purple100",
+      },
+
+      "&:hover": {
+        cursor: "pointer",
+        backgroundColor: "$gray500",
+      },
+    },
+  },
+});

@@ -15,8 +15,9 @@ import {
   Ratings,
   UserRatingHeader,
   Review,
+  ReviewTextArea,
 } from "./style";
-import { Star, X } from "phosphor-react";
+import { Check, Star, X } from "phosphor-react";
 import { api } from "@/lib/axios";
 import { BookmarkSimple, BookOpen } from "phosphor-react";
 import { relativeDateFormatter } from "@/utils/dayformatter";
@@ -63,7 +64,9 @@ interface DialogProps {
 export function DrawerDialog({ children, bookId }: DrawerDialogProps) {
   const [BookDrawer, setBookDrawer] = useState<DialogProps | null>();
   const [open, setOpen] = useState(false);
-  const [teste, setTeste] = useState<boolean>();
+  const [Loading, setLoading] = useState<boolean>();
+  const [openRating, setOpenRating] = useState<boolean>(false);
+  const isSingIn = false;
   async function fetchData() {
     const response = await api.get(`books/${bookId}`);
 
@@ -77,14 +80,14 @@ export function DrawerDialog({ children, bookId }: DrawerDialogProps) {
 
   function ClearState() {
     setOpen(false);
-    setTeste(false);
+    setLoading(false);
     console.log("estado limpo");
   }
   function Open() {
     setOpen(true);
 
     setTimeout(() => {
-      setTeste(true);
+      setLoading(true);
     }, 200);
 
     console.log("estado limpo");
@@ -123,7 +126,7 @@ export function DrawerDialog({ children, bookId }: DrawerDialogProps) {
               }}
             />
           </DialogClose>
-          {teste == false ? (
+          {Loading == false ? (
             <>
               <BookDetailsWrapper>
                 <BookDetailsContainer>
@@ -222,7 +225,34 @@ export function DrawerDialog({ children, bookId }: DrawerDialogProps) {
                 <div>Avaliações</div>
                 <button>Avaliar</button>
               </RatingHeader>
+              <ReviewTextArea>
+                <div className="container">
+                  <div>
+                    <img
+                      width={40}
+                      height={40}
+                      src="https://preview.redd.it/neaijti7dns91.png?width=921&format=png&auto=webp&s=f172c0f39bdb89e497786744b06e3567f92d437f"
+                    />
+                    <span>Reinaldo Ramos</span>
+                  </div>
+                  <p>
+                    <div>
+                      <Star size={20} />
+                      <Star size={20} />
+                      <Star size={20} />
+                      <Star size={20} />
+                      <Star size={20} />
+                    </div>
+                  </p>
+                </div>
 
+                <textarea placeholder="Escreva sua avaliação" />
+                <div className="ButtonsContainer">
+                <button>{<X size={24}/>}</button>
+                <button>{<Check size={24} />}</button>
+                </div>
+                
+              </ReviewTextArea>
               {BookDrawer?.ratings.map((item) => (
                 <Ratings>
                   <UserRatingHeader>
@@ -252,28 +282,3 @@ export function DrawerDialog({ children, bookId }: DrawerDialogProps) {
     </Dialog.Root>
   );
 }
-
-/*
- <UserRatingHeader>
-                  <div>
-                    <img
-                      src="https://preview.redd.it/neaijti7dns91.png?width=921&format=png&auto=webp&s=f172c0f39bdb89e497786744b06e3567f92d437f"
-                      width={40}
-                      height={40}
-                    />
-                    <p>
-                      <span>Reinaldo Ramos</span>
-                      <div>Há 2 dias</div>
-                    </p>
-                  </div>
-                  <p>
-                    <Star size={20} weight="fill" />
-                    <Star size={20} weight="fill" />
-                    <Star size={20} weight="fill" />
-                    <Star size={20} weight="fill" />
-                    <Star size={20} />
-                  </p>
-                </UserRatingHeader>
-
-                <Review>aaaaaaaaaaaa</Review>
-* */
