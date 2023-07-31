@@ -14,6 +14,7 @@ import { useState, useEffect } from "react";
 
 import Link from "next/link";
 import { DrawerDialog } from "@/components/DrawerDialog";
+import { AuthDialog } from "@/components/AuthDialog";
 
 interface BookTags {
   id: string;
@@ -83,11 +84,13 @@ export default function Explorer() {
               <Binoculars />
               Explorar
             </div>
-
+            <AuthDialog>
             <section>
+         
               <input placeholder="Procure um livro" />
               <MagnifyingGlass />
             </section>
+            </AuthDialog>
           </header>
         </HeaderContainer>
         <TagContainer>
