@@ -12,6 +12,9 @@ import {
   CategoryBox,
   TotalPagesBox,
   RatingHeader,
+  Ratings,
+  UserRatingHeader,
+  Review,
 } from "./style";
 import { Star, X } from "phosphor-react";
 import { api } from "@/lib/axios";
@@ -21,7 +24,7 @@ interface DrawerDialogProps {
   bookId: string | null;
 }
 
-interface Teste {
+interface DialogProps {
   name: string | undefined;
   cover_url: string;
   id: string;
@@ -45,12 +48,20 @@ interface Teste {
   ratings: [
     rating: {
       id: string;
+      users: {
+        user: {
+          id: string;
+          name: string;
+          avatar_url: string;
+          created_at: string;
+        };
+      };
     }
   ];
 }
 
 export function DrawerDialog({ children, bookId }: DrawerDialogProps) {
-  const [BookDrawer, setBookDrawer] = useState<Teste | null>();
+  const [BookDrawer, setBookDrawer] = useState<DialogProps | null>();
   const [open, setOpen] = useState(false);
   const [teste, setTeste] = useState<boolean>();
   async function fetchData() {
@@ -120,8 +131,8 @@ export function DrawerDialog({ children, bookId }: DrawerDialogProps) {
                     src={
                       "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/A_black_image.jpg/640px-A_black_image.jpg"
                     }
-                    width={171}
-                    height={242}
+                    width={216}
+                    height={304}
                   />
                   <BookContent>
                     <h1>
@@ -207,6 +218,58 @@ export function DrawerDialog({ children, bookId }: DrawerDialogProps) {
                 <div>Avaliações</div>
                 <button>Avaliar</button>
               </RatingHeader>
+              <Ratings>
+                <UserRatingHeader>
+                  <div>
+                    <img
+                      src="https://preview.redd.it/neaijti7dns91.png?width=921&format=png&auto=webp&s=f172c0f39bdb89e497786744b06e3567f92d437f"
+                      width={40}
+                      height={40}
+                    />
+                    <p>
+                      <span>Reinaldo Ramos</span>
+                      <div>Há 2 dias</div>
+                    </p>
+                  </div>
+                  <p>
+                    <Star size={20} weight="fill" />
+                    <Star size={20} weight="fill" />
+                    <Star size={20} weight="fill" />
+                    <Star size={20} weight="fill" />
+                    <Star size={20} />
+                  </p>
+                </UserRatingHeader>
+
+                <Review>
+                  aaaaaaaaaaaa
+                </Review>
+              </Ratings>
+              <Ratings>
+                <UserRatingHeader>
+                  <div>
+                    <img
+                      src="https://preview.redd.it/neaijti7dns91.png?width=921&format=png&auto=webp&s=f172c0f39bdb89e497786744b06e3567f92d437f"
+                      width={40}
+                      height={40}
+                    />
+                    <p>
+                      <span>Reinaldo Ramos</span>
+                      <div>Há 2 dias</div>
+                    </p>
+                  </div>
+                  <p>
+                    <Star size={20} weight="fill" />
+                    <Star size={20} weight="fill" />
+                    <Star size={20} weight="fill" />
+                    <Star size={20} weight="fill" />
+                    <Star size={20} />
+                  </p>
+                </UserRatingHeader>
+
+                <Review>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo perspiciatis nesciunt tempore magnam quos similique minima ut ratione, necessitatibus fugit numquam, provident velit dolorum ipsam cum. Minus recusandae voluptas sit?
+                </Review>
+              </Ratings>
             </div>
           )}
         </DialogContent>
@@ -214,49 +277,3 @@ export function DrawerDialog({ children, bookId }: DrawerDialogProps) {
     </Dialog.Root>
   );
 }
-
-/*
-  <BookDetailsWrapper>
-            <BookDetailsContainer>
-              <BookImage src={BookDrawer?.cover_url} />
-              <BookContent>
-                <h1>
-                  {BookDrawer?.name}
-                  <p>{BookDrawer?.author}</p>
-                </h1>
-
-                <p>
-                  <div>
-                    <Star size={20} weight="fill" />
-                    <Star size={20} weight="fill" />
-                    <Star size={20} weight="fill" />
-                    <Star size={20} weight="fill" />
-                    <Star size={20} />
-                  </div>
-                  <span>{RatingNumber} avaliações</span>
-                </p>
-              </BookContent>
-            </BookDetailsContainer>
-            <BookInfo>
-              <CategoryBox>
-                <BookmarkSimple  size={24}/>
-                <div>
-                  <span>Categoria</span>
-                  <p>{categories}</p>
-                </div>
-              </CategoryBox>
-              <TotalPagesBox>
-                <BookOpen  size={24}/>
-                <div>
-                  <span>Páginas</span>
-                  <p>{BookDrawer?.total_pages}</p>
-                </div>
-              </TotalPagesBox>
-            </BookInfo>
-          </BookDetailsWrapper>
-
-          <RatingHeader>
-            <div>Avaliações</div>
-            <button>Avaliar</button>
-            </RatingHeader>
-* */

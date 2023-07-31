@@ -59,7 +59,6 @@ export const BookDetailsContainer = styled("div", {
 export const BookImage = styled("img", {
   borderRadius: "$md",
   objectFit: "cover",
-  
 });
 
 export const BookContent = styled("div", {
@@ -169,3 +168,51 @@ export const RatingHeader = styled("div", {
     },
   },
 });
+
+export const Ratings = styled("div", {
+  display: "flex",
+  marginTop: 12,
+  padding: 24,
+  width: 564,
+  Maxheight: 178,
+  background: "$gray700",
+  borderRadius: 8,
+  flexDirection: "column",
+});
+
+export const UserRatingHeader = styled("div", {
+  display: "flex",
+  justifyContent: "space-between",
+  width: "100%",
+  fontFamily: "$default",
+  img: {
+    borderRadius: "$full",
+    marginRight: 12,
+  },
+  div: {
+    display: "flex",
+  },
+
+  svg: {
+    color: "$purple100",
+  },
+
+  p: {
+   
+    div: {
+      color: "$gray400",
+      marginTop: 4,
+    },
+    span: {
+      fontWeight: "bold",
+      
+    },
+  },
+});
+
+
+export const Review = styled('div', {
+   marginTop: 24,
+   color: '$gray300',
+   fontSize: 16,
+})
