@@ -41,6 +41,11 @@ export const DialogClose = styled(Dialog.Close, {
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
+transform: '0.2s',
+  '&:hover' : {
+    color: "$gray300",
+    cursor: 'pointer'
+  }
 });
 
 export const BookDetailsWrapper = styled("div", {

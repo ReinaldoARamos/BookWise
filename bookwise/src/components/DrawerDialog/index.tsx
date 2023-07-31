@@ -19,6 +19,7 @@ import {
 import { Star, X } from "phosphor-react";
 import { api } from "@/lib/axios";
 import { BookmarkSimple, BookOpen } from "phosphor-react";
+import { relativeDateFormatter } from "@/utils/dayformatter";
 interface DrawerDialogProps {
   children: ReactNode;
   bookId: string | null;
@@ -48,13 +49,12 @@ interface DialogProps {
   ratings: [
     rating: {
       id: string;
-      users: {
-        user: {
-          id: string;
-          name: string;
-          avatar_url: string;
-          created_at: string;
-        };
+      description: string;
+      created_at: string;
+      user: {
+        id: string;
+        name: string;
+        avatar_url: string;
       };
     }
   ];
@@ -193,7 +193,11 @@ export function DrawerDialog({ children, bookId }: DrawerDialogProps) {
                         <Star size={20} weight="fill" />
                         <Star size={20} />
                       </div>
-                      <span>{RatingNumber} avaliações</span>
+                      {RatingNumber == 1 ? (
+                        <span>{RatingNumber} avaliação</span>
+                      ) : (
+                        <span>{RatingNumber} avaliações</span>
+                      )}
                     </p>
                   </BookContent>
                 </BookDetailsContainer>
@@ -218,58 +222,29 @@ export function DrawerDialog({ children, bookId }: DrawerDialogProps) {
                 <div>Avaliações</div>
                 <button>Avaliar</button>
               </RatingHeader>
-              <Ratings>
-                <UserRatingHeader>
-                  <div>
-                    <img
-                      src="https://preview.redd.it/neaijti7dns91.png?width=921&format=png&auto=webp&s=f172c0f39bdb89e497786744b06e3567f92d437f"
-                      width={40}
-                      height={40}
-                    />
-                    <p>
-                      <span>Reinaldo Ramos</span>
-                      <div>Há 2 dias</div>
-                    </p>
-                  </div>
-                  <p>
-                    <Star size={20} weight="fill" />
-                    <Star size={20} weight="fill" />
-                    <Star size={20} weight="fill" />
-                    <Star size={20} weight="fill" />
-                    <Star size={20} />
-                  </p>
-                </UserRatingHeader>
 
-                <Review>
-                  aaaaaaaaaaaa
-                </Review>
-              </Ratings>
-              <Ratings>
-                <UserRatingHeader>
-                  <div>
-                    <img
-                      src="https://preview.redd.it/neaijti7dns91.png?width=921&format=png&auto=webp&s=f172c0f39bdb89e497786744b06e3567f92d437f"
-                      width={40}
-                      height={40}
-                    />
+              {BookDrawer?.ratings.map((item) => (
+                <Ratings>
+                  <UserRatingHeader>
+                    <div>
+                      <img src={item.user.avatar_url} width={40} height={40} />
+                      <p>
+                        <span>{item.user.name}</span>
+                        <div>{relativeDateFormatter(item.created_at)}</div>
+                      </p>
+                    </div>
                     <p>
-                      <span>Reinaldo Ramos</span>
-                      <div>Há 2 dias</div>
+                      <Star size={20} weight="fill" />
+                      <Star size={20} weight="fill" />
+                      <Star size={20} weight="fill" />
+                      <Star size={20} weight="fill" />
+                      <Star size={20} />
                     </p>
-                  </div>
-                  <p>
-                    <Star size={20} weight="fill" />
-                    <Star size={20} weight="fill" />
-                    <Star size={20} weight="fill" />
-                    <Star size={20} weight="fill" />
-                    <Star size={20} />
-                  </p>
-                </UserRatingHeader>
+                  </UserRatingHeader>
 
-                <Review>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo perspiciatis nesciunt tempore magnam quos similique minima ut ratione, necessitatibus fugit numquam, provident velit dolorum ipsam cum. Minus recusandae voluptas sit?
-                </Review>
-              </Ratings>
+                  <Review>{item.description}</Review>
+                </Ratings>
+              ))}
             </div>
           )}
         </DialogContent>
@@ -277,3 +252,28 @@ export function DrawerDialog({ children, bookId }: DrawerDialogProps) {
     </Dialog.Root>
   );
 }
+
+/*
+ <UserRatingHeader>
+                  <div>
+                    <img
+                      src="https://preview.redd.it/neaijti7dns91.png?width=921&format=png&auto=webp&s=f172c0f39bdb89e497786744b06e3567f92d437f"
+                      width={40}
+                      height={40}
+                    />
+                    <p>
+                      <span>Reinaldo Ramos</span>
+                      <div>Há 2 dias</div>
+                    </p>
+                  </div>
+                  <p>
+                    <Star size={20} weight="fill" />
+                    <Star size={20} weight="fill" />
+                    <Star size={20} weight="fill" />
+                    <Star size={20} weight="fill" />
+                    <Star size={20} />
+                  </p>
+                </UserRatingHeader>
+
+                <Review>aaaaaaaaaaaa</Review>
+* */

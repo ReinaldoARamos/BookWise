@@ -2,8 +2,8 @@ import { styled } from "../../../stiches.config";
 
 export const ExplorerContainer = styled("section", {
   display: "flex",
-  flexDirection: "column", 
- width: '100%',
+  flexDirection: "column",
+  width: '100%',
   height: '100%',
   marginLeft: 64
 });
@@ -78,10 +78,10 @@ export const HeaderContainer = styled("header", {
 
 
 export const BookListContainer = styled('div', {
-  display : 'grid',
+  display: 'grid',
   gridTemplateColumns: '1fr 1fr 1fr',
   gap: '1rem',
- 
+
 })
 
 
@@ -96,25 +96,29 @@ export const BookListCardContainer = styled("div", {
   display: 'flex',
 
   section: {
-   
+
     fontFamily: '$default',
     color: '$gray100',
     fontWeight: "$bold",
-    
+
     fontSize: '$md',
-  div: {
-    marginTop: "0.2rem",
-    fontFamily: '$default',
-    color: '$gray400',
-    fontSize: '$xs',
-}
-   
+    div: {
+      marginTop: "0.2rem",
+      fontFamily: '$default',
+      color: '$gray400',
+      fontSize: '$xs',
+    },
+
+
   },
+  '&:hover': {
+    cursor: 'pointer',
+  }
 
 })
 
 export const BookListCardContent = styled('div', {
-  display:'flex',
+  display: 'flex',
   flexDirection: 'column',
   justifyContent: 'space-between',
   width: '100%',
@@ -124,7 +128,12 @@ export const BookListCardContent = styled('div', {
     svg: {
       color: '$purple100'
     }
-  }
+  },
+
+
+
+
+
 })
 
 
@@ -149,10 +158,10 @@ export const TagContainer = styled("p", {
 });
 
 export const GeneralTabButton = styled("button", {
-    
+
   backgroundColor: "transparent",
   width: '100%',
-  maxWidth:'7rem',
+  maxWidth: '7rem',
   height: '2rem',
   border: "1px solid $purple100",
   color: "$purple100",
@@ -160,7 +169,7 @@ export const GeneralTabButton = styled("button", {
   variants: {
     active: {
       ButtonActive: {
-      
+
       },
     },
   },
