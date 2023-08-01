@@ -190,6 +190,7 @@ export const UserRatingHeader = styled("div", {
   justifyContent: "space-between",
   width: "100%",
   fontFamily: "$default",
+
   img: {
     borderRadius: "$full",
     marginRight: 12,
@@ -243,6 +244,7 @@ export const ReviewTextArea = styled("div", {
   div: {
     display: "flex",
     alignItems: "center",
+    fontWeight: "bold",
     img: {
       borderRadius: "$full",
       marginRight: 8,
@@ -285,7 +287,7 @@ export const ReviewTextArea = styled("div", {
       alignItems: "center",
       backgroundColor: "$gray600",
       border: "none",
-      transition: '0.2s',
+      transition: "0.2s",
       svg: {
         color: "$purple100",
       },
