@@ -40,8 +40,12 @@ export function buildNextAuthOptions(
     ],
 
     callbacks: {
-      async signIn({ account }) {
-        return true;
+      async redirect({ url, baseUrl }) {
+        // Allows relative callback URLs
+        if (url.startsWith("/")) return `${baseUrl}home`
+        // Allows callback URLs on the same origin
+        else if (new URL(url).origin === baseUrl) return url
+        return baseUrl
       },
 
       async session({ session, user}) {

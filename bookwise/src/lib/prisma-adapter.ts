@@ -9,16 +9,9 @@ export default function PrismaAdapter(
 ): Adapter {
   return {
     async createUser(user) {
-      const { "@BookWise:userId": userIdOnCookies } = parseCookies({ req });
-
-      if (!userIdOnCookies) {
-        throw new Error("user ID not found on cookies");
-      }
-
-      const prismaUser = await prisma.user.update({
-        where: {
-          id: userIdOnCookies,
-        },
+      
+      const prismaUser = await prisma.user.create({
+       
         data: {
           name: user.name,
           avatar_url: user.avatar_url,

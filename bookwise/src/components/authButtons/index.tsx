@@ -10,12 +10,14 @@ import GitHubLogo from "../../../public/images/akar-icons_github-fill.png";
 import VisitorLogo from "../../../public/images/RocketLaunch.png";
 import { useRouter } from "next/router";
 import { signIn } from "next-auth/react";
+import next from "next/types";
 
 export function AuthButtons() {
   const router = useRouter();
   
   function handleLoginWithGoogle() {
     signIn('google')
+
   }
   return (
     <ButtonContainer >
