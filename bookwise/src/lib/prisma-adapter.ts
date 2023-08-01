@@ -22,7 +22,7 @@ export default function PrismaAdapter(
         data: {
           name: user.name,
           avatar_url: user.avatar_url,
-            
+          email: user.email  
 
         },
       });
@@ -55,7 +55,6 @@ export default function PrismaAdapter(
         name: user.name,
         avatar_url: user?.avatar_url!,
         email: user.email!,
-        username: user?.username,
         emailVerified: null,
       };
     },
@@ -74,12 +73,12 @@ export default function PrismaAdapter(
         name: user.name,
         avatar_url: user?.avatar_url!,
         email: user.email!,
-        username: user?.username,
+       
         emailVerified: null,
       };
     },
     async getUserByAccount({ providerAccountId, provider }) {
-      const account = await prisma.accounts.findUnique({
+      const account = await prisma.account.findUnique({
         where: {
           provider_provider_account_id: {
             provider,
@@ -102,7 +101,6 @@ export default function PrismaAdapter(
         name: user.name,
         avatar_url: user?.avatar_url!,
         email: user.email!,
-        username: user?.username,
         emailVerified: null,
       };
     },
@@ -122,13 +120,12 @@ export default function PrismaAdapter(
         name: prismaUser.name,
         avatar_url: prismaUser?.avatar_url!,
         email: prismaUser.email!,
-        username: prismaUser?.username,
         emailVerified: null,
       };
     },
 
     async linkAccount(account) {
-      await prisma.accounts.create({
+      await prisma.account.create({
         data: {
           user_id: account.userId,
           type: account.type,
@@ -186,7 +183,6 @@ export default function PrismaAdapter(
           name: user.name,
           avatar_url: user?.avatar_url!,
           email: user.email!,
-          username: user?.username,
           emailVerified: null,
         },
       };
