@@ -9,7 +9,7 @@ export default function PrismaAdapter(
 ): Adapter {
   return {
     async createUser(user) {
-      const { "@ignitecall:userId": userIdOnCookies } = parseCookies({ req });
+      const { "@BookWise:userId": userIdOnCookies } = parseCookies({ req });
 
       if (!userIdOnCookies) {
         throw new Error("user ID not found on cookies");

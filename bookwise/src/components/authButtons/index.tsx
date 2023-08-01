@@ -9,16 +9,17 @@ import GoogleLogo from "../../../public/images/logos_google-icon.png";
 import GitHubLogo from "../../../public/images/akar-icons_github-fill.png";
 import VisitorLogo from "../../../public/images/RocketLaunch.png";
 import { useRouter } from "next/router";
+import { signIn } from "next-auth/react";
 
 export function AuthButtons() {
   const router = useRouter();
   
-function HandleNextPage() {
-    router.push('/home')
+  function handleLoginWithGoogle() {
+    signIn('google')
   }
   return (
-    <ButtonContainer onClick={HandleNextPage}>
-      <GoogleButton  >
+    <ButtonContainer >
+      <GoogleButton onClick={() => {handleLoginWithGoogle()}} >
         <section>
           <Image src={GoogleLogo} alt="" />
           Entrar com Google
