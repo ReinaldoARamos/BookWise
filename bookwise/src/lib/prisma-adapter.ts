@@ -22,7 +22,7 @@ export default function PrismaAdapter(
         data: {
           name: user.name,
           avatar_url: user.avatar_url,
-         
+            
 
         },
       });
