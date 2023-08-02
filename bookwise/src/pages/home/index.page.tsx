@@ -1,9 +1,8 @@
 import { NextSeo } from "next-seo";
-
 import { HomeContainer } from "./style";
-import { LatestRatedBooks } from "./components/LatestRatedBooks";
+import { LatestRatedBooks } from "@/components/LatestRatedBooks";
+import { PopularBook } from "@/components/PopularBooks";
 
-import { PopularBook } from "./components/PopularBooks";
 
 export default function Home() {
   return (

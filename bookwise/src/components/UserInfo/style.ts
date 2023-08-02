@@ -1,4 +1,4 @@
-import { styled } from "../../../../../stiches.config"
+import { styled } from "../../../stiches.config";
 export const UserInfoContainer = styled("div", {
   display: "flex",
   

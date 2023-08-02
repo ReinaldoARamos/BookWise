@@ -42,7 +42,7 @@ export function SideBar({isSingIn} : SideBarProps) {
   
   return (
    <>
-   {routerName === "/" ? <></> :
+   {routerName === "/login" ? <></> :
    <SideBarContainer>
 
    <SideBarSection>

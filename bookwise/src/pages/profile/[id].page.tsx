@@ -5,13 +5,15 @@ import {
   ProfileContainer,
   UserReviewCardContainer,
 } from "./style";
-import { UserInfo } from "./components/UserInfo";
+
 import { useState, useEffect } from "react";
 import { api } from "@/lib/axios";
 import { useRouter } from "next/router";
 import { NextSeo } from "next-seo";
-import { ProfileHeader } from "./components/ProfileHeader";
-import { UserRatedBooks } from "./components/UserRatedBooks";
+import { ProfileHeader } from "@/components/ProfileHeader";
+import { UserRatedBooks } from "@/components/UserRatedBooks";
+import { UserInfo } from "@/components/UserInfo";
+
 
 export interface ProfileProps {
   id: string;

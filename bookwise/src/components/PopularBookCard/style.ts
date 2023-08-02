@@ -1,4 +1,4 @@
-import { styled } from "../../../../../stiches.config";
+import { styled } from "../../../stiches.config";
 export const PopularBookContainer = styled("div", {
   width: "20.25rem",
   height: "8.125rem",
