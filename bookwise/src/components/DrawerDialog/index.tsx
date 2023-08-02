@@ -22,6 +22,7 @@ import { api } from "@/lib/axios";
 import { BookmarkSimple, BookOpen } from "phosphor-react";
 import { relativeDateFormatter } from "@/utils/dayformatter";
 import { AuthDialog } from "../AuthDialog";
+import { useSession } from "next-auth/react";
 interface DrawerDialogProps {
   children: ReactNode;
   bookId: string | null;
@@ -67,7 +68,7 @@ export function DrawerDialog({ children, bookId }: DrawerDialogProps) {
   const [open, setOpen] = useState(false);
   const [Loading, setLoading] = useState<boolean>();
   const [openRating, setOpenRating] = useState<boolean>(false);
-  const isSingIn = true;
+  const {data : session} = useSession();
   async function fetchData() {
     const response = await api.get(`books/${bookId}`);
 
@@ -227,7 +228,7 @@ export function DrawerDialog({ children, bookId }: DrawerDialogProps) {
               </BookDetailsWrapper>
               <RatingHeader>
                 <div>Avaliações</div>
-                {isSingIn ? <button onClick={() => {setOpenRating(true)}}>Avaliar</button> : <AuthDialog><button>Avaliar</button></AuthDialog>}
+                {session ? <button onClick={() => {setOpenRating(true)}}>Avaliar</button> : <AuthDialog><button>Avaliar</button></AuthDialog>}
               </RatingHeader>
               {openRating ? (
                 <ReviewTextArea>
@@ -236,9 +237,9 @@ export function DrawerDialog({ children, bookId }: DrawerDialogProps) {
                       <img
                         width={40}
                         height={40}
-                        src="https://preview.redd.it/neaijti7dns91.png?width=921&format=png&auto=webp&s=f172c0f39bdb89e497786744b06e3567f92d437f"
+                        src={session?.user.avatar_url}
                       />
-                      <span>Reinaldo Ramos</span>
+                      <span>{session?.user.name}</span>
                     </div>
                     <p>
                       <div>
