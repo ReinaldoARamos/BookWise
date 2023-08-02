@@ -57,7 +57,9 @@ export function AuthDialog({ children }: AuthDialogProps) {
                   Entrar com Google
                 </section>
               </GoogleButton>
-              <GitHubButton>
+              <GitHubButton  onClick={() => {
+                  handleSignIn("github");
+                }}>
                 <section>
                   <Image src={GitHubLogo} alt="" />
                   Entrar com GitHub
