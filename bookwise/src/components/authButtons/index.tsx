@@ -43,13 +43,21 @@ export function AuthButtons({ callbackUrl = "/" }: AuthButtonsProps) {
           Entrar com Google
         </section>
       </GoogleButton>
-      <GitHubButton>
+      <GitHubButton
+        onClick={() => {
+          handleSignIn("github");
+        }}
+      >
         <section>
           <Image src={GitHubLogo} alt="" />
           Entrar com GitHub
         </section>
       </GitHubButton>
-      <VisitorButton>
+      <VisitorButton
+        onClick={() => {
+          handleSignIn("");
+        }}
+      >
         <section>
           <Image src={VisitorLogo} alt="" />
           Entrar como visitante

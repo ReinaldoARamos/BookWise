@@ -7,7 +7,7 @@ export const SideBarContainer = styled("div", {
 
 export const Teste = styled("div", {
   display: "none",
-}) 
+});
 export const SideBarSection = styled("div", {
   width: "14.5rem",
   height: "100%",
@@ -86,12 +86,11 @@ export const LoginButton = styled(GeneralButtonHomeStyle, {
   fontWeight: "bold",
   ":hover": {
     cursor: "pointer",
-
-    color: "$gray100",
-
     svg: {
-      color: "$green100",
+    
+      color: "$gray100",
     },
+    color: "$gray100",
   },
   div: {
     display: "flex",
@@ -108,52 +107,58 @@ export const LoginButton = styled(GeneralButtonHomeStyle, {
 
 export const SingUpButton = styled(GeneralButtonHomeStyle, {
   width: "100%",
-   alignItems: "center",
-   justifyContent: 'center',
-   paddingLeft: '3rem',
   fontWeight: "bold",
-
+  ":hover": {
+    cursor: "pointer",
+    svg: {
+    
+      color: "DarkRed",
+    },
+    color: "$gray100",
+  },
+  div: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    color: "$gray400",
+    width: "100%",
+    svg: {
+      marginLeft: "$4",
+      color: "red",
+    },
+  },
   ".Avatar": {
     width: 32,
     height: 32,
     borderRadius: "$full",
     border: "2px solid $green100",
     marginRight: 12,
-  },
-
-  div: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    color: "$gray400",
-    width: 292,
-   paddingRight: 150,
-    
-    svg: {
-      marginLeft: "$4",
-      color: "red",
-    },
-  },
-
-  ":hover": {
-    cursor: "pointer",
-
-    color: "$gray100",
-
-    svg: {
-      color: "DarkRed",
-    },
-  },
+  }
 });
 
 export const ProfileButton = styled(GeneralButtonHomeStyle, {});
 
+export const LoginOrSingInContainer = styled("div", {
+ 
+  width: "100%",
+});
+
 /*
-  '.Avatar': {
-    width: 32,
-    height: 32,
-    borderRadius: "$full",
-    border: '2px solid $green100',
-    marginRight: 12,
+  {IsSingIn ? 
+     <SingUpButton>
+       
+       <div> 
+       <Image src={AvatarExample} alt="" width={32} height={32} className="Avatar" />
+           Reinaldo  <SignIn size={24} />
+       </div>
+     </SingUpButton> : 
+      <LoginButton>
+       <div>
+         Fazer Login <SignIn size={24} />
+       </div>
+     </LoginButton>}
+
+
+     
   
-  },* */
+* */
