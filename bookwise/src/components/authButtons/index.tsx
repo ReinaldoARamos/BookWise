@@ -35,7 +35,7 @@ export function AuthButtons({ callbackUrl = "/" }: AuthButtonsProps) {
     <ButtonContainer>
       <GoogleButton
         onClick={() => {
-          handleSignIn("google");
+          handleSignIn('google');
         }}
       >
         <section>

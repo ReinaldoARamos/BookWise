@@ -16,18 +16,21 @@ import {
 import { ChartLineUp, Binoculars, SignIn, User } from "phosphor-react";
 import { useRouter } from "next/router";
 import AvatarExample from '../../../public/Shikabane.png'
+import { useSession } from "next-auth/react";
 
-interface SideBarProps {
-  isSingIn?: boolean
-}
+
 export function SideBar() {
 
-  const IsSingIn = true
+  const { data: session } = useSession()
+
   const router = useRouter();
-  
+
 
   function SendToStart() {
     router.push("/home");
+  }
+  function sendToLogin() {
+    router.push("/login");
   }
 
   function SendToExplorer() {
@@ -35,65 +38,65 @@ export function SideBar() {
   }
 
   function SendToProfile() {
-    router.push(`/profile/1aa75906-6076-40f7-ab44-e243074830c9`);
+    router.push(`/profile/${session?.user.id}`);
   }
- 
-  var  routerName : string = router.pathname
+
+  var routerName: string = router.pathname
   console.log(routerName)
-  
+
   return (
-   <>
-   {routerName === "/login" ? <></> :
-   <SideBarContainer>
+    <>
+      {routerName === "/login" ? <></> :
+        <SideBarContainer>
 
-   <SideBarSection>
+          <SideBarSection>
 
-     <Image src={BookWiseLogo} alt="" width={128} height={32} className="Logo" />
-     <SideBarItems>
-      
-       <HomeButton onClick={SendToStart}>
-         <section>
-           <ChartLineUp size={24} />
-           Início {"  "}
-         </section>
-       </HomeButton>
-       <ExploreButton onClick={SendToExplorer}>
-         <section>
-           <Binoculars size={26} />
-           Explorar
-         </section>
-       </ExploreButton>
-       <ProfileButton onClick={SendToProfile} >
-         <section>
-           <User size={26} />
-           Perfil
-         </section>
+            <Image src={BookWiseLogo} alt="" width={128} height={32} className="Logo" />
+            <SideBarItems>
 
-       </ProfileButton>
-     
-     </SideBarItems>
-   
-<LoginOrSingInContainer>
-{IsSingIn ? 
-     <SingUpButton>
-       
-       <div> 
-       <Image src={AvatarExample} alt="" width={32} height={32} className="Avatar" />
-           Reinaldo  <SignIn size={24} />
-       </div>
-     </SingUpButton> : 
-      <LoginButton>
-       <div>
-         Fazer Login <SignIn size={24} />
-       </div>
-     </LoginButton>}
-</LoginOrSingInContainer>
+              <HomeButton onClick={SendToStart}>
+                <section>
+                  <ChartLineUp size={24} />
+                  Início {"  "}
+                </section>
+              </HomeButton>
+              <ExploreButton onClick={SendToExplorer}>
+                <section>
+                  <Binoculars size={26} />
+                  Explorar
+                </section>
+              </ExploreButton>
+              <ProfileButton onClick={SendToProfile} >
+                <section>
+                  <User size={26} />
+                  Perfil
+                </section>
 
-   </SideBarSection>
- </SideBarContainer>
-   } 
-   </>
+              </ProfileButton>
 
-  
+            </SideBarItems>
+
+            <LoginOrSingInContainer>
+              {session ?
+                <SingUpButton>
+
+                  <div>
+                    <Image src={session.user.avatar_url} alt="" width={32} height={32} className="Avatar" />
+                    {session.user.name}  <SignIn size={24} />
+                  </div>
+                </SingUpButton> :
+                <LoginButton onClick={sendToLogin}>
+                  <div>
+                    Fazer Login <SignIn size={24} />
+                  </div>
+                </LoginButton>}
+            </LoginOrSingInContainer>
+
+          </SideBarSection>
+        </SideBarContainer>
+      }
+    </>
+
+
   );
 }
