@@ -6,23 +6,16 @@ import {
   SideBarItems,
   ExploreButton,
   HomeButton,
-  LoginButton,
   ProfileButton,
-  SingUpButton,
-  Teste,
   LoginOrSingInContainer,
+  LogoutDiv,
 } from "./style";
-import { ChartLineUp, Binoculars, SignIn, User } from "phosphor-react";
+import { ChartLineUp, Binoculars, User, SignIn } from "phosphor-react";
 import { useRouter } from "next/router";
-import AvatarExample from "../../../public/Shikabane.png";
 import { signOut, useSession } from "next-auth/react";
 
 export function SideBar() {
   const { data: session } = useSession();
-  const handleSignOut = () => {
-    // Call the signOut function to end the session
-    signOut();
-  };
 
   const router = useRouter();
 
@@ -84,25 +77,22 @@ export function SideBar() {
             </SideBarItems>
 
             <LoginOrSingInContainer>
-              {session ? (
-                <SingUpButton onClick={handleSignOut}>
-                  <div>
-                    <Image
-                      src={session.user.avatar_url}
-                      alt=""
-                      width={32}
-                      height={32}
-                      className="Avatar"
-                    />
-                    {session.user.name} <SignIn size={24} />
-                  </div>
-                </SingUpButton>
+              {!session ? (
+                <div onClick={sendToLogin}>
+                  Fazer Login <SignIn size={24} />
+                </div>
               ) : (
-                <LoginButton onClick={sendToLogin}>
-                  <div>
-                    Fazer Login <SignIn size={24} />
-                  </div>
-                </LoginButton>
+                <LogoutDiv>
+                  <img src={session.user.avatar_url} className="Avatar"></img>
+                  {session.user.name}
+                  <SignIn
+                    className="Logout"
+                    size={24}
+                    onClick={() => {
+                      signOut();
+                    }}
+                  />
+                </LogoutDiv>
               )}
             </LoginOrSingInContainer>
           </SideBarSection>
