@@ -89,7 +89,7 @@ export const LoginOrSingInContainer = styled("div", {
   justifyContent: "center",
   alignItems: "center",
   fontFamily: "$default",
-  color: "$gray100",
+  color: "$gray200",
   transition: "0.2s",
 
   div: {
@@ -97,13 +97,16 @@ export const LoginOrSingInContainer = styled("div", {
     alignItems: "center",
     gap: 12,
     "&:hover": {
+      cursor: "pointer",
+      color: "$gray100",
+
       svg: {
-        cursor: "pointer",
-        color: "$gray200",
+        color: "$gray100",
       },
     },
     svg: {
       color: "$green100",
+      transition: "0.2s",
     },
   },
 });
@@ -121,31 +124,11 @@ export const LogoutDiv = styled("span", {
   },
 
   svg: {
-    color: 'red',
-    transition: '0.2s',
-    "&:hover": {
-      
-        cursor: "pointer",
-        color: "DarkRed",
-      
-    }
-  },
-
-  
-});
-/*
-  ".Avatar": {
-    width: 32,
-    height: 32,
-    borderRadius: "$full",
-    border: "2px solid $green100",
-  },
-
-  ".Logout": {
     color: "red",
-    transition: '0.2s',
-    '&:hover': {
-        color: 'DarkRed'
-    }
+    transition: "0.2s",
+    "&:hover": {
+      cursor: "pointer",
+      color: "DarkRed",
+    },
   },
-* */
+});
