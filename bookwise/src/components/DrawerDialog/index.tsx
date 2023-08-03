@@ -23,7 +23,8 @@ import { BookmarkSimple, BookOpen } from "phosphor-react";
 import { relativeDateFormatter } from "@/utils/dayformatter";
 import { AuthDialog } from "../AuthDialog";
 import { useSession } from "next-auth/react";
-import { IconArray, /*RatingStars*/ } from "../RatingStars";
+import { IconArray /*RatingStars*/ } from "../RatingStars";
+import { RatedStars } from "../RatedStars";
 interface DrawerDialogProps {
   children: ReactNode;
   bookId: string | null;
@@ -55,6 +56,7 @@ interface DialogProps {
       id: string;
       description: string;
       created_at: string;
+      rate: number;
       user: {
         id: string;
         name: string;
@@ -254,7 +256,7 @@ export function DrawerDialog({ children, bookId }: DrawerDialogProps) {
                       />
                       <span>{session?.user.name}</span>
                     </div>
-                   <IconArray size={5}/>
+                    <IconArray size={5} />
                   </div>
 
                   <textarea placeholder="Escreva sua avaliação" />
@@ -283,11 +285,7 @@ export function DrawerDialog({ children, bookId }: DrawerDialogProps) {
                       </p>
                     </div>
                     <p>
-                      <Star size={20} weight="fill" />
-                      <Star size={20} weight="fill" />
-                      <Star size={20} weight="fill" />
-                      <Star size={20} weight="fill" />
-                      <Star size={20} />
+                      <RatedStars size={5} fillNumber={item.rate} />
                     </p>
                   </UserRatingHeader>
 

@@ -10,10 +10,9 @@ import Image from "next/image";
 import { api } from "@/lib/axios";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
-
-import { ProfileProps } from "../../[id].page";
 import { relativeDateFormatter } from "@/utils/dayformatter";
 import { ProfileHeader } from "../ProfileHeader";
+import { RatedStars } from "../RatedStars";
 
 export interface UserReviewCardPRops {
   id: string;
@@ -28,19 +27,21 @@ export interface UserReviewCardPRops {
         name: string;
         author: string;
         cover_url: string;
+        rate: number;
         total_pages: number;
         created_at: string;
-        summary: string
+        summary: string;
+        description: string;
       };
+      rate: number;
     }
   ];
 }
 
-
 export function UserRatedBooks() {
   const { query } = useRouter();
   const [data, setData] = useState<UserReviewCardPRops>();
-  const format = relativeDateFormatter
+  const format = relativeDateFormatter;
   const fetchData = async () => {
     try {
       // Build the API endpoint URL with the query parameter from the URL
@@ -60,37 +61,32 @@ export function UserRatedBooks() {
     fetchData();
   }, []);
 
- 
-
   return (
     <>
-
       {data?.ratings.map((item) => (
         <>
-  
           <section>{format(item.book.created_at)}</section>
           <UserReviewContainer>
             <UserBookListCardContainer>
-              <Image src={item.book.cover_url} alt="" width={108} height={152} />
+              <Image
+                src={item.book.cover_url}
+                alt=""
+                width={108}
+                height={152}
+              />
               <UserBookListCardContent>
                 <div>
                   {item.book.name}
-                  <p>  {item.book.author}</p>
+                  <p> {item.book.author}</p>
                 </div>
 
                 <p>
-                  <Star size={18} weight="fill" />
-                  <Star size={18} weight="fill" />
-                  <Star size={18} weight="fill" />
-                  <Star size={18} weight="fill" />
-                  <Star size={18} />
+                 <RatedStars size={5} fillNumber ={item.rate}/>
                 </p>
               </UserBookListCardContent>
             </UserBookListCardContainer>
 
-            <div className="ReviewArea">
-            {item.book.summary}
-            </div>
+            <div className="ReviewArea">{item.book.summary}</div>
           </UserReviewContainer>
         </>
       ))}
@@ -99,34 +95,12 @@ export function UserRatedBooks() {
 }
 
 /*
-   <section>Há 2 dias</section>
-    <UserReviewContainer>
-      <UserBookListCardContainer>
-        <Image src={BookExample} alt="" width={108} height={152} />
-        <UserBookListCardContent>
-          <div>
-        asd
-            <p>Aditya Bhargava</p>
-          </div>
 
-          <p>
-            <Star size={18} weight="fill" />
-            <Star size={18} weight="fill" />
-            <Star size={18} weight="fill" />
-            <Star size={18} weight="fill" />
-            <Star size={18} />
-          </p>
-        </UserBookListCardContent>
-      </UserBookListCardContainer>
-
-      <div className="ReviewArea">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis,
-        dolore doloremque nostrum illum, quasi numquam exercitationem quis optio
-        recusandae, odit ducimus minima suscipit porro magnam? Accusamus,
-        tenetur voluptatem? Quos, nam! Lorem ipsum dolor sit amet, consectetur
-        adipisicing elit. Officiis, dolore doloremque nostrum illum, quasi
-        numquam exercitationem quis optio recusandae, odit ducimus minima
-        suscipit porro magnam? Accusamus, tenetur voluptatem? Quos, nam!
-      </div>
-    </UserReviewContainer>
+  <p>
+                  <Star size={18} weight="fill" />
+                  <Star size={18} weight="fill" />
+                  <Star size={18} weight="fill" />
+                  <Star size={18} weight="fill" />
+                  <Star size={18} />
+                </p>
 * */
