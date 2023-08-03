@@ -7,26 +7,40 @@ interface RatingStarsProps {
 }
 
 export const IconArray = ({ size }: RatingStarsProps) => {
- 
-    const [hoverIndex, setHoverIndex] = useState<number>(-1);
-  const iconArray = Array.from({ length: size }, (_, index) => index); 
+  const [hoverIndex, setHoverIndex] = useState<number>(-1);
+  const [Rating, SetRate] = useState<number>(-1);
+  const [clickedIndex, setClickedIndex] = useState<number | null>(null);
+  const iconArray = Array.from({ length: size }, (_, index) => index);
 
   const handleMouseOver = (index: number) => {
     setHoverIndex(index + 1);
   };
-    return (
-      <StarContainer>
-          {iconArray.map((_, index) => (
+
+  const handleClick = (index: number) => {
+    setClickedIndex(index);
+  };
+  return (
+    <StarContainer>
+      {iconArray.map((_, index) => (
         <Star
           key={index}
           size={24}
           onMouseEnter={() => handleMouseOver(index)}
           onMouseLeave={() => handleMouseOver(-1)}
-          weight={(index + 1) <= hoverIndex ? "fill" : "regular"}
-          
+          onClick={() => handleClick(index)}
+          weight={
+            clickedIndex !== null
+              ? index <= clickedIndex
+                ? "fill"
+                : "regular"
+              : index + 1 <= hoverIndex
+              ? "fill"
+              : "regular"
+          }
         />
       ))}
-      </StarContainer>
-    );
-  
+    </StarContainer>
+  );
 };
+
+/** */
