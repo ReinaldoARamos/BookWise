@@ -23,6 +23,7 @@ import { BookmarkSimple, BookOpen } from "phosphor-react";
 import { relativeDateFormatter } from "@/utils/dayformatter";
 import { AuthDialog } from "../AuthDialog";
 import { useSession } from "next-auth/react";
+import { IconArray, /*RatingStars*/ } from "../RatingStars";
 interface DrawerDialogProps {
   children: ReactNode;
   bookId: string | null;
@@ -68,7 +69,7 @@ export function DrawerDialog({ children, bookId }: DrawerDialogProps) {
   const [open, setOpen] = useState(false);
   const [Loading, setLoading] = useState<boolean>();
   const [openRating, setOpenRating] = useState<boolean>(false);
-  const {data : session} = useSession();
+  const { data: session } = useSession();
   async function fetchData() {
     const response = await api.get(`books/${bookId}`);
 
@@ -176,10 +177,10 @@ export function DrawerDialog({ children, bookId }: DrawerDialogProps) {
               </BookDetailsWrapper>
               <RatingHeader>
                 <div>Avaliações</div>
-                
+
                 <AuthDialog>
-                      <div>Avaliar</div>
-                    </AuthDialog>
+                  <div>Avaliar</div>
+                </AuthDialog>
               </RatingHeader>
             </>
           ) : (
@@ -228,7 +229,19 @@ export function DrawerDialog({ children, bookId }: DrawerDialogProps) {
               </BookDetailsWrapper>
               <RatingHeader>
                 <div>Avaliações</div>
-                {session ? <button onClick={() => {setOpenRating(true)}}>Avaliar</button> : <AuthDialog><button>Avaliar</button></AuthDialog>}
+                {session ? (
+                  <button
+                    onClick={() => {
+                      setOpenRating(true);
+                    }}
+                  >
+                    Avaliar
+                  </button>
+                ) : (
+                  <AuthDialog>
+                    <button>Avaliar</button>
+                  </AuthDialog>
+                )}
               </RatingHeader>
               {openRating ? (
                 <ReviewTextArea>
@@ -241,20 +254,18 @@ export function DrawerDialog({ children, bookId }: DrawerDialogProps) {
                       />
                       <span>{session?.user.name}</span>
                     </div>
-                    <p>
-                      <div>
-                        <Star size={20} />
-                        <Star size={20} />
-                        <Star size={20} />
-                        <Star size={20} />
-                        <Star size={20} />
-                      </div>
-                    </p>
+                   <IconArray size={5}/>
                   </div>
 
                   <textarea placeholder="Escreva sua avaliação" />
                   <div className="ButtonsContainer">
-                    <button onClick={() => {setOpenRating(false)}}>{<X size={24} />}</button>
+                    <button
+                      onClick={() => {
+                        setOpenRating(false);
+                      }}
+                    >
+                      {<X size={24} />}
+                    </button>
                     <button>{<Check size={24} />}</button>
                   </div>
                 </ReviewTextArea>

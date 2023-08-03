@@ -234,11 +234,7 @@ export const ReviewTextArea = styled("div", {
     display: "flex",
     justifyContent: "space-between",
     marginBottom: 24,
-    p: {
-      svg: {
-        color: "$purple100",
-      },
-    },
+
   },
 
   div: {

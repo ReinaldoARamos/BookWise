@@ -24,8 +24,10 @@ export default function DOcument() {
       </Head>
       <body>
         <Main />
+
         <NextScript />
       </body>
+      <script src="https://kit.fontawesome.com/dba38b786e.js"></script>
     </Html>
   );
 }
