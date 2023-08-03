@@ -11,15 +11,32 @@ export default async function handle(
 
   const ExplorerBooks = await prisma.book.findMany({
     include: {
+      ratings: {},
       categories: {
-          include: {
-            category: {
-              
-            }
-          }
-      }
-    }
+        include: {
+          category: {},
+        },
+      },
+    },
   });
 
-  return res.json(ExplorerBooks);
+  const booksAvgRating = await prisma.rating.groupBy({
+    by: ["book_id"],
+    _avg: {
+      rate: true,
+    },
+  });
+
+  const booksWithAvgRating = ExplorerBooks.map((book) => {
+    const bookAvgRating = booksAvgRating.find(
+      (avgRating) => avgRating.book_id === book.id
+    );
+    const { ratings, ...bookInfo } = book;
+    return {
+      ...bookInfo,
+      ratings: ratings.length,
+      avgRating: bookAvgRating?._avg.rate,
+    };
+  });
+  return res.json({ books: booksWithAvgRating });
 }

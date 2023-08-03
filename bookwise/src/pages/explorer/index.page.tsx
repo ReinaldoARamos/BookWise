@@ -14,6 +14,8 @@ import { useState, useEffect } from "react";
 
 import Link from "next/link";
 import { DrawerDialog } from "@/components/DrawerDialog";
+import { RatedStars } from "@/components/RatedStars";
+import { set } from "react-hook-form";
 
 interface BookTags {
   id: string;
@@ -22,7 +24,6 @@ interface BookTags {
 
 interface ExplorerProps {
   id: string;
-
   name: string;
   author: string;
   summary: string;
@@ -35,12 +36,15 @@ interface ExplorerProps {
       };
     }
   ];
+
+ 
 }
 
 export default function Explorer() {
   const [bookTags, setBookTags] = useState<BookTags[]>([]);
   const [explorerBooks, setExplorerBooks] = useState<ExplorerProps[]>([]);
   const [currentCategory, setCurrentCategory] = useState<string>("Todos");
+  const [Division, setDivision] = useState<number>();
   const [bookId, setBookId] = useState<string | null>(
     "0440ad7d-230e-4573-b455-84ca38b5d339"
   );
@@ -54,12 +58,18 @@ export default function Explorer() {
   async function fetchData() {
     const responseTag = await api.get("books/category");
     const response = await api.get("books/explorer");
+    const teste = await api.get("books/teste");
     setExplorerBooks(response.data);
     setBookTags(responseTag.data);
   }
+
+
   useEffect(() => {
     fetchData();
   }, []);
+
+  
+
 
   function HandleFilter(name: string) {
     const FilterName = name;
@@ -125,13 +135,7 @@ export default function Explorer() {
                             <div>{item.author}</div>
                           </section>
 
-                          <p>
-                            <Star size={20} weight="fill" />
-                            <Star size={20} weight="fill" />
-                            <Star size={20} weight="fill" />
-                            <Star size={20} weight="fill" />
-                            <Star size={20} />
-                          </p>
+                          <p>aaa</p>
                         </BookListCardContent>
                       </BookListCardContainer>
                     ))
