@@ -38,5 +38,5 @@ export default async function handle(
       avgRating: bookAvgRating?._avg.rate,
     };
   });
-  return res.json({ books: booksWithAvgRating });
+  return res.json( booksWithAvgRating );
 }

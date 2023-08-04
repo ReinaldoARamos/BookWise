@@ -28,7 +28,7 @@ interface ExplorerProps {
   author: string;
   summary: string;
   cover_url: string;
-
+  avgRating: number;
   categories: [
     categorie: {
       category: {
@@ -36,8 +36,6 @@ interface ExplorerProps {
       };
     }
   ];
-
- 
 }
 
 export default function Explorer() {
@@ -63,13 +61,9 @@ export default function Explorer() {
     setBookTags(responseTag.data);
   }
 
-
   useEffect(() => {
     fetchData();
   }, []);
-
-  
-
 
   function HandleFilter(name: string) {
     const FilterName = name;
@@ -135,7 +129,10 @@ export default function Explorer() {
                             <div>{item.author}</div>
                           </section>
 
-                          <p>aaa</p>
+                          <RatedStars
+                            fillNumber={Math.floor(item.avgRating)}
+                            size={5}
+                          />
                         </BookListCardContent>
                       </BookListCardContainer>
                     ))
@@ -161,11 +158,10 @@ export default function Explorer() {
                             </section>
 
                             <p>
-                              <Star size={20} weight="fill" />
-                              <Star size={20} weight="fill" />
-                              <Star size={20} weight="fill" />
-                              <Star size={20} weight="fill" />
-                              <Star size={20} />
+                              <RatedStars
+                                fillNumber={Math.floor(item.avgRating)}
+                                size={5}
+                              />
                             </p>
                           </BookListCardContent>
                         </BookListCardContainer>
