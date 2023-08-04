@@ -73,7 +73,7 @@ interface DialogProps {
 }
 interface RatingStarsProps {
   size: number;
-  rateNumber : number;
+  rateNumber: number;
   //setRating: (rate : number) => void
 }
 /*
@@ -97,20 +97,18 @@ export function DrawerDialog({
   const { data: session } = useSession();
   const [Rating, SetRate] = useState<number>();
   const [hoverIndex, setHoverIndex] = useState<number>(-1);
-  const [clickedIndex, setClickedIndex] = useState<number | null >(null);
+  const [clickedIndex, setClickedIndex] = useState<number | null>(null);
   const iconArray = Array.from({ length: 5 }, (_, index) => index);
-  const [review, setReview] = useState<string>("")
+  const [review, setReview] = useState<string>("");
   const handleClick = (index: number) => {
-    SetRate(index  + 1)
-    setClickedIndex(index );
-    console.log("oi: " +Rating, clickedIndex);
+    SetRate(index + 1);
+    setClickedIndex(index);
   };
 
   const handleMouseOver = (index: number) => {
     setHoverIndex(index + 1);
   };
 
-  
   const {
     register,
     handleSubmit,
@@ -121,17 +119,11 @@ export function DrawerDialog({
     const response = await api.get(`books/${bookId}`);
 
     setBookDrawer(response.data);
-    console.log(
-      BookDrawer?.categories.map((item) =>
-        item.category.name.split(",").join(",")
-      )
-    );
   }
- 
+
   function ClearState() {
     setOpen(false);
     setLoading(false);
-    console.log("estado limpo");
   }
   function Open() {
     setOpen(true);
@@ -139,20 +131,18 @@ export function DrawerDialog({
     setTimeout(() => {
       setLoading(true);
     }, 200);
-
-    console.log("estado limpo");
   }
- 
-function handleCreateReview() {
-  console.log("nota: " + Rating, "Avaliação: " + review)
-}
+
+  function handleCreateReview() {
+    console.log("nota: " + Rating, "Avaliação: " + review);
+  }
   useEffect(() => {
     fetchData();
   }, [bookId, setOpen]);
   const categories = BookDrawer?.categories
     ?.map((item) => item?.category?.name)
     ?.join(", ");
-  
+
   const RatingNumber = BookDrawer?.ratings.length;
   return (
     <Dialog.Root open={open}>
@@ -295,7 +285,7 @@ function handleCreateReview() {
               </RatingHeader>
               {openRating ? (
                 <ReviewTextArea
-                 as="form"
+                  as="form"
                   onSubmit={handleSubmit(handleCreateReview)}
                 >
                   <div className="container">
@@ -326,7 +316,6 @@ function handleCreateReview() {
                               ? "fill"
                               : "regular"
                           }
-                 
                         />
                       ))}
                     </StarContainer>
@@ -335,7 +324,7 @@ function handleCreateReview() {
                   <textarea
                     placeholder="Escreva sua avaliação"
                     onChange={({ target }) => setReview(target.value)}
-                  //  {...register("review")}
+                    //  {...register("review")}
                   />
                   <div className="ButtonsContainer">
                     <button
