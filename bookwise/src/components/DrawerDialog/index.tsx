@@ -144,7 +144,7 @@ export function DrawerDialog({
   }
  
 function handleCreateReview() {
-  console.log("nota: " + Rating, "Avaliação: " + Review)
+  console.log("nota: " + Rating, "Avaliação: " + review)
 }
   useEffect(() => {
     fetchData();
