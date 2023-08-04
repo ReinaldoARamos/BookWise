@@ -33,7 +33,7 @@ import { ratings } from "../../../prisma/constants/ratings";
 interface DrawerDialogProps {
   children: ReactNode;
   bookId: string | null;
-  rating: number | null | undefined;
+  ratingNumber: any;
 }
 
 interface DialogProps {
@@ -80,12 +80,13 @@ const RatingSchema = z.object({
 
 type RatingData = z.infer<typeof RatingSchema>;
 
-export function DrawerDialog({ children, bookId, rating }: DrawerDialogProps) {
+export function DrawerDialog({ children, bookId, ratingNumber }: DrawerDialogProps) {
   const [BookDrawer, setBookDrawer] = useState<DialogProps | null>();
   const [open, setOpen] = useState(false);
   const [Loading, setLoading] = useState<boolean>();
   const [openRating, setOpenRating] = useState<boolean>(false);
   const { data: session } = useSession();
+  const [Rating, SetRate] = useState<number>();
 
 
   const {
@@ -107,6 +108,10 @@ export function DrawerDialog({ children, bookId, rating }: DrawerDialogProps) {
       )
     );
   }
+  const handleIconClick = (index: number) => {
+    SetRate(index);
+    console.log("aaaaaaaa: " + index);
+  };
 
   function ClearState() {
     setOpen(false);
@@ -127,7 +132,7 @@ export function DrawerDialog({ children, bookId, rating }: DrawerDialogProps) {
     //const Rate = data.rate;
     const Review = data.review;
 
-    console.log("análise: " + Review, rating);
+    console.log("análise: " + Review, ratingNumber);
   }
   useEffect(() => {
     fetchData();
@@ -290,7 +295,7 @@ export function DrawerDialog({ children, bookId, rating }: DrawerDialogProps) {
                       />
                       <span>{session?.user.name}</span>
                     </div>
-                    <IconArray size={5}  rates={rating}/>
+                  <IconArray size={5} ratesNumber={() => {handleIconClick(ratingNumber)}}/>
                   </div>
 
                   <textarea
