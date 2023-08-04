@@ -295,3 +295,12 @@ export const ReviewTextArea = styled("form", {
     },
   },
 });
+
+export const StarContainer = styled("p", {
+  svg: {
+    color: "$purple100",
+    "&:hover": {
+      cursor: "pointer",
+    },
+  },
+});

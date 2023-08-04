@@ -16,6 +16,7 @@ import {
   UserRatingHeader,
   Review,
   ReviewTextArea,
+  StarContainer,
 } from "./style";
 import { Check, Star, X } from "phosphor-react";
 import { api } from "@/lib/axios";
@@ -23,7 +24,6 @@ import { BookmarkSimple, BookOpen } from "phosphor-react";
 import { relativeDateFormatter } from "@/utils/dayformatter";
 import { AuthDialog } from "../AuthDialog";
 import { useSession } from "next-auth/react";
-import { IconArray /*RatingStars*/ } from "../RatingStars";
 import { RatedStars } from "../RatedStars";
 import { z } from "zod";
 import { Form, useForm } from "react-hook-form";
@@ -70,24 +70,44 @@ interface DialogProps {
       };
     }
   ];
-} 
-
+}
+interface RatingStarsProps {
+  size: number;
+  ratesNumber: (rate: Number) => void;
+  //setRating: (rate : number) => void
+}
 
 const RatingSchema = z.object({
- // rate: z.number(),
+  // rate: z.number(),
   review: z.string().min(1).max(180),
 });
 
 type RatingData = z.infer<typeof RatingSchema>;
 
-export function DrawerDialog({ children, bookId, ratingNumber }: DrawerDialogProps) {
+export function DrawerDialog({
+  children,
+  bookId,
+  ratingNumber,
+}: DrawerDialogProps) {
   const [BookDrawer, setBookDrawer] = useState<DialogProps | null>();
   const [open, setOpen] = useState(false);
   const [Loading, setLoading] = useState<boolean>();
   const [openRating, setOpenRating] = useState<boolean>(false);
   const { data: session } = useSession();
   const [Rating, SetRate] = useState<number>();
+  const [hoverIndex, setHoverIndex] = useState<number>(-1);
+  const [clickedIndex, setClickedIndex] = useState<number | null>(null);
+  const iconArray = Array.from({ length: 5 }, (_, index) => index);
+  
+  const handleClick = (index: number) => {
+    setClickedIndex(index);
+  };
 
+  const handleMouseOver = (index: number) => {
+    setHoverIndex(index + 1);
+  };
+
+  
 
   const {
     register,
@@ -295,7 +315,28 @@ export function DrawerDialog({ children, bookId, ratingNumber }: DrawerDialogPro
                       />
                       <span>{session?.user.name}</span>
                     </div>
-                  <IconArray size={5} ratesNumber={() => {handleIconClick(ratingNumber)}}/>
+                    <StarContainer>
+                      {iconArray.map((_, index) => (
+                        <Star
+                          key={index}
+                          size={24}
+                          onMouseEnter={() => handleMouseOver(index)}
+                          onMouseLeave={() => handleMouseOver(-1)}
+                          onClick={() => {
+                            handleClick(index);
+                          }}
+                          weight={
+                            clickedIndex !== null
+                              ? index <= clickedIndex
+                                ? "fill"
+                                : "regular"
+                              : index + 1 <= hoverIndex
+                              ? "fill"
+                              : "regular"
+                          }
+                        />
+                      ))}
+                    </StarContainer>
                   </div>
 
                   <textarea
