@@ -73,12 +73,12 @@ interface DialogProps {
 }
 interface RatingStarsProps {
   size: number;
-  ratesNumber: (rate: Number) => void;
+  rateNumber : number;
   //setRating: (rate : number) => void
 }
 
 const RatingSchema = z.object({
-  // rate: z.number(),
+  rate: z.number(),
   review: z.string().min(1).max(180),
 });
 
@@ -96,18 +96,17 @@ export function DrawerDialog({
   const { data: session } = useSession();
   const [Rating, SetRate] = useState<number>();
   const [hoverIndex, setHoverIndex] = useState<number>(-1);
-  const [clickedIndex, setClickedIndex] = useState<number | null>(null);
+  const [clickedIndex, setClickedIndex] = useState<number | null >(null);
   const iconArray = Array.from({ length: 5 }, (_, index) => index);
-  
+
   const handleClick = (index: number) => {
     setClickedIndex(index);
+    console.log(index + 1);
   };
 
   const handleMouseOver = (index: number) => {
     setHoverIndex(index + 1);
   };
-
-  
 
   const {
     register,
@@ -128,11 +127,7 @@ export function DrawerDialog({
       )
     );
   }
-  const handleIconClick = (index: number) => {
-    SetRate(index);
-    console.log("aaaaaaaa: " + index);
-  };
-
+ 
   function ClearState() {
     setOpen(false);
     setLoading(false);
@@ -149,10 +144,10 @@ export function DrawerDialog({
   }
 
   function handleCreateReview(data: RatingData) {
-    //const Rate = data.rate;
+     const Rate = data.rate;
     const Review = data.review;
 
-    console.log("análise: " + Review, ratingNumber);
+    console.log("análise: " + Review,  "nota: " + Rate);
   }
   useEffect(() => {
     fetchData();
@@ -334,6 +329,7 @@ export function DrawerDialog({
                               ? "fill"
                               : "regular"
                           }
+                          {...register("rate", {value: clickedIndex})}
                         />
                       ))}
                     </StarContainer>
