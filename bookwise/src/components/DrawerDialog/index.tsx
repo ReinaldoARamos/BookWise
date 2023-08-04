@@ -76,13 +76,14 @@ interface RatingStarsProps {
   rateNumber : number;
   //setRating: (rate : number) => void
 }
-
+/*
 const RatingSchema = z.object({
   rate: z.number(),
   review: z.string().min(1).max(180),
 });
+*/
 
-type RatingData = z.infer<typeof RatingSchema>;
+//type RatingData = z.infer<typeof RatingSchema>;
 
 export function DrawerDialog({
   children,
@@ -98,24 +99,23 @@ export function DrawerDialog({
   const [hoverIndex, setHoverIndex] = useState<number>(-1);
   const [clickedIndex, setClickedIndex] = useState<number | null >(null);
   const iconArray = Array.from({ length: 5 }, (_, index) => index);
-
+  const [review, setReview] = useState<string>("")
   const handleClick = (index: number) => {
-    setClickedIndex(index);
-    console.log(index + 1);
+    SetRate(index  + 1)
+    setClickedIndex(index );
+    console.log("oi: " +Rating, clickedIndex);
   };
 
   const handleMouseOver = (index: number) => {
     setHoverIndex(index + 1);
   };
 
+  
   const {
     register,
     handleSubmit,
-    setValue,
     formState: { isSubmitting },
-  } = useForm<RatingData>({
-    resolver: zodResolver(RatingSchema),
-  });
+  } = useForm();
 
   async function fetchData() {
     const response = await api.get(`books/${bookId}`);
@@ -142,20 +142,17 @@ export function DrawerDialog({
 
     console.log("estado limpo");
   }
-
-  function handleCreateReview(data: RatingData) {
-     const Rate = data.rate;
-    const Review = data.review;
-
-    console.log("análise: " + Review,  "nota: " + Rate);
-  }
+ 
+function handleCreateReview() {
+  console.log("nota: " + Rating, "Avaliação: " + Review)
+}
   useEffect(() => {
     fetchData();
   }, [bookId, setOpen]);
   const categories = BookDrawer?.categories
     ?.map((item) => item?.category?.name)
     ?.join(", ");
-
+  
   const RatingNumber = BookDrawer?.ratings.length;
   return (
     <Dialog.Root open={open}>
@@ -298,7 +295,7 @@ export function DrawerDialog({
               </RatingHeader>
               {openRating ? (
                 <ReviewTextArea
-                  as="form"
+                 as="form"
                   onSubmit={handleSubmit(handleCreateReview)}
                 >
                   <div className="container">
@@ -329,7 +326,7 @@ export function DrawerDialog({
                               ? "fill"
                               : "regular"
                           }
-                          {...register("rate", {value: clickedIndex})}
+                 
                         />
                       ))}
                     </StarContainer>
@@ -337,7 +334,8 @@ export function DrawerDialog({
 
                   <textarea
                     placeholder="Escreva sua avaliação"
-                    {...register("review")}
+                    onChange={({ target }) => setReview(target.value)}
+                  //  {...register("review")}
                   />
                   <div className="ButtonsContainer">
                     <button
