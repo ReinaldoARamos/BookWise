@@ -221,7 +221,7 @@ export const Review = styled("div", {
   fontFamily: "$default",
 });
 
-export const ReviewTextArea = styled("div", {
+export const ReviewTextArea = styled("form", {
   marginTop: 24,
   padding: 24,
   background: "$gray700",

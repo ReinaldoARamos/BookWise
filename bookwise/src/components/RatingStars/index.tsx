@@ -4,21 +4,27 @@ import { FaRegStar } from "react-icons/fa";
 import { useState } from "react";
 interface RatingStarsProps {
   size: number;
+  rates: number | undefined; 
+  //setRating: (rate : number) => void
 }
 
-export const IconArray = ({ size }: RatingStarsProps) => {
+export const IconArray = ({ size, rates }: RatingStarsProps) => {
   const [hoverIndex, setHoverIndex] = useState<number>(-1);
-  const [Rating, SetRate] = useState<number>(-1);
+  const [Rating, SetRate] = useState<number>();
   const [clickedIndex, setClickedIndex] = useState<number | null>(null);
   const iconArray = Array.from({ length: size }, (_, index) => index);
+
+  const handleClick = (index: number) => {
+    setClickedIndex(index);
+    SetRate(index)
+    rates = Rating
+    console.log(index + 1, rates);
+  };
 
   const handleMouseOver = (index: number) => {
     setHoverIndex(index + 1);
   };
 
-  const handleClick = (index: number) => {
-    setClickedIndex(index);
-  };
   return (
     <StarContainer>
       {iconArray.map((_, index) => (

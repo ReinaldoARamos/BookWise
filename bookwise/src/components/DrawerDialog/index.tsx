@@ -28,10 +28,12 @@ import { RatedStars } from "../RatedStars";
 import { z } from "zod";
 import { Form, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { ratings } from "../../../prisma/constants/ratings";
 
 interface DrawerDialogProps {
   children: ReactNode;
   bookId: string | null;
+  rating: number | null | undefined;
 }
 
 interface DialogProps {
@@ -68,21 +70,23 @@ interface DialogProps {
       };
     }
   ];
-}
+} 
+
 
 const RatingSchema = z.object({
-  rate: z.number(),
+ // rate: z.number(),
   review: z.string().min(1).max(180),
 });
 
 type RatingData = z.infer<typeof RatingSchema>;
 
-export function DrawerDialog({ children, bookId }: DrawerDialogProps) {
+export function DrawerDialog({ children, bookId, rating }: DrawerDialogProps) {
   const [BookDrawer, setBookDrawer] = useState<DialogProps | null>();
   const [open, setOpen] = useState(false);
   const [Loading, setLoading] = useState<boolean>();
   const [openRating, setOpenRating] = useState<boolean>(false);
   const { data: session } = useSession();
+
 
   const {
     register,
@@ -119,6 +123,12 @@ export function DrawerDialog({ children, bookId }: DrawerDialogProps) {
     console.log("estado limpo");
   }
 
+  function handleCreateReview(data: RatingData) {
+    //const Rate = data.rate;
+    const Review = data.review;
+
+    console.log("análise: " + Review, rating);
+  }
   useEffect(() => {
     fetchData();
   }, [bookId, setOpen]);
@@ -267,7 +277,10 @@ export function DrawerDialog({ children, bookId }: DrawerDialogProps) {
                 )}
               </RatingHeader>
               {openRating ? (
-                <ReviewTextArea>
+                <ReviewTextArea
+                  as="form"
+                  onSubmit={handleSubmit(handleCreateReview)}
+                >
                   <div className="container">
                     <div>
                       <img
@@ -277,10 +290,13 @@ export function DrawerDialog({ children, bookId }: DrawerDialogProps) {
                       />
                       <span>{session?.user.name}</span>
                     </div>
-                    <IconArray size={5} />
+                    <IconArray size={5}  rates={rating}/>
                   </div>
 
-                  <textarea placeholder="Escreva sua avaliação" />
+                  <textarea
+                    placeholder="Escreva sua avaliação"
+                    {...register("review")}
+                  />
                   <div className="ButtonsContainer">
                     <button
                       onClick={() => {
@@ -289,7 +305,7 @@ export function DrawerDialog({ children, bookId }: DrawerDialogProps) {
                     >
                       {<X size={24} />}
                     </button>
-                    <button>{<Check size={24} />}</button>
+                    <button type="submit">{<Check size={24} />}</button>
                   </div>
                 </ReviewTextArea>
               ) : (
