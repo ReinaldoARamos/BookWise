@@ -25,6 +25,10 @@ import { AuthDialog } from "../AuthDialog";
 import { useSession } from "next-auth/react";
 import { IconArray /*RatingStars*/ } from "../RatingStars";
 import { RatedStars } from "../RatedStars";
+import { z } from "zod";
+import { Form, useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+
 interface DrawerDialogProps {
   children: ReactNode;
   bookId: string | null;
@@ -66,12 +70,29 @@ interface DialogProps {
   ];
 }
 
+const RatingSchema = z.object({
+  rate: z.number(),
+  review: z.string().min(1).max(180),
+});
+
+type RatingData = z.infer<typeof RatingSchema>;
+
 export function DrawerDialog({ children, bookId }: DrawerDialogProps) {
   const [BookDrawer, setBookDrawer] = useState<DialogProps | null>();
   const [open, setOpen] = useState(false);
   const [Loading, setLoading] = useState<boolean>();
   const [openRating, setOpenRating] = useState<boolean>(false);
   const { data: session } = useSession();
+
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    formState: { isSubmitting },
+  } = useForm<RatingData>({
+    resolver: zodResolver(RatingSchema),
+  });
+
   async function fetchData() {
     const response = await api.get(`books/${bookId}`);
 

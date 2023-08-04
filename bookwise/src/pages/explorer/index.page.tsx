@@ -12,10 +12,8 @@ import { Binoculars, MagnifyingGlass, Star } from "phosphor-react";
 import { api } from "@/lib/axios";
 import { useState, useEffect } from "react";
 
-import Link from "next/link";
 import { DrawerDialog } from "@/components/DrawerDialog";
 import { RatedStars } from "@/components/RatedStars";
-
 
 interface BookTags {
   id: string;
@@ -37,6 +35,7 @@ interface ExplorerProps {
     }
   ];
 }
+
 
 export default function Explorer() {
   const [bookTags, setBookTags] = useState<BookTags[]>([]);
