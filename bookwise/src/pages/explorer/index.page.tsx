@@ -15,7 +15,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { DrawerDialog } from "@/components/DrawerDialog";
 import { RatedStars } from "@/components/RatedStars";
-import { set } from "react-hook-form";
+
 
 interface BookTags {
   id: string;
@@ -125,7 +125,17 @@ export default function Explorer() {
 
                         <BookListCardContent>
                           <section>
-                            {item.name}
+                            {item.name.length > 30 ? (
+                              <section>
+                                {" "}
+                                {item.name.replace(
+                                  item.name.slice(25, 50),
+                                  "..."
+                                )}
+                              </section>
+                            ) : (
+                              <section>{item.name}</section>
+                            )}
                             <div>{item.author}</div>
                           </section>
 
