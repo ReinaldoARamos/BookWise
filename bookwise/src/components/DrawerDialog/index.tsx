@@ -95,7 +95,7 @@ export function DrawerDialog({
   const [Loading, setLoading] = useState<boolean>();
   const [openRating, setOpenRating] = useState<boolean>(false);
   const { data: session } = useSession();
-  const [Rating, SetRate] = useState<number>();
+  const [Rating, SetRate] = useState<number | null>();
   const [hoverIndex, setHoverIndex] = useState<number>(-1);
   const [clickedIndex, setClickedIndex] = useState<number | null>(null);
   const iconArray = Array.from({ length: 5 }, (_, index) => index);
@@ -330,11 +330,14 @@ export function DrawerDialog({
                     <button
                       onClick={() => {
                         setOpenRating(false);
+                        SetRate(null),
+                        setReview("")
+                        setClickedIndex(null)
                       }}
                     >
                       {<X size={24} />}
                     </button>
-                    <button type="submit">{<Check size={24} />}</button>
+                    <button type="submit" disabled={!review || !Rating}>{<Check size={24} />}</button>
                   </div>
                 </ReviewTextArea>
               ) : (

@@ -283,14 +283,23 @@ export const ReviewTextArea = styled("form", {
       alignItems: "center",
       backgroundColor: "$gray600",
       border: "none",
-      transition: "0.2s",
+      transition: "0.6s",
       svg: {
         color: "$purple100",
+        transition: "0.4s",
       },
 
       "&:hover": {
         cursor: "pointer",
-        backgroundColor: "$gray500",
+        svg: {
+          color: '$green100'
+        }
+      },
+      
+      "&:disabled": {
+        cursor: "not-allowed",
+        backgroundColor: "$gray600 ",
+        opacity: '0.5'
       },
     },
   },
