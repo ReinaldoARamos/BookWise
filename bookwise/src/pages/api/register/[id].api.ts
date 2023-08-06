@@ -4,8 +4,10 @@ import { buildNextAuthOptions } from "../auth/[...nextauth].api";
 import { z } from "zod";
 import { prisma } from "@/lib/prisma";
 
-const UpdateProfileBodySchema = z.object({
-  bio: z.string()
+const CreateNewRateSchema = z.object({
+  review: z.string(),
+  Rating: z.number(),
+  
 });
 
 export default async function handler(
@@ -25,18 +27,19 @@ export default async function handler(
   if (!session) {
     return res.status(401).end();
   }
-  const { bio } = UpdateProfileBodySchema.parse(req.body);
-
- 
- await prisma.user.create({
-    where: {
-        id: session.user.id
-    },
+  const book_id = String(req.query.id);
+  const user_id = session.user.id;
+  const { review, Rating } = CreateNewRateSchema.parse(req.body);
+  const created_at =  new Date()
+  await prisma.rating.create({
     data: {
-        ratings:{
-          connect: {id: session.user.id}
-        }
-    }
- })
+      description:  review,
+      rate: Rating,
+      book_id,
+      user_id,
+created_at
+    },
+
+  });
   return res.status(204).end();
 }

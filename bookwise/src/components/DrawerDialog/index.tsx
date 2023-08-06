@@ -100,6 +100,7 @@ export function DrawerDialog({
   const [clickedIndex, setClickedIndex] = useState<number | null>(null);
   const iconArray = Array.from({ length: 5 }, (_, index) => index);
   const [review, setReview] = useState<string>("");
+  const [rateingRefresh, setRatingRefresh] = useState(null);
   const handleClick = (index: number) => {
     SetRate(index + 1);
     setClickedIndex(index);
@@ -133,12 +134,17 @@ export function DrawerDialog({
     }, 200);
   }
 
-  function handleCreateReview() {
-    console.log("nota: " + Rating, "Avaliação: " + review);
+  async function handleCreateReview() {
+
+    const response = await api.post(`register/${bookId}`, {
+       review,
+       Rating
+    });
+    setRatingRefresh(response.data)
   }
   useEffect(() => {
     fetchData();
-  }, [bookId, setOpen]);
+  }, [bookId, setOpen, rateingRefresh]);
   const categories = BookDrawer?.categories
     ?.map((item) => item?.category?.name)
     ?.join(", ");
@@ -158,6 +164,7 @@ export function DrawerDialog({
         <DialogOverlay
           onClick={() => {
             ClearState();
+            setRatingRefresh(null);
           }}
         />
         <DialogContent>
@@ -166,6 +173,7 @@ export function DrawerDialog({
               size={24}
               onClick={() => {
                 ClearState();
+                setRatingRefresh(null)
               }}
             />
           </DialogClose>
