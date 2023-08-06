@@ -19,9 +19,9 @@ export interface UserReviewCardPRops {
   name: string | undefined;
   avatar_url: string | undefined;
   created_at: string;
-  
+
   ratings: [
-    
+
     books: {
       book: {
         id: string;
@@ -30,15 +30,15 @@ export interface UserReviewCardPRops {
         cover_url: string;
         rate: number;
         total_pages: number;
-        created_at: string;
+      
         summary: string;
         description: string;
       };
       rate: number;
+      description: string;
+      created_at: string;
     },
-  
   ];
-  
 }
 
 export function UserRatedBooks() {
@@ -68,7 +68,7 @@ export function UserRatedBooks() {
     <>
       {data?.ratings.map((item) => (
         <>
-          <section>{format(item.book.created_at)}</section>
+          <section>{format(item.created_at)}</section>
           <UserReviewContainer>
             <UserBookListCardContainer>
               <Image
@@ -84,12 +84,12 @@ export function UserRatedBooks() {
                 </div>
 
                 <p>
-                 <RatedStars size={5} fillNumber ={item.rate}/>
+                  <RatedStars size={5} fillNumber={item.rate} />
                 </p>
               </UserBookListCardContent>
             </UserBookListCardContainer>
 
-            <div className="ReviewArea">{item.book.summary}</div>
+            <div className="ReviewArea">{item.description}</div>
           </UserReviewContainer>
         </>
       ))}
