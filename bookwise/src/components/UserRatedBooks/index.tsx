@@ -19,8 +19,9 @@ export interface UserReviewCardPRops {
   name: string | undefined;
   avatar_url: string | undefined;
   created_at: string;
-
+  
   ratings: [
+    
     books: {
       book: {
         id: string;
@@ -34,8 +35,10 @@ export interface UserReviewCardPRops {
         description: string;
       };
       rate: number;
-    }
+    },
+  
   ];
+  
 }
 
 export function UserRatedBooks() {

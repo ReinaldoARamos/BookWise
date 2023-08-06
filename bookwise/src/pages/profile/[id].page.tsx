@@ -22,6 +22,7 @@ export interface ProfileProps {
   created_at: string;
 
   ratings: [
+
     books: {
       book: {
         id: string;
@@ -29,7 +30,6 @@ export interface ProfileProps {
         author: string;
         cover_url: string;
         total_pages: number;
-        created_at: string;
         summary: string;
         categories: [
           categorie: {
@@ -39,9 +39,13 @@ export interface ProfileProps {
           }
         ];
       };
-    }
+     
+    },
+   
   ];
 }
+
+
 export default function Profile() {
   const [isClient, setIsClient] = useState(false);
 
