@@ -33,7 +33,6 @@ import { ratings } from "../../../prisma/constants/ratings";
 interface DrawerDialogProps {
   children?: ReactNode;
   bookId: string | null;
-
 }
 
 interface DialogProps {
@@ -67,7 +66,7 @@ interface DialogProps {
         id: string;
         name: string;
         avatar_url: string;
-        email: string  | undefined;
+        email: string | undefined;
       };
     }
   ];
@@ -75,14 +74,9 @@ interface DialogProps {
 interface RatingStarsProps {
   size: number;
   rateNumber: number;
-
 }
 
-
-export function DrawerDialog({
-  children,
-  bookId
-}: DrawerDialogProps) {
+export function DrawerDialog({ children, bookId }: DrawerDialogProps) {
   const [BookDrawer, setBookDrawer] = useState<DialogProps | null>();
   const [open, setOpen] = useState(false);
   const [Loading, setLoading] = useState<boolean>();
@@ -100,8 +94,6 @@ export function DrawerDialog({
     setClickedIndex(index);
   };
 
-
- 
   const handleMouseOver = (index: number) => {
     setHoverIndex(index + 1);
   };
@@ -117,8 +109,10 @@ export function DrawerDialog({
 
     setBookDrawer(response.data);
   }
-  const IsAlreadyRated = BookDrawer?.ratings.map((item) => (item.user.email)).includes(session?.user.email)
-  console.log("o cara ja deu nota?: " + IsAlreadyRated)
+  const IsAlreadyRated = BookDrawer?.ratings
+    .map((item) => item.user.email)
+    .includes(session?.user.email);
+  console.log("o cara ja deu nota?: " + IsAlreadyRated);
 
   function ClearState() {
     setOpen(false);
@@ -126,21 +120,18 @@ export function DrawerDialog({
   }
   function Open() {
     setOpen(true);
-   
-    
+
     setTimeout(() => {
       setLoading(true);
     }, 200);
   }
 
-  
   async function handleCreateReview() {
-
     const response = await api.post(`register/${bookId}`, {
-       review,
-       Rating
+      review,
+      Rating,
     });
-    setRatingRefresh(response.data)
+    setRatingRefresh(response.data);
   }
   useEffect(() => {
     fetchData();
@@ -173,7 +164,7 @@ export function DrawerDialog({
               size={24}
               onClick={() => {
                 ClearState();
-                setRatingRefresh(null)
+                setRatingRefresh(null);
               }}
             />
           </DialogClose>
@@ -277,7 +268,7 @@ export function DrawerDialog({
               </BookDetailsWrapper>
               <RatingHeader>
                 <div>Avaliações</div>
-                {session   ? (
+                {session && !IsAlreadyRated ? (
                   <button
                     onClick={() => {
                       setOpenRating(true);
@@ -285,10 +276,18 @@ export function DrawerDialog({
                   >
                     Avaliar
                   </button>
+                ) : session && IsAlreadyRated ? (
+                  <button
+                    onClick={() => {
+                      setOpenRating(true);
+                    }}
+                  >
+                    Teste
+                  </button>
                 ) : (
                   <AuthDialog>
-                    <button>Avaliar</button>
-                  </AuthDialog> 
+                    <div>Avaliar</div>
+                  </AuthDialog>
                 )}
               </RatingHeader>
               {openRating ? (
@@ -338,14 +337,15 @@ export function DrawerDialog({
                     <button
                       onClick={() => {
                         setOpenRating(false);
-                        SetRate(null),
-                        setReview("")
-                        setClickedIndex(null)
+                        SetRate(null), setReview("");
+                        setClickedIndex(null);
                       }}
                     >
                       {<X size={24} />}
                     </button>
-                    <button type="submit" disabled={!review || !Rating}>{<Check size={24} />}</button>
+                    <button type="submit" disabled={!review || !Rating}>
+                      {<Check size={24} />}
+                    </button>
                   </div>
                 </ReviewTextArea>
               ) : (
