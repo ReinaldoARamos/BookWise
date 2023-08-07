@@ -21,6 +21,9 @@ export const UserReviewCardContainer = styled('div', {
   marginTop: '2rem',
   fontFamily: '$default',
   wordBreak: 'break-word',
+  fontSize: 14,
+  lineHeight: '160%',
+  color: '$gray300',
   section: {
       color: '$gray300',
       fontSize: '$sm',

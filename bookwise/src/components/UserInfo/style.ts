@@ -18,6 +18,11 @@ export const ProfileDisplay = styled("div", {
   justifyContent: "center",
   flexDirection: "column",
  
+  '.divisor': {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+  },
   gap: 24,
   section: {
     fontFamily: "$default",
@@ -28,7 +33,8 @@ export const ProfileDisplay = styled("div", {
   img: {
     borderRadius: 999,
     border: " 2px solid rgba(127, 209, 204, 1)",
-  
+    display: 'flex',
+    
   },
 
   div: {

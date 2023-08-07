@@ -139,6 +139,7 @@ export default function Explorer() {
                           </section>
 
                           <RatedStars
+                          width={14}
                             fillNumber={Math.floor(item.avgRating)}
                             size={5}
                           />
@@ -168,6 +169,7 @@ export default function Explorer() {
 
                             <p>
                               <RatedStars
+                              width={14}
                                 fillNumber={Math.floor(item.avgRating)}
                                 size={5}
                               />

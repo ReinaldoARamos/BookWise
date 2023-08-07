@@ -100,8 +100,8 @@ export const BookListCardContainer = styled("div", {
     fontFamily: '$default',
     color: '$gray100',
     fontWeight: "$bold",
-
-    fontSize: '$md',
+    fontSize: "1rem",
+    width: "103%",
     div: {
       marginTop: "0.2rem",
       fontFamily: '$default',
@@ -125,8 +125,10 @@ export const BookListCardContent = styled('div', {
   marginLeft: '1.5rem',
 
   p: {
+    
     svg: {
-      color: '$purple100'
+      color: '$purple100',
+      marginLeft: 4
     }
   },
 

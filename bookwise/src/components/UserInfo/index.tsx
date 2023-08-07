@@ -33,7 +33,7 @@ export function UserInfo({
 
           <div>
             <section>{name}</section>
-            <img width={32}  />  
+            <span className="divisor"><img width={32}  /></span>
             <p>{`membro desde ` + YearFormatter(created_at)}</p>
           
         </div>

@@ -72,7 +72,7 @@ export function UserRatedBooks() {
                 </div>
 
                 <p>
-                  <RatedStars size={5} fillNumber={item.rate} />
+                  <RatedStars width={14} size={5} fillNumber={item.rate} />
                 </p>
               </UserBookListCardContent>
             </UserBookListCardContainer>

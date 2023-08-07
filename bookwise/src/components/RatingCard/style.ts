@@ -20,11 +20,7 @@ export const ProfileBox = styled("div", {
   marginLeft: "0.50rem",
   alignContent: "center",
 
-  div: {
-    svg: {
-      marginBottom: "1.7rem",
-    },
-  },
+  
 });
 
 export const Profile = styled("div", {
@@ -83,7 +79,7 @@ export const ReviewCard = styled("div", {
 
 export const Review = styled("p", {
   marginTop: "0.75rem",
-  color: "$gray400",
+  color: "$gray300",
   fontFamily: "$default",
   wordBreak: "break-word",
   overflow: "hidden",

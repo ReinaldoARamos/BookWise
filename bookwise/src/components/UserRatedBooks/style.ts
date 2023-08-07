@@ -5,19 +5,16 @@ export const UserReviewContainer = styled("div", {
   flexDirection: "column",
   padding: "1.5rem",
   width: "39rem",
-  height: '100%',
+  height: "100%",
   Maxheight: "22.5rem",
   backgroundColor: "$gray700",
   borderRadius: 8,
   marginTop: "1rem",
-  marginBottom: '1.5rem',
+  marginBottom: "1.5rem",
 
-  '.ReviewArea': {
-    marginTop: '1.5rem',
-    
-    
-  }
-  
+  ".ReviewArea": {
+    marginTop: "1.5rem",
+  },
 });
 
 export const UserBookListCardContainer = styled("div", {
@@ -30,10 +27,14 @@ export const UserBookListCardContent = styled("div", {
   justifyContent: "space-between",
   width: "100%",
   marginLeft: "1.5rem",
-
-  p: {
-    fontSize: "$lg",
+  div: {
+    fontSize: 18,
     color: "$gray100",
+    fontWeight: "bold",
+  },
+  p: {
+    fontSize: 14,
+    color: "$gray400",
 
     div: {
       marginTop: "0.5rem",
@@ -42,6 +43,7 @@ export const UserBookListCardContent = styled("div", {
     },
     svg: {
       color: "$purple100",
+      marginLeft: 4,
     },
   },
 });
