@@ -132,6 +132,7 @@ export function DrawerDialog({ children, bookId }: DrawerDialogProps) {
       Rating,
     });
     setRatingRefresh(response.data);
+    setOpenRating(false)
   }
   useEffect(() => {
     fetchData();
@@ -156,6 +157,7 @@ export function DrawerDialog({ children, bookId }: DrawerDialogProps) {
           onClick={() => {
             ClearState();
             setRatingRefresh(null);
+            setOpenRating(false)
           }}
         />
         <DialogContent>
@@ -217,9 +219,7 @@ export function DrawerDialog({ children, bookId }: DrawerDialogProps) {
               <RatingHeader>
                 <div>Avaliações</div>
 
- 
-                  <div>...</div>
-                
+                <div>...</div>
               </RatingHeader>
             </>
           ) : (
@@ -277,16 +277,10 @@ export function DrawerDialog({ children, bookId }: DrawerDialogProps) {
                     Avaliar
                   </button>
                 ) : session && IsAlreadyRated ? (
-                  <button
-                    onClick={() => {
-                      setOpenRating(true);
-                    }}
-                  >
-                    Teste
-                  </button>
+                  <></>
                 ) : (
                   <AuthDialog>
-                    <div>Avaliar</div>
+                    <button>Avaliar</button>
                   </AuthDialog>
                 )}
               </RatingHeader>
