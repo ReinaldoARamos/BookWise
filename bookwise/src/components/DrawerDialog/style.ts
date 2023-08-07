@@ -219,9 +219,9 @@ export const Review = styled("p", {
   color: "$gray300",
   fontSize: 16,
   fontFamily: "$default",
- background: 'red',
- wordBreak: 'break-word',
- maxHeight: 178
+ 
+  wordBreak: "break-word",
+  maxHeight: 178,
 });
 
 export const ReviewTextArea = styled("form", {
@@ -232,12 +232,16 @@ export const ReviewTextArea = styled("form", {
   height: 328,
   borderRadius: 8,
   fontFamily: "$default",
-
+  ".RemainingChars": {
+    color: "$gray400",
+    display: 'flex',
+    justifyContent: 'flex-end',
+    fontWeight: 'bold'
+  },
   ".container": {
     display: "flex",
     justifyContent: "space-between",
     marginBottom: 24,
-
   },
 
   div: {
@@ -274,7 +278,7 @@ export const ReviewTextArea = styled("form", {
   },
 
   ".ButtonsContainer": {
-    marginTop: 12,
+    marginTop: 6,
     justifyContent: "flex-end",
     gap: 8,
     borderRadius: 8,
@@ -295,14 +299,14 @@ export const ReviewTextArea = styled("form", {
       "&:hover": {
         cursor: "pointer",
         svg: {
-          color: '$green100'
-        }
+          color: "$green100",
+        },
       },
-      
+
       "&:disabled": {
         cursor: "not-allowed",
         backgroundColor: "$gray600 ",
-        opacity: '0.5'
+        opacity: "0.5",
       },
     },
   },

@@ -178,6 +178,7 @@ export function DrawerDialog({ children, bookId }: DrawerDialogProps) {
             setClickedIndex(null);
             setReview("");
             setOpenRating(false);
+            setText("")
           }}
         />
         <DialogContent>
@@ -190,6 +191,7 @@ export function DrawerDialog({ children, bookId }: DrawerDialogProps) {
                 setClickedIndex(null);
                 setReview("");
                 setOpenRating(false);
+                setText("")
               }}
             />
           </DialogClose>
@@ -353,7 +355,7 @@ export function DrawerDialog({ children, bookId }: DrawerDialogProps) {
                     cols={50}
                     
                   />
-                   <p>{review.length} / {remainingChars}</p>
+                   <p className="RemainingChars">{review.length} / {remainingChars}</p>
                   <div>{errors.root?.message}</div>
                   <div className="ButtonsContainer">
                     <button
