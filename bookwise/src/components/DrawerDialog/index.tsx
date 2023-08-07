@@ -26,9 +26,10 @@ import { AuthDialog } from "../AuthDialog";
 import { useSession } from "next-auth/react";
 import { RatedStars } from "../RatedStars";
 import { z } from "zod";
-import { Form, useForm } from "react-hook-form";
+import { Form, FormState, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ratings } from "../../../prisma/constants/ratings";
+import next from "next/types";
 
 interface DrawerDialogProps {
   children?: ReactNode;
@@ -89,6 +90,18 @@ export function DrawerDialog({ children, bookId }: DrawerDialogProps) {
   const [review, setReview] = useState<string>("");
   const [rateingRefresh, setRatingRefresh] = useState(null);
 
+  const maxLength = 400;
+  const [text, setText] = useState("");
+  const remainingChars = maxLength - text.length;
+
+  const handleChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+    const newText = event.target.value;
+    setReview(event.target.value);
+    if (newText.length <= maxLength) {
+      setText(newText);
+    }
+  };
+
   const handleClick = (index: number) => {
     SetRate(index + 1);
     setClickedIndex(index);
@@ -101,7 +114,7 @@ export function DrawerDialog({ children, bookId }: DrawerDialogProps) {
   const {
     register,
     handleSubmit,
-    formState: { isSubmitting },
+    formState: { isSubmitting, errors },
   } = useForm();
 
   async function fetchData() {
@@ -127,15 +140,18 @@ export function DrawerDialog({ children, bookId }: DrawerDialogProps) {
   }
 
   async function handleCreateReview() {
-    const response = await api.post(`register/${bookId}`, {
-      review,
-      Rating,
-    });
-    setRatingRefresh(response.data);
-    setOpenRating(false)
+    try {
+      const response = await api.post(`register/${bookId}`, {
+        review,
+        Rating,
+      });
+      setRatingRefresh(response.data);
+      setOpenRating(false);
+    } catch (error) {
+      console.error("Validation error:", error);
+    }
   }
 
-  
   useEffect(() => {
     fetchData();
   }, [bookId, setOpen, rateingRefresh]);
@@ -159,9 +175,9 @@ export function DrawerDialog({ children, bookId }: DrawerDialogProps) {
           onClick={() => {
             ClearState();
             setRatingRefresh(null);
-           setClickedIndex(null);
+            setClickedIndex(null);
             setReview("");
-            setOpenRating(false)
+            setOpenRating(false);
           }}
         />
         <DialogContent>
@@ -171,9 +187,9 @@ export function DrawerDialog({ children, bookId }: DrawerDialogProps) {
               onClick={() => {
                 ClearState();
                 setRatingRefresh(null);
-               setClickedIndex(null);
+                setClickedIndex(null);
                 setReview("");
-                setOpenRating(false)
+                setOpenRating(false);
               }}
             />
           </DialogClose>
@@ -331,9 +347,14 @@ export function DrawerDialog({ children, bookId }: DrawerDialogProps) {
 
                   <textarea
                     placeholder="Escreva sua avaliação"
-                    onChange={({ target }) => setReview(target.value)}
-                    //  {...register("review")}
+                    onChange={handleChange}
+                    maxLength={maxLength}
+                    rows={4}
+                    cols={50}
+                    
                   />
+                   <p>{review.length} / {remainingChars}</p>
+                  <div>{errors.root?.message}</div>
                   <div className="ButtonsContainer">
                     <button
                       onClick={() => {
