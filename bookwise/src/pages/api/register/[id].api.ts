@@ -5,8 +5,8 @@ import { z } from "zod";
 import { prisma } from "@/lib/prisma";
 
 const CreateNewRateSchema = z.object({
-  review: z.string(),
-  Rating: z.number(),
+  review: z.string().min(1).max(400),
+  Rating: z.number().min(1).max(5),
   
 });
 

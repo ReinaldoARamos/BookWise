@@ -43,16 +43,12 @@ export interface ProfileProps {
     },
    
   ];
-}
+}[]
 
 
 export default function Profile() {
   
- async function fetchData () { 
-  const response = await api.get(`/profile/${query.id}`);
-   
-  return response.data
- }
+
   const { query } = useRouter();
   
 
@@ -64,7 +60,6 @@ export default function Profile() {
       }
     })
 
-if (isLoading) return 'Loading...'
 
 
 const PagesRead = data?.ratings.reduce(
@@ -116,6 +111,7 @@ for (const name in countCategory) {
   }
 }
 
+if (isLoading) return 'Loading...'
 
   return (
     <>

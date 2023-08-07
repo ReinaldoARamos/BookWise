@@ -14,7 +14,6 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { relativeDateFormatter } from "@/utils/dayformatter";
 import { RatedStars } from "../RatedStars";
-import { useQuery } from "@tanstack/react-query";
 
 interface RatingProps {
   id: string;
@@ -40,20 +39,19 @@ interface RatingProps {
 }
 
 export function RatingCard() {
-  
+  const [data, setData] = useState<RatingProps[]>([]);
   const format = relativeDateFormatter;
-  const { isLoading, error, data } = useQuery<RatingProps[]>({
-    queryKey: ['User'],
-    queryFn: async () => {
-      const response = await api.get("user/home");
-      return response.data
-    }
-  })
- 
-  if (isLoading) "isLoading" 
+  async function fetchData() {
+    const response = await api.get("user/home");
+    setData(response.data);
+  }
+  useEffect(() => {
+    fetchData();
+  }, []);
+
   return (
     <div>
-      {data?.map((item) => (
+      {data.map((item) => (
         <AvaliationBox key={item.id}>
           <ProfileBox>
             <Profile>
