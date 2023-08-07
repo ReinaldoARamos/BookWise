@@ -134,6 +134,8 @@ export function DrawerDialog({ children, bookId }: DrawerDialogProps) {
     setRatingRefresh(response.data);
     setOpenRating(false)
   }
+
+  
   useEffect(() => {
     fetchData();
   }, [bookId, setOpen, rateingRefresh]);
@@ -157,6 +159,8 @@ export function DrawerDialog({ children, bookId }: DrawerDialogProps) {
           onClick={() => {
             ClearState();
             setRatingRefresh(null);
+           setClickedIndex(null);
+            setReview("");
             setOpenRating(false)
           }}
         />
@@ -167,6 +171,9 @@ export function DrawerDialog({ children, bookId }: DrawerDialogProps) {
               onClick={() => {
                 ClearState();
                 setRatingRefresh(null);
+               setClickedIndex(null);
+                setReview("");
+                setOpenRating(false)
               }}
             />
           </DialogClose>
