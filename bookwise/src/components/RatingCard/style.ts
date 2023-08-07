@@ -83,6 +83,5 @@ export const Review = styled("p", {
   fontFamily: "$default",
   wordBreak: 'break-word',
   overflow: 'hidden',
-  background: 'red',
   maxHeight: 110,
 });
