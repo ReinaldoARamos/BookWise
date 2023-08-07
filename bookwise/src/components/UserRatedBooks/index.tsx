@@ -1,18 +1,15 @@
-import { Star } from "phosphor-react";
 import {
   UserBookListCardContainer,
   UserBookListCardContent,
   UserReviewContainer,
 } from "./style";
 
-import BookExample from "../../../../../../public/images/books/codigo-limpo.png";
 import Image from "next/image";
 import { api } from "@/lib/axios";
 import { useRouter } from "next/router";
-import { useState, useEffect } from "react";
 import { relativeDateFormatter } from "@/utils/dayformatter";
-import { ProfileHeader } from "../ProfileHeader";
 import { RatedStars } from "../RatedStars";
+import { useQuery } from "@tanstack/react-query";
 
 export interface UserReviewCardPRops {
   id: string;
@@ -43,26 +40,17 @@ export interface UserReviewCardPRops {
 
 export function UserRatedBooks() {
   const { query } = useRouter();
-  const [data, setData] = useState<UserReviewCardPRops>();
   const format = relativeDateFormatter;
-  const fetchData = async () => {
-    try {
-      // Build the API endpoint URL with the query parameter from the URL
 
-      // Make the API request using Axios
+  const { isLoading, error, data } = useQuery<UserReviewCardPRops>({
+    queryKey: ['User'],
+    queryFn: async () => {
       const response = await api.get(`/profile/${query.id}`);
-
-      // Set the fetched data in the state
-      console.log(response.data);
-      setData(response.data);
-    } catch (error) {
-      console.error("Error fetching data:", error);
+      return response.data
     }
-  };
+  })
 
-  useEffect(() => {
-    fetchData();
-  }, []);
+  if (isLoading) return 'Loading...'
 
   return (
     <>
@@ -96,14 +84,3 @@ export function UserRatedBooks() {
     </>
   );
 }
-
-/*
-
-  <p>
-                  <Star size={18} weight="fill" />
-                  <Star size={18} weight="fill" />
-                  <Star size={18} weight="fill" />
-                  <Star size={18} weight="fill" />
-                  <Star size={18} />
-                </p>
-* */
