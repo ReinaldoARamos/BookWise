@@ -63,6 +63,7 @@ export const ReviewCard = styled("div", {
   paddingLeft: "1.25rem",
 
   width: "100%",
+
   height: 44,
 
   section: {
@@ -80,4 +81,8 @@ export const Review = styled("p", {
   marginTop: "1.25rem",
   color: "$gray300",
   fontFamily: "$default",
+  wordBreak: 'break-word',
+  overflow: 'hidden',
+  background: 'red',
+  maxHeight: 110,
 });

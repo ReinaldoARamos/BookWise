@@ -20,10 +20,11 @@ export const UserReviewCardContainer = styled('div', {
   flexDirection: 'column',
   marginTop: '2rem',
   fontFamily: '$default',
-
+  wordBreak: 'break-word',
   section: {
       color: '$gray300',
       fontSize: '$sm',
+      
   }
 })
 

@@ -214,11 +214,14 @@ export const UserRatingHeader = styled("div", {
   },
 });
 
-export const Review = styled("div", {
+export const Review = styled("p", {
   marginTop: 24,
   color: "$gray300",
   fontSize: 16,
   fontFamily: "$default",
+ background: 'red',
+ wordBreak: 'break-word',
+ maxHeight: 178
 });
 
 export const ReviewTextArea = styled("form", {
