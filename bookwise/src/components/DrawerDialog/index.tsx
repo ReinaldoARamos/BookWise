@@ -31,9 +31,9 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { ratings } from "../../../prisma/constants/ratings";
 
 interface DrawerDialogProps {
-  children: ReactNode;
+  children?: ReactNode;
   bookId: string | null;
-  ratingNumber: any;
+
 }
 
 interface DialogProps {
@@ -87,8 +87,7 @@ const RatingSchema = z.object({
 
 export function DrawerDialog({
   children,
-  bookId,
-  ratingNumber,
+  bookId
 }: DrawerDialogProps) {
   const [BookDrawer, setBookDrawer] = useState<DialogProps | null>();
   const [open, setOpen] = useState(false);

@@ -104,7 +104,7 @@ export default function Explorer() {
         </TagContainer>
 
         <>
-          <DrawerDialog bookId={bookId}>
+          <DrawerDialog  bookId={bookId}  >
             <BookListContainer>
               <>
                 {currentCategory == "Todos"

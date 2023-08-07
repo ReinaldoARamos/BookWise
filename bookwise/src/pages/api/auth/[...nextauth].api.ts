@@ -1,9 +1,8 @@
 import PrismaAdapter from "@/lib/prisma-adapter";
-import { profile } from "console";
 import { NextApiRequest, NextApiResponse, NextPageContext } from "next";
 import NextAuth, { NextAuthOptions } from "next-auth";
 import GoogleProvider, { GoogleProfile } from "next-auth/providers/google";
-import GithubProvider, { GithubProfile,  } from "next-auth/providers/github";
+import GithubProvider, { GithubProfile } from "next-auth/providers/github";
 
 export function buildNextAuthOptions(
   req: NextApiRequest | NextPageContext["req"],
@@ -33,18 +32,21 @@ export function buildNextAuthOptions(
             username: "",
             email: profile.email,
             avatar_url: profile.picture,
+            
           };
         },
       }),
       GithubProvider({
         clientId: process.env.GITHUB_ID ?? '',
         clientSecret: process.env.GITHUB_SECRET?? '',
+        //@ts-ignore
         profile(profile: GithubProfile) {
           return {
             id: profile.id,
             name: profile.name!,
             email: profile.email!,
             avatar_url: profile.avatar_url,
+            
           }
         }
       })
