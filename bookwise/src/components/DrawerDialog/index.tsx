@@ -217,9 +217,9 @@ export function DrawerDialog({ children, bookId }: DrawerDialogProps) {
               <RatingHeader>
                 <div>Avaliações</div>
 
-                <AuthDialog>
-                  <div>Avaliar</div>
-                </AuthDialog>
+ 
+                  <div>...</div>
+                
               </RatingHeader>
             </>
           ) : (
