@@ -67,6 +67,7 @@ interface DialogProps {
         id: string;
         name: string;
         avatar_url: string;
+        email: string  | undefined;
       };
     }
   ];
@@ -74,16 +75,9 @@ interface DialogProps {
 interface RatingStarsProps {
   size: number;
   rateNumber: number;
-  //setRating: (rate : number) => void
-}
-/*
-const RatingSchema = z.object({
-  rate: z.number(),
-  review: z.string().min(1).max(180),
-});
-*/
 
-//type RatingData = z.infer<typeof RatingSchema>;
+}
+
 
 export function DrawerDialog({
   children,
@@ -100,11 +94,14 @@ export function DrawerDialog({
   const iconArray = Array.from({ length: 5 }, (_, index) => index);
   const [review, setReview] = useState<string>("");
   const [rateingRefresh, setRatingRefresh] = useState(null);
+
   const handleClick = (index: number) => {
     SetRate(index + 1);
     setClickedIndex(index);
   };
 
+
+ 
   const handleMouseOver = (index: number) => {
     setHoverIndex(index + 1);
   };
@@ -120,6 +117,8 @@ export function DrawerDialog({
 
     setBookDrawer(response.data);
   }
+  const IsAlreadyRated = BookDrawer?.ratings.map((item) => (item.user.email)).includes(session?.user.email)
+  console.log("o cara ja deu nota?: " + IsAlreadyRated)
 
   function ClearState() {
     setOpen(false);
@@ -127,12 +126,14 @@ export function DrawerDialog({
   }
   function Open() {
     setOpen(true);
-
+   
+    
     setTimeout(() => {
       setLoading(true);
     }, 200);
   }
 
+  
   async function handleCreateReview() {
 
     const response = await api.post(`register/${bookId}`, {
@@ -276,7 +277,7 @@ export function DrawerDialog({
               </BookDetailsWrapper>
               <RatingHeader>
                 <div>Avaliações</div>
-                {session ? (
+                {session   ? (
                   <button
                     onClick={() => {
                       setOpenRating(true);
@@ -287,7 +288,7 @@ export function DrawerDialog({
                 ) : (
                   <AuthDialog>
                     <button>Avaliar</button>
-                  </AuthDialog>
+                  </AuthDialog> 
                 )}
               </RatingHeader>
               {openRating ? (
