@@ -37,11 +37,13 @@ export const Profile = styled("div", {
     paddingLeft: "0.6rem",
     color: "$gray100",
     marginLeft: "0.2rem",
+    fontSize: '1rem',
     div: {
       display: "flex",
       alignItems: "center",
       color: "$gray400",
-      paddingTop: 15,
+      marginTop: 4,
+      fontSize: 14
     },
   },
 
@@ -70,18 +72,22 @@ export const ReviewCard = styled("div", {
     fontWeight: "bold",
     color: "$gray100",
     paddingBottom: 5,
+    fontSize: 16,
   },
   div: {
     color: "$gray400",
+    fontSize: 14,
     fontFamily: "$default",
   },
 });
 
 export const Review = styled("p", {
-  marginTop: "1.25rem",
-  color: "$gray300",
+  marginTop: "0.75rem",
+  color: "$gray400",
   fontFamily: "$default",
-  wordBreak: 'break-word',
-  overflow: 'hidden',
+  wordBreak: "break-word",
+  overflow: "hidden",
+  lineHeight: "$base",
+  fontSize: 14,
   maxHeight: 110,
 });

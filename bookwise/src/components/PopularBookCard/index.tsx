@@ -36,13 +36,21 @@ export function PopularBooksCard() {
         <PopularBookContainer>
           <Image src={item.cover_url} alt="" width={64} height={94} />
           <PopularBookContent>
+           {item.name.length >= 31 ? 
+           <section>
+            {item.name.replace(item.name.slice(25, 50), "...")}
+            <p>{item.author}</p>
+           </section> :
+            (
             <section>
               {item.name}
-              <div>{item.author}</div>
-            </section>
-
+              <p>{item.author}</p>
+              </section>
+              )
+              }
+  
             <p>
-              <RatedStars size={5} fillNumber={Math.floor(item.avgRating)} />
+              <RatedStars width={14} size={5} fillNumber={Math.floor(item.avgRating)} />
             </p>
           </PopularBookContent>
         </PopularBookContainer>

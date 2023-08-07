@@ -66,7 +66,7 @@ export function RatingCard() {
             </Profile>
 
             <div>
-              <RatedStars size={5} fillNumber={item.rate} />
+              <RatedStars width={14} size={5} fillNumber={item.rate} />
             </div>
           </ProfileBox>
 

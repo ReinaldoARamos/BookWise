@@ -5,9 +5,10 @@ import { useState } from "react";
 interface RatingStarsProps {
   size: number;
   fillNumber : number;
+  width: number;
 }
 
-export const RatedStars = ({ size, fillNumber  }: RatingStarsProps) => {
+export const RatedStars = ({ size, fillNumber  , width}: RatingStarsProps) => {
   const iconArray = Array.from({ length: size }, (_, index) => index);
 
   return (
@@ -15,7 +16,7 @@ export const RatedStars = ({ size, fillNumber  }: RatingStarsProps) => {
     {iconArray.map((num, index) => (
         <Star
           key={index}
-          size={24}
+          size={width}
           weight={num <= fillNumber -1 ? 'fill' : 'regular' }
         />
    

@@ -11,14 +11,14 @@ export const PopularBookContainer = styled("div", {
     fontFamily: "$default",
     color: "$gray100",
     fontWeight: "$bold",
-
-    fontSize: "$md",
-    div: {
-      marginTop: "0.2rem",
-      fontFamily: "$default",
-      color: "$gray400",
-      fontSize: "$xs",
-    },
+    fontSize: "1rem",
+    width: "105%",
+  },
+  p: {
+    marginTop: "0.2rem",
+    fontFamily: "$default",
+    color: "$gray400",
+    fontSize: "$xs",
   },
 });
 
