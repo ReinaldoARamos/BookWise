@@ -14,6 +14,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { relativeDateFormatter } from "@/utils/dayformatter";
 import { RatedStars } from "../RatedStars";
+import { useQuery } from "@tanstack/react-query";
 
 interface RatingProps {
   id: string;
@@ -39,21 +40,20 @@ interface RatingProps {
 }
 
 export function RatingCard() {
-  const AvatarExample =
-    "https://i0.wp.com/superdragonball.com.br/wp-content/uploads/2020/12/Por-que-Goku-nao-chamou-Paikuhan-para-o-Torneio-de-Poder.jpg?fit=1280%2C720&ssl=1";
-  const [data, setData] = useState<RatingProps[]>([]);
+  
   const format = relativeDateFormatter;
-  async function fetchData() {
-    const response = await api.get("user/home");
-    setData(response.data);
-  }
-  useEffect(() => {
-    fetchData();
-  }, []);
-
+  const { isLoading, error, data } = useQuery<RatingProps[]>({
+    queryKey: ['User'],
+    queryFn: async () => {
+      const response = await api.get("user/home");
+      return response.data
+    }
+  })
+ 
+  if (isLoading) "isLoading" 
   return (
     <div>
-      {data.map((item) => (
+      {data?.map((item) => (
         <AvaliationBox key={item.id}>
           <ProfileBox>
             <Profile>
