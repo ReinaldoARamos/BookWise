@@ -4,7 +4,7 @@ export const books = [
     name: '14 Hábitos de Desenvolvedores Altamente Produtivos',
     author: 'Zeno Rocha',
     summary:
-      'Nec tempor nunc in egestas. Euismod nisi eleifend at et in sagittis. Penatibus id vestibulum imperdiet a at imperdiet lectus leo. Sit porta eget nec vitae sit vulputate eget',
+      'Esse livro é o resultado de uma busca. A busca para descobrir quais hábitos podem ser cultivados para se tornar um melhor engenheiro(a) de software..',
     cover_url:
       '/images/books/14-habitos-de-desenvolvedores-altamente-produtivos.png',
     total_pages: 160,
@@ -24,7 +24,7 @@ export const books = [
     name: 'O Hobbit',
     author: 'J.R.R. Tolkien',
     summary:
-      'Semper et sapien proin vitae nisi. Feugiat neque integer donec et aenean posuere amet ultrices. Cras fermentum id pulvinar varius leo a in. Amet libero pharetra nunc elementum fringilla velit ipsum. Sed vulputate massa velit nibh',
+      'O Hobbit conta a história de Bilbo Bolseiro, um Hobbit pacato e satisfeito cuja vida vira de cabeça para baixo quando ele se junta a Gandalf e a treze anões em sua jornada',
     cover_url: '/images/books/o-hobbit.png',
     total_pages: 360,
     categories: [
@@ -43,7 +43,7 @@ export const books = [
     name: 'O guia do mochileiro das galáxias',
     author: 'Douglas Adams',
     summary:
-      'Nec tempor nunc in egestas. Euismod nisi eleifend at et in sagittis. Penatibus id vestibulum imperdiet a at imperdiet lectus leo. Sit porta eget nec vitae sit vulputate eget',
+      'Arthur Dent e seus companheiros viajam pela Galáxia em uma busca desesperada por algum lugar para comer',
     cover_url: '/images/books/o-guia-do-mochileiro-das-galaxias.png',
     total_pages: 250,
     categories: [
@@ -62,7 +62,7 @@ export const books = [
     name: 'A revolução dos bichos',
     author: 'George Orwell',
     summary:
-      'Nec tempor nunc in egestas. Euismod nisi eleifend at et in sagittis. Penatibus id vestibulum imperdiet a at imperdiet lectus leo. Sit porta eget nec vitae sit vulputate eget',
+      'Narra a insurreição dos animais de uma granja contra seus donos. Progressivamente, porém, a revolução degenera numa tirania ainda mais opressiva que a dos humanos',
     cover_url: '/images/books/a-revolucao-dos-bixos.png',
     total_pages: 350,
     categories: [
@@ -81,7 +81,7 @@ export const books = [
     name: 'O fim da eternidade',
     author: 'Isaac Asimov',
     summary:
-      'Nec tempor nunc in egestas. Euismod nisi eleifend at et in sagittis. Penatibus id vestibulum imperdiet a at imperdiet lectus leo. Sit porta eget nec vitae sit vulputate eget',
+      'Um técnico que lida diariamente com o destino de bilhões de pessoas no mundo inteiro: sua função é iniciar Mudanças de Realidade, ou seja, alterar o curso da História.',
     cover_url: '/images/books/o-fim-da-eternidade.png',
     total_pages: 165,
     categories: [
@@ -100,7 +100,7 @@ export const books = [
     name: 'Entendendo Algoritmos',
     author: 'Aditya Y. Bhargava',
     summary:
-      'Nec tempor nunc in egestas. Euismod nisi eleifend at et in sagittis. Penatibus id vestibulum imperdiet a at imperdiet lectus leo. Sit porta eget nec vitae sit vulputate eget',
+      'Nele, você aprenderá como aplicar algoritmos comuns nos problemas de programação enfrentados diariamente',
     cover_url: '/images/books/entendendo-algoritmos.png',
     total_pages: 165,
     categories: [
@@ -119,7 +119,7 @@ export const books = [
     name: 'Código Limpo',
     author: 'Robert C. Martin',
     summary:
-      'Nec tempor nunc in egestas. Euismod nisi eleifend at et in sagittis. Penatibus id vestibulum imperdiet a at imperdiet lectus leo. Sit porta eget nec vitae sit vulputate eget',
+      'Clean Code ou código limpo se refere a um conjunto de boas práticas na escrita de software que você pode aplicar para obter uma maior legibilidade e manutenabilidade do seu código.',
     cover_url: '/images/books/codigo-limpo.png',
     total_pages: 365,
     categories: [
@@ -138,7 +138,7 @@ export const books = [
     name: 'O poder do hábito',
     author: 'Charles Duhigg',
     summary:
-      'Nec tempor nunc in egestas. Euismod nisi eleifend at et in sagittis. Penatibus id vestibulum imperdiet a at imperdiet lectus leo. Sit porta eget nec vitae sit vulputate eget',
+      'Charles Duhigg, repórter investigativo do New York Times, mostra que a chave para o sucesso é entender como os hábitos funcionam - e como podemos transformá-los',
     cover_url: '/images/books/o-poder-do-habito.png',
     total_pages: 288,
     categories: [
@@ -157,7 +157,7 @@ export const books = [
     name: 'Arquitetura limpa',
     author: 'Robert C. Martin',
     summary:
-      'Nec tempor nunc in egestas. Euismod nisi eleifend at et in sagittis. Penatibus id vestibulum imperdiet a at imperdiet lectus leo. Sit porta eget nec vitae sit vulputate eget',
+      'As regras universais de arquitetura de software aumentam dramaticamente a produtividade dos desenvolvedores ao longo da vida dos sistemas de software.',
     cover_url: '/images/books/arquitetura-limpa.png',
     total_pages: 288,
     categories: [
@@ -176,7 +176,7 @@ export const books = [
     name: 'Histórias extraordinárias',
     author: 'Edgar Allan Poe',
     summary:
-      'Nec tempor nunc in egestas. Euismod nisi eleifend at et in sagittis. Penatibus id vestibulum imperdiet a at imperdiet lectus leo. Sit porta eget nec vitae sit vulputate eget',
+      'Pequena palestra com uma múmia (1845) – Vários homens se reúnem na calada da noite para realizar um feito que há muito aguardam: examinar uma múmia. ',
     cover_url: '/images/books/historias-extraordinarias.png',
     total_pages: 332,
     categories: [
@@ -195,7 +195,7 @@ export const books = [
     name: 'Refatoração',
     author: 'Martin Fowler',
     summary:
-      'Nec tempor nunc in egestas. Euismod nisi eleifend at et in sagittis. Penatibus id vestibulum imperdiet a at imperdiet lectus leo. Sit porta eget nec vitae sit vulputate eget',
+      'Assim como na edição original, este livro explica o que é refatoração, por que você deve refatorar, como reorganizar um código que precise de refatoração',
     cover_url: '/images/books/refatoracao.png',
     total_pages: 332,
     categories: [
@@ -214,7 +214,7 @@ export const books = [
     name: 'Domain-Driven Design',
     author: 'Eric Evans',
     summary:
-      'Nec tempor nunc in egestas. Euismod nisi eleifend at et in sagittis. Penatibus id vestibulum imperdiet a at imperdiet lectus leo. Sit porta eget nec vitae sit vulputate eget',
+      'DDD defende que os desenvolvedores devem ter um profundo conhecimento do domínio do sistema que eles desenvolvem. ',
     cover_url: '/images/books/domain-driven-design.png',
     total_pages: 288,
     categories: [
@@ -233,7 +233,7 @@ export const books = [
     name: 'Viagem ao Centro da Terra',
     author: 'Julio Verne',
     summary:
-      'Nec tempor nunc in egestas. Euismod nisi eleifend at et in sagittis. Penatibus id vestibulum imperdiet a at imperdiet lectus leo. Sit porta eget nec vitae sit vulputate eget',
+      'Durante uma expedição na Islândia, o professor Trevor Anderson, o seu sobrinho Sean, e sua guia Hannah ficam presos em uma caverna',
     cover_url: '/images/books/viagem-ao-centro-da-terra.png',
     total_pages: 288,
     categories: [
@@ -252,7 +252,7 @@ export const books = [
     name: 'Fragmentos do Horror',
     author: 'Junji Ito',
     summary:
-      'Nec tempor nunc in egestas. Euismod nisi eleifend at et in sagittis. Penatibus id vestibulum imperdiet a at imperdiet lectus leo. Sit porta eget nec vitae sit vulputate eget',
+      'Variando do aterrorizante ao cômico, do erótico para o repugnante, essas histórias apresentam o retorno de Junji Ito há muito aguardado para o mundo do horror.',
     cover_url: '/images/books/fragmentos-do-horror.png',
     total_pages: 144,
     categories: [
@@ -271,7 +271,7 @@ export const books = [
     name: 'O Programador Pragmático',
     author: 'Andrew Hunt',
     summary:
-      'Nec tempor nunc in egestas. Euismod nisi eleifend at et in sagittis. Penatibus id vestibulum imperdiet a at imperdiet lectus leo. Sit porta eget nec vitae sit vulputate eget',
+      'O Programador Pragmático ilustra as melhores práticas e as principais armadilhas do desenvolvimento de software.',
     cover_url: '/images/books/o-programador-pragmatico.png',
     total_pages: 205,
     categories: [

@@ -47,4 +47,8 @@ export const categories = [
     name: 'Terror',
     id: 'a0a61b53-37d7-48ec-9b92-6db074f6d9c9',
   },
+  {
+    name: 'Todos',
+    id: 'a0a61b53-37d7-48ec-9b92-6db074f6c3c9',
+  },
 ]
