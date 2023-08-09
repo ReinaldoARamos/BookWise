@@ -8,12 +8,13 @@ import {
   TagContainer,
 } from "./style";
 import { NextSeo } from "next-seo";
-import { Binoculars, MagnifyingGlass, Star } from "phosphor-react";
+import { Binoculars, MagnifyingGlass } from "phosphor-react";
 import { api } from "@/lib/axios";
 import { useState, useEffect } from "react";
 
 import { DrawerDialog } from "@/components/DrawerDialog";
 import { RatedStars } from "@/components/RatedStars";
+import { useQuery } from "@tanstack/react-query";
 
 interface BookTags {
   id: string;
@@ -35,7 +36,7 @@ interface ExplorerProps {
     }
   ];
 }
-
+[];
 
 export default function Explorer() {
   const [bookTags, setBookTags] = useState<BookTags[]>([]);
@@ -52,17 +53,23 @@ export default function Explorer() {
     console.log(handleBook);
   }
 
-  async function fetchData() {
-    const responseTag = await api.get("books/category");
-    const response = await api.get("books/explorer");
-    const teste = await api.get("books/teste");
-    setExplorerBooks(response.data);
-    setBookTags(responseTag.data);
-  }
+  const { isLoading, error, data } = useQuery<ExplorerProps[]>({
+    queryKey: ["ExplorerBooks"],
+    queryFn: async () => {
+      const response = await api.get("books/explorer");
+      return response.data;
+    },
+  });
 
-  useEffect(() => {
-    fetchData();
-  }, []);
+  const Tags = useQuery<BookTags[]>({
+    queryKey: ["Teste"],
+    queryFn: async () => {
+      const responseTag = await api.get("books/category");
+      return responseTag.data;
+    },
+  });
+
+  if (isLoading) return "Loading...";
 
   function HandleFilter(name: string) {
     const FilterName = name;
@@ -70,7 +77,7 @@ export default function Explorer() {
     console.log(FilterName);
   }
 
-  const filteredList = explorerBooks.filter((obj) =>
+  const filteredList = data?.filter((obj) =>
     obj.categories
       .map((category) => category.category.name)
       .includes(currentCategory)
@@ -94,7 +101,7 @@ export default function Explorer() {
           </header>
         </HeaderContainer>
         <TagContainer>
-          {bookTags.map((tag) => (
+          {Tags.data?.map((tag) => (
             <>
               <GeneralTabButton onClick={() => HandleFilter(tag.name)}>
                 {tag.name}
@@ -104,11 +111,11 @@ export default function Explorer() {
         </TagContainer>
 
         <>
-          <DrawerDialog  bookId={bookId}  >
+          <DrawerDialog bookId={bookId}>
             <BookListContainer>
               <>
                 {currentCategory == "Todos"
-                  ? explorerBooks.map((item) => (
+                  ? data?.map((item) => (
                       <BookListCardContainer
                         key={item.id}
                         onClick={() => {
@@ -139,14 +146,14 @@ export default function Explorer() {
                           </section>
 
                           <RatedStars
-                          width={14}
+                            width={14}
                             fillNumber={Math.floor(item.avgRating)}
                             size={5}
                           />
                         </BookListCardContent>
                       </BookListCardContainer>
                     ))
-                  : filteredList.map((item) => (
+                  : filteredList?.map((item) => (
                       <>
                         <BookListCardContainer
                           key={item.id}
@@ -169,7 +176,7 @@ export default function Explorer() {
 
                             <p>
                               <RatedStars
-                              width={14}
+                                width={14}
                                 fillNumber={Math.floor(item.avgRating)}
                                 size={5}
                               />
