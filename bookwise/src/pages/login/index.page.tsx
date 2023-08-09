@@ -7,6 +7,7 @@ import { NextSeo } from "next-seo";
 
 export default function Login() {
   return (
+    
     <>
       <NextSeo title="Login | BookWise" description="availabiluty set" />
       <LogoContainer>
