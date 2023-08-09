@@ -4,6 +4,7 @@ interface StarProps {
   fill: string;
 }
 export const StarContainer = styled("p", {
+  
   svg: {
     color: "$purple100",
   

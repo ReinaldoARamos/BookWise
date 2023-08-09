@@ -29,5 +29,19 @@ export default async function handle(
     },
   });
 
-  return res.json(BookInfos);
+  const booksAvgRating = await prisma.rating.groupBy({
+    by: ['book_id'],
+    where: {
+      book_id: id
+    },
+    _avg: {
+      rate: true
+    }
+  })
+
+  const bookWithAvgRating = {
+    ...BookInfos,
+    avgRating: booksAvgRating[0]?._avg.rate ?? 0
+  }
+  return res.json(bookWithAvgRating);
 }

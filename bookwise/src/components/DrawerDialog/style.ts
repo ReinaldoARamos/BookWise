@@ -70,10 +70,12 @@ export const BookContent = styled("div", {
   display: "flex",
   flexDirection: "column",
   justifyContent: "space-between",
-
+  '.StarContainer': {
+    fontFamily: '$default'
+    
+  },
   p: {
     display: "flex",
-    flexDirection: "column",
     color: "$gray300",
     fontSize: 16,
     fontFamily: "$default",
@@ -81,6 +83,7 @@ export const BookContent = styled("div", {
     svg: {
       color: "$purple100",
     },
+   
   },
 
   h1: {
@@ -93,6 +96,7 @@ export const BookContent = styled("div", {
     color: "$gray400",
     fontSize: 14,
   },
+
 });
 
 export const BookInfo = styled("div", {
@@ -131,6 +135,7 @@ export const TotalPagesBox = styled("div", {
   justifyContent: "center",
   alignItems: "center",
 
+  fontFamily: '$default',
   div: {
     color: "$gray400",
     fontSize: 14,
@@ -320,3 +325,5 @@ export const StarContainer = styled("p", {
     },
   },
 });
+
+

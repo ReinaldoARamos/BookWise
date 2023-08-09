@@ -42,6 +42,7 @@ interface DialogProps {
   id: string;
   author: string;
   total_pages: number;
+  avgRating: number;
   categories: [
     categorie: {
       category: {
@@ -90,6 +91,8 @@ export function DrawerDialog({ children, bookId }: DrawerDialogProps) {
   const [review, setReview] = useState<string>("");
   const [rateingRefresh, setRatingRefresh] = useState(null);
 
+  //@ts-ignore
+  const average = Math.floor(BookDrawer?.avgRating)
   const maxLength = 400;
   const [text, setText] = useState("");
   const remainingChars = maxLength - text.length;
@@ -257,21 +260,18 @@ export function DrawerDialog({ children, bookId }: DrawerDialogProps) {
                       {BookDrawer?.name}
                       <p>{BookDrawer?.author}</p>
                     </h1>
-
-                    <p>
-                      <div>
-                        <Star size={20} weight="fill" />
-                        <Star size={20} weight="fill" />
-                        <Star size={20} weight="fill" />
-                        <Star size={20} weight="fill" />
-                        <Star size={20} />
-                      </div>
+                    <div className="StarContainer">
+                    <RatedStars size={5} fillNumber={average} width={20} />
+            
+     
                       {RatingNumber == 1 ? (
                         <span>{RatingNumber} avaliação</span>
                       ) : (
                         <span>{RatingNumber} avaliações</span>
                       )}
-                    </p>
+                    </div>    
+                    
+                    
                   </BookContent>
                 </BookDetailsContainer>
                 <BookInfo>

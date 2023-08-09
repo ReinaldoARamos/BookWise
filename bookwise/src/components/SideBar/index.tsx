@@ -33,7 +33,13 @@ export function SideBar() {
   function SendToProfile() {
     router.push(`/profile/${session?.user.id}`);
   }
+function handleLogout() {
+  signOut();
+  router.push("/home");
 
+      
+
+}
   var routerName: string = router.pathname;
   console.log(routerName);
 
@@ -89,7 +95,7 @@ export function SideBar() {
                     className="Logout"
                     size={24}
                     onClick={() => {
-                      signOut();
+                      handleLogout()
                     }}
                   />
                 </LogoutDiv>
