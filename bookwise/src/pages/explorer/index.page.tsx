@@ -44,7 +44,7 @@ export default function Explorer() {
   const [currentCategory, setCurrentCategory] = useState<string>("Todos");
   const [Division, setDivision] = useState<number>();
   const [bookId, setBookId] = useState<string | null>(
-    "a7c2a5e9-fcb5-4f40-94b0-9f5ce2f906eb"
+    "0440ad7d-230e-4573-b455-84ca38b5d339"
   );
 
   function handleBookId(name: string) {

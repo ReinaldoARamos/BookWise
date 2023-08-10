@@ -28,7 +28,7 @@ import { RatedStars } from "../RatedStars";
 import { z } from "zod";
 import { Form, FormState, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { ratings } from "../../../prisma/constants/ratings";
+
 import next from "next/types";
 
 interface DrawerDialogProps {
