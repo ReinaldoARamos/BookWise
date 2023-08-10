@@ -10,7 +10,7 @@ export function buildNextAuthOptions(
 ): NextAuthOptions {
   return {
     
-    // Configure one or more authentication providers
+  
 
     adapter: PrismaAdapter(req, res),
     providers: [
@@ -38,20 +38,6 @@ export function buildNextAuthOptions(
           };
         },
       }),
-      GithubProvider({
-        clientId: process.env.GITHUB_ID ?? '',
-        clientSecret: process.env.GITHUB_SECRET?? '',
-        //@ts-ignore
-        profile(profile: GithubProfile) {
-          return {
-            id: profile.id,
-            name: profile.name!,
-            email: profile.email!,
-            avatar_url: profile.avatar_url,
-            
-          }
-        }
-      })
     ],
 
     callbacks: {
@@ -68,3 +54,28 @@ export function buildNextAuthOptions(
 export default async function auth(req: NextApiRequest, res: NextApiResponse) {
   return await NextAuth(req, res, buildNextAuthOptions(req, res));
 }
+
+
+
+
+
+
+
+/*
+
+
+      GithubProvider({
+        clientId: process.env.GITHUB_ID ?? '',
+        clientSecret: process.env.GITHUB_SECRET?? '',
+        //@ts-ignore
+        profile(profile: GithubProfile) {
+          return {
+            id: profile.id,
+            name: profile.name!,
+            email: profile.email!,
+            avatar_url: profile.avatar_url,
+            
+          }
+        }
+      })
+* */
