@@ -9,8 +9,9 @@ export function buildNextAuthOptions(
   res: NextApiResponse | NextPageContext["res"]
 ): NextAuthOptions {
   return {
-    // Configure one or more authentication providers
     
+    // Configure one or more authentication providers
+
     adapter: PrismaAdapter(req, res),
     providers: [
       GoogleProvider({
