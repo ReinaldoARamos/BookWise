@@ -10,6 +10,7 @@ export function buildNextAuthOptions(
 ): NextAuthOptions {
   return {
     // Configure one or more authentication providers
+    
     adapter: PrismaAdapter(req, res),
     providers: [
       GoogleProvider({
