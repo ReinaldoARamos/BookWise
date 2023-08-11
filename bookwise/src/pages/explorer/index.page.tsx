@@ -40,10 +40,10 @@ interface ExplorerProps {
 
 export default function Explorer() {
   const [currentCategory, setCurrentCategory] = useState<string>("Todos");
+  const [search, setSearch] = useState<string>("");
   const [bookId, setBookId] = useState<string | null>(
     "14f410df-b28a-4e72-b1b4-363e26e160dd"
   );
-
 
   const { isLoading, error, data } = useQuery<ExplorerProps[]>({
     queryKey: ["ExplorerBooks"],
@@ -74,6 +74,13 @@ export default function Explorer() {
       .map((category) => category.category.name)
       .includes(currentCategory)
   );
+
+  const filteredByName = data?.filter((obj) =>
+    obj.name.toLowerCase().includes(search.toLowerCase())
+  );
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSearch(event.target.value);
+  };
   return (
     <>
       <NextSeo title="Explorar | BookWise" description="Página de Exploração" />
@@ -86,10 +93,14 @@ export default function Explorer() {
               Explorar
             </div>
 
-            <section>
-              <input placeholder="Procure um livro" />
-              <MagnifyingGlass />
-            </section>
+            {currentCategory === "Todos" ? (
+              <section>
+                <input placeholder="Procure um livro" onChange={handleChange} />
+                <MagnifyingGlass />
+              </section>
+            ) : (
+              <></>
+            )}
           </header>
         </HeaderContainer>
         <TagContainer>
@@ -103,14 +114,15 @@ export default function Explorer() {
         </TagContainer>
 
         <>
-         
-            <BookListContainer>
-              <>
-                {currentCategory == "Todos"
-                  ? data?.map((item) => (
-                    <DrawerDialog bookId={item.id} >
+          <BookListContainer>
+            <>
+              {currentCategory == "Todos"
+                ? filteredByName?.map((item) => (
+                    <DrawerDialog bookId={item.id}>
                       <BookListCardContainer
-                        key={item.id} onClick={() => console.log(item.id)}>
+                        key={item.id}
+                        onClick={() => console.log(item.id)}
+                      >
                         <img
                           src={item.cover_url}
                           alt=""
@@ -141,17 +153,12 @@ export default function Explorer() {
                           />
                         </BookListCardContent>
                       </BookListCardContainer>
-                      </DrawerDialog>
-                    ))
-                  : filteredList?.map((item) => (
-                      <>
-                         <DrawerDialog bookId={item.id} >
-                        <BookListCardContainer
-                          key={item.id}
-                          onClick={() => {
-                        
-                          }}
-                        >
+                    </DrawerDialog>
+                  ))
+                : filteredList?.map((item) => (
+                    <>
+                      <DrawerDialog bookId={item.id}>
+                        <BookListCardContainer key={item.id} onClick={() => {}}>
                           <img
                             src={item.cover_url}
                             alt=""
@@ -174,12 +181,11 @@ export default function Explorer() {
                             </p>
                           </BookListCardContent>
                         </BookListCardContainer>
-                        </DrawerDialog>
-                      </>
-                    ))}
-              </>
-            </BookListContainer>
-         
+                      </DrawerDialog>
+                    </>
+                  ))}
+            </>
+          </BookListContainer>
         </>
       </ExplorerContainer>
     </>
