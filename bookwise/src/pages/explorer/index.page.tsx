@@ -39,19 +39,11 @@ interface ExplorerProps {
 [];
 
 export default function Explorer() {
-  const [bookTags, setBookTags] = useState<BookTags[]>([]);
-  const [explorerBooks, setExplorerBooks] = useState<ExplorerProps[]>([]);
   const [currentCategory, setCurrentCategory] = useState<string>("Todos");
-  const [Division, setDivision] = useState<number>();
+  const [search, setSearch] = useState<string>("");
   const [bookId, setBookId] = useState<string | null>(
-    "0440ad7d-230e-4573-b455-84ca38b5d339"
+    "14f410df-b28a-4e72-b1b4-363e26e160dd"
   );
-
-  function handleBookId(name: string) {
-    const handleBook = name;
-    setBookId(handleBook);
-    console.log(handleBook);
-  }
 
   const { isLoading, error, data } = useQuery<ExplorerProps[]>({
     queryKey: ["ExplorerBooks"],
@@ -74,7 +66,9 @@ export default function Explorer() {
   function HandleFilter(name: string) {
     const FilterName = name;
     setCurrentCategory(FilterName);
+    setSearch("")
     console.log(FilterName);
+
   }
 
   const filteredList = data?.filter((obj) =>
@@ -82,6 +76,13 @@ export default function Explorer() {
       .map((category) => category.category.name)
       .includes(currentCategory)
   );
+
+  const filteredByName = data?.filter((obj) =>
+    obj.name.toLowerCase().includes(search.toLowerCase())
+  );
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSearch(event.target.value);
+  };
   return (
     <>
       <NextSeo title="Explorar | BookWise" description="Página de Exploração" />
@@ -94,10 +95,14 @@ export default function Explorer() {
               Explorar
             </div>
 
-            <section>
-              <input placeholder="Procure um livro" />
-              <MagnifyingGlass />
-            </section>
+            {currentCategory === "Todos" ? (
+              <section>
+                <input placeholder="Procure um livro" onChange={handleChange} />
+                <MagnifyingGlass />
+              </section>
+            ) : (
+              <></>
+            )}
           </header>
         </HeaderContainer>
         <TagContainer>
@@ -111,16 +116,14 @@ export default function Explorer() {
         </TagContainer>
 
         <>
-          <DrawerDialog bookId={bookId}>
-            <BookListContainer>
-              <>
-                {currentCategory == "Todos"
-                  ? data?.map((item) => (
+          <BookListContainer>
+            <>
+              {currentCategory == "Todos"
+                ? filteredByName?.map((item) => (
+                    <DrawerDialog bookId={item.id}>
                       <BookListCardContainer
                         key={item.id}
-                        onClick={() => {
-                          handleBookId(item.id);
-                        }}
+                        onClick={() => console.log(item.id)}
                       >
                         <img
                           src={item.cover_url}
@@ -152,15 +155,12 @@ export default function Explorer() {
                           />
                         </BookListCardContent>
                       </BookListCardContainer>
-                    ))
-                  : filteredList?.map((item) => (
-                      <>
-                        <BookListCardContainer
-                          key={item.id}
-                          onClick={() => {
-                            handleBookId(item.id);
-                          }}
-                        >
+                    </DrawerDialog>
+                  ))
+                : filteredList?.map((item) => (
+                    <>
+                      <DrawerDialog bookId={item.id}>
+                        <BookListCardContainer key={item.id} onClick={() => {}}>
                           <img
                             src={item.cover_url}
                             alt=""
@@ -183,11 +183,11 @@ export default function Explorer() {
                             </p>
                           </BookListCardContent>
                         </BookListCardContainer>
-                      </>
-                    ))}
-              </>
-            </BookListContainer>
-          </DrawerDialog>
+                      </DrawerDialog>
+                    </>
+                  ))}
+            </>
+          </BookListContainer>
         </>
       </ExplorerContainer>
     </>
