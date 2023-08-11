@@ -66,7 +66,9 @@ export default function Explorer() {
   function HandleFilter(name: string) {
     const FilterName = name;
     setCurrentCategory(FilterName);
+    setSearch("")
     console.log(FilterName);
+
   }
 
   const filteredList = data?.filter((obj) =>
