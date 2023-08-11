@@ -139,7 +139,7 @@ export function DrawerDialog({ children, bookId }: DrawerDialogProps) {
 
     setTimeout(() => {
       setLoading(true);
-    }, 300);
+    }, 500);
   }
 
   async function handleCreateReview() {
