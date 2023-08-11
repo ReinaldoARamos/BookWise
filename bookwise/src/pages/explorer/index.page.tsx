@@ -108,7 +108,7 @@ export default function Explorer() {
               <>
                 {currentCategory == "Todos"
                   ? data?.map((item) => (
-                    <DrawerDialog bookId={item.id}>
+                    <DrawerDialog bookId={item.id} >
                       <BookListCardContainer
                         key={item.id} onClick={() => console.log(item.id)}>
                         <img

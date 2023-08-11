@@ -333,7 +333,7 @@ export function DrawerDialog({ children, bookId }: DrawerDialogProps) {
                     >
                       {<X size={24} />}
                     </button>
-                    <button type="submit" disabled={!review || !Rating}>
+                    <button type="submit" disabled={!review || !Rating || isSubmitting}>
                       {<Check size={24} />}
                     </button>
                   </div>
