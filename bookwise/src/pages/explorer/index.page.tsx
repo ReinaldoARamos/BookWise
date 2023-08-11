@@ -41,14 +41,9 @@ interface ExplorerProps {
 export default function Explorer() {
   const [currentCategory, setCurrentCategory] = useState<string>("Todos");
   const [bookId, setBookId] = useState<string | null>(
-    "0440ad7d-230e-4573-b455-84ca38b5d339"
+    "14f410df-b28a-4e72-b1b4-363e26e160dd"
   );
 
-  function handleBookId(name: string) {
-    const handleBook = name;
-    setBookId(handleBook);
-    console.log(handleBook);
-  }
 
   const { isLoading, error, data } = useQuery<ExplorerProps[]>({
     queryKey: ["ExplorerBooks"],
@@ -108,17 +103,14 @@ export default function Explorer() {
         </TagContainer>
 
         <>
-          <DrawerDialog bookId={bookId}>
+         
             <BookListContainer>
               <>
                 {currentCategory == "Todos"
                   ? data?.map((item) => (
+                    <DrawerDialog bookId={item.id}>
                       <BookListCardContainer
-                        key={item.id}
-                        onClick={() => {
-                          handleBookId(item.id);
-                        }}
-                      >
+                        key={item.id} onClick={() => console.log(item.id)}>
                         <img
                           src={item.cover_url}
                           alt=""
@@ -149,13 +141,14 @@ export default function Explorer() {
                           />
                         </BookListCardContent>
                       </BookListCardContainer>
+                      </DrawerDialog>
                     ))
                   : filteredList?.map((item) => (
                       <>
                         <BookListCardContainer
                           key={item.id}
                           onClick={() => {
-                            handleBookId(item.id);
+                        
                           }}
                         >
                           <img
@@ -184,7 +177,7 @@ export default function Explorer() {
                     ))}
               </>
             </BookListContainer>
-          </DrawerDialog>
+         
         </>
       </ExplorerContainer>
     </>

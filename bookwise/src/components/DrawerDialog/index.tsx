@@ -28,8 +28,9 @@ import { RatedStars } from "../RatedStars";
 import { z } from "zod";
 import { Form, FormState, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-
+import { useQuery } from "@tanstack/react-query";
 import next from "next/types";
+import { useRouter } from "next/router";
 
 interface DrawerDialogProps {
   children?: ReactNode;
@@ -79,6 +80,8 @@ interface RatingStarsProps {
 }
 
 export function DrawerDialog({ children, bookId }: DrawerDialogProps) {
+  const router = useRouter()
+
   const [BookDrawer, setBookDrawer] = useState<DialogProps | null>();
   const [open, setOpen] = useState(false);
   const [Loading, setLoading] = useState<boolean>();
@@ -90,9 +93,9 @@ export function DrawerDialog({ children, bookId }: DrawerDialogProps) {
   const iconArray = Array.from({ length: 5 }, (_, index) => index);
   const [review, setReview] = useState<string>("");
   const [rateingRefresh, setRatingRefresh] = useState(null);
+  //console.log("id: "+ paramBookId);
 
-  //@ts-ignore
-  const average = Math.floor(BookDrawer?.avgRating)
+
   const maxLength = 400;
   const [text, setText] = useState("");
   const remainingChars = maxLength - text.length;
@@ -125,10 +128,16 @@ export function DrawerDialog({ children, bookId }: DrawerDialogProps) {
 
     setBookDrawer(response.data);
   }
-  const IsAlreadyRated = BookDrawer?.ratings
-    .map((item) => item.user.email)
-    .includes(session?.user.email);
-  console.log("o cara ja deu nota?: " + IsAlreadyRated);
+/*
+  const {  data} = useQuery<DialogProps>({
+    queryKey: ["books"],
+    queryFn: async () => {
+      const response = await api.get(`books/${bookId}`)
+      return response.data;
+    },
+  });
+
+* */
 
   function ClearState() {
     setOpen(false);
@@ -138,9 +147,7 @@ export function DrawerDialog({ children, bookId }: DrawerDialogProps) {
   function Open() {
     setOpen(true);
 
-    setTimeout(() => {
-      setLoading(true);
-    }, 200);
+
   }
 
   async function handleCreateReview() {
@@ -157,13 +164,22 @@ export function DrawerDialog({ children, bookId }: DrawerDialogProps) {
   }
 
   useEffect(() => {
-    fetchData();
+    fetchData()
   }, [bookId, setOpen, rateingRefresh]);
+
+
   const categories = BookDrawer?.categories
     ?.map((item) => item?.category?.name)
     ?.join(", ");
 
   const RatingNumber = BookDrawer?.ratings.length;
+    //@ts-ignore
+  const average = Math.floor(BookDrawer?.avgRating)
+
+  const IsAlreadyRated = BookDrawer?.ratings
+  .map((item) => item.user.email)
+  .includes(session?.user.email);
+
   return (
     <Dialog.Root open={open}>
       <Dialog.Trigger
@@ -199,59 +215,7 @@ export function DrawerDialog({ children, bookId }: DrawerDialogProps) {
               }}
             />
           </DialogClose>
-          {Loading == false ? (
-            <>
-              <BookDetailsWrapper>
-                <BookDetailsContainer>
-                  <BookImage
-                    src={
-                      "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/A_black_image.jpg/640px-A_black_image.jpg"
-                    }
-                    width={216}
-                    height={304}
-                  />
-                  <BookContent>
-                    <h1>
-                      Loading...
-                      <p>Loading...</p>
-                    </h1>
-
-                    <p>
-                      <div>
-                        <Star size={20} weight="fill" />
-                        <Star size={20} weight="fill" />
-                        <Star size={20} weight="fill" />
-                        <Star size={20} weight="fill" />
-                        <Star size={20} />
-                      </div>
-                      <span>Loading... avaliações</span>
-                    </p>
-                  </BookContent>
-                </BookDetailsContainer>
-                <BookInfo>
-                  <CategoryBox>
-                    <BookmarkSimple size={24} />
-                    <div>
-                      <span>Categoria</span>
-                      <p>Loading...</p>
-                    </div>
-                  </CategoryBox>
-                  <TotalPagesBox>
-                    <BookOpen size={24} />
-                    <div>
-                      <span>Páginas</span>
-                      <p>Loading...</p>
-                    </div>
-                  </TotalPagesBox>
-                </BookInfo>
-              </BookDetailsWrapper>
-              <RatingHeader>
-                <div>Avaliações</div>
-
-                <div>...</div>
-              </RatingHeader>
-            </>
-          ) : (
+         
             <div>
               <BookDetailsWrapper>
                 <BookDetailsContainer>
@@ -396,9 +360,11 @@ export function DrawerDialog({ children, bookId }: DrawerDialogProps) {
                 </Ratings>
               ))}
             </div>
-          )}
+          )
         </DialogContent>
       </Dialog.Portal>
     </Dialog.Root>
   );
 }
+
+
