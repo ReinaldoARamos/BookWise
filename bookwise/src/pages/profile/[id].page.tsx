@@ -46,7 +46,7 @@ export interface ProfileProps {
 
 export default function Profile() {
   const { query } = useRouter();
-  const [search, setSearch] = useState<string | null>("")
+  const [search, setSearch] = useState<string>("");
   const { isLoading, data } = useQuery<ProfileProps>({
     queryKey: ["User"],
     queryFn: async () => {
@@ -107,9 +107,8 @@ export default function Profile() {
   if (isLoading) return "Loading...";
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const newText = event.target.value;
-    setSearch(newText);
-    console.log(search)
+    setSearch(event.target.value);
+   
   };
   return (
     <>
@@ -124,14 +123,14 @@ export default function Profile() {
             <User />
             Perfil
           </Heading>
-        
-          <section >
+
+          <section>
             <input placeholder="Procure um livro" onChange={handleChange} />
             <MagnifyingGlass className="glass" />
           </section>
         </HeadingContainer>
         <UserReviewCardContainer>
-          <UserRatedBooks />
+          <UserRatedBooks filter={search}/>
         </UserReviewCardContainer>
 
         <UserInfo
