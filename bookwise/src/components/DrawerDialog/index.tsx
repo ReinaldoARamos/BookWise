@@ -133,13 +133,14 @@ export function DrawerDialog({ children, bookId }: DrawerDialogProps) {
   function ClearState() {
     setOpen(false);
     setLoading(false);
+    
   }
   function Open() {
     setOpen(true);
 
     setTimeout(() => {
       setLoading(true);
-    }, 3000);
+    }, 200);
   }
 
   async function handleCreateReview() {
@@ -313,7 +314,6 @@ export function DrawerDialog({ children, bookId }: DrawerDialogProps) {
                 <ReviewTextArea
                   as="form"
                   onSubmit={handleSubmit(handleCreateReview)}
-                 
                 >
                   <div className="container">
                     <div>
@@ -369,7 +369,7 @@ export function DrawerDialog({ children, bookId }: DrawerDialogProps) {
                     >
                       {<X size={24} />}
                     </button>
-                    <button type="submit" disabled={!review || !Rating || isSubmitting} >
+                    <button type="submit" disabled={!review || !Rating}>
                       {<Check size={24} />}
                     </button>
                   </div>

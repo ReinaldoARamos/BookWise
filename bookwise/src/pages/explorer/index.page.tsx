@@ -39,10 +39,7 @@ interface ExplorerProps {
 [];
 
 export default function Explorer() {
-  const [bookTags, setBookTags] = useState<BookTags[]>([]);
-  const [explorerBooks, setExplorerBooks] = useState<ExplorerProps[]>([]);
   const [currentCategory, setCurrentCategory] = useState<string>("Todos");
-  const [Division, setDivision] = useState<number>();
   const [bookId, setBookId] = useState<string | null>(
     "0440ad7d-230e-4573-b455-84ca38b5d339"
   );
