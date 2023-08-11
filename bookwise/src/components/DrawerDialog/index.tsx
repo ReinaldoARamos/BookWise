@@ -360,7 +360,7 @@ export function DrawerDialog({ children, bookId }: DrawerDialogProps) {
                 </Ratings>
               ))}
             </div>
-          )
+          
         </DialogContent>
       </Dialog.Portal>
     </Dialog.Root>
