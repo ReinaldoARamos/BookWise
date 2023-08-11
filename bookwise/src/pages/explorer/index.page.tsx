@@ -145,6 +145,7 @@ export default function Explorer() {
                     ))
                   : filteredList?.map((item) => (
                       <>
+                         <DrawerDialog bookId={item.id} >
                         <BookListCardContainer
                           key={item.id}
                           onClick={() => {
@@ -173,6 +174,7 @@ export default function Explorer() {
                             </p>
                           </BookListCardContent>
                         </BookListCardContainer>
+                        </DrawerDialog>
                       </>
                     ))}
               </>
